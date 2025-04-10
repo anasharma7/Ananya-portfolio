@@ -12,22 +12,41 @@ export default function About() {
       
       <div className="mt-12 prose prose-lg dark:prose-invert mx-auto">
         <p>
-          [Your introduction and background information goes here]
+          I am a passionate Full Stack Developer with a strong foundation in web development
+          and a keen eye for creating exceptional user experiences. My journey in software
+          development began with a curiosity for building things that make a difference.
         </p>
         
         <h2>Experience</h2>
         <p>
-          [Your work experience and achievements go here]
+          I have worked on various projects ranging from e-commerce platforms to task
+          management applications. My experience includes:
         </p>
+        <ul>
+          <li>Building responsive and user-friendly web applications</li>
+          <li>Developing full-stack solutions using modern technologies</li>
+          <li>Implementing authentication and authorization systems</li>
+          <li>Creating real-time features using WebSocket</li>
+          <li>Optimizing application performance and user experience</li>
+        </ul>
         
         <h2>Skills</h2>
         <p>
-          [Your technical skills and expertise go here]
+          My technical expertise includes:
         </p>
+        <ul>
+          <li>Frontend: React, Next.js, TypeScript, Tailwind CSS</li>
+          <li>Backend: Node.js, Express, Python, Django</li>
+          <li>Databases: MongoDB, PostgreSQL</li>
+          <li>Tools: Git, Docker, AWS</li>
+          <li>Other: REST APIs, WebSocket, CI/CD</li>
+        </ul>
         
         <h2>Education</h2>
         <p>
-          [Your educational background goes here]
+          Bachelor&apos;s Degree in Computer Science<br />
+          [Your University Name]<br />
+          [Graduation Year]
         </p>
       </div>
     </div>
