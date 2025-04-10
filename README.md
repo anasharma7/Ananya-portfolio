@@ -1,68 +1,39 @@
-# Personal Portfolio Website
+# Ana Sharma Portfolio
 
-A modern, responsive portfolio website built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with Next.js and Tailwind CSS.
 
 ## Features
 
-- 🎨 Clean and modern design
-- 🌓 Dark/Light mode support
-- 📱 Fully responsive layout
-- ⚡ Fast page loads with Next.js
-- 🎯 SEO optimized
-- 📝 Blog section (coming soon)
-- 📬 Contact form
-- 🚀 Easy to customize
+- Responsive design that works on all devices
+- Dark/light mode toggle
+- Interactive project showcases
+- Codepen integration for security visualizations
+- Smooth animations and transitions
 
-## Tech Stack
+## Technologies Used
 
-- Next.js 14
+- Next.js 15
 - TypeScript
 - Tailwind CSS
-- React
-- ESLint
+- Framer Motion
+- React Icons
 
-## Getting Started
+## Local Development
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   ```
+```bash
+# Install dependencies
+npm install
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+# Run development server
+npm run dev
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+# Build for production
+npm run build
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Project Structure
-
+# Start production server
+npm start
 ```
-src/
-├── app/                    # App router pages
-├── components/            # React components
-│   ├── layout/           # Layout components
-│   ├── sections/         # Page sections
-│   └── ui/               # UI components
-└── styles/               # Global styles
-```
-
-## Customization
-
-1. Update the content in `src/app/page.tsx` with your personal information
-2. Modify the theme colors in `tailwind.config.js`
-3. Add your projects to the projects section
-4. Update the contact form handling in `src/app/contact/page.tsx`
 
 ## Deployment
 
-This project can be deployed on Vercel, Netlify, or any other platform that supports Next.js applications.
-
-## License
-
-MIT
+This site is deployed using GitHub Pages.
