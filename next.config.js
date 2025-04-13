@@ -4,9 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/Ananya-portfolio',
-  assetPrefix: '/Ananya-portfolio/',
+  basePath: process.env.NODE_ENV === 'production' ? '/Ananya-portfolio' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Ananya-portfolio/' : '',
   trailingSlash: true,
+  distDir: 'out',
 };
 
 module.exports = nextConfig; 

@@ -35,7 +35,7 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mt-8 flex justify-center space-x-4"
           >
-            <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <Link href="https://github.com/anasharma7/portfolio2" target="_blank" rel="noopener noreferrer">
               <FaGithub className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
             </Link>
             <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
