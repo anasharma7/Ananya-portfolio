@@ -8,7 +8,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  output: 'export',
+  output: 'standalone',
   basePath: process.env.NODE_ENV === 'production' ? '/Ananya-portfolio' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/Ananya-portfolio/' : '',
   trailingSlash: true,
