@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    unoptimized: true,
+    domains: ['images.unsplash.com'],
   },
+  experimental: {
+    optimizeCss: true,
+  },
+  output: 'export',
   basePath: process.env.NODE_ENV === 'production' ? '/Ananya-portfolio' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/Ananya-portfolio/' : '',
   trailingSlash: true,
