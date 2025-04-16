@@ -11,7 +11,10 @@ const HeroSection = () => {
             Hi, I&apos;m Ana Sharma
           </h1>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-            UX Designer & Cybersecurity Enthusiast
+            UX Designer & Security Solutions Architect
+          </p>
+          <p className="mt-2 text-lg text-gray-500 dark:text-gray-400">
+            Crafting secure, user-centric digital experiences
           </p>
           <div className="mt-8 flex justify-center space-x-4">
             <Link href="https://github.com/anasharma7" target="_blank" rel="noopener noreferrer">
