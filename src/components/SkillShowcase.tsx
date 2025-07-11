@@ -18,59 +18,59 @@ const SkillShowcase = () => {
   const skills: Skill[] = [
     {
       name: 'React',
-      level: 90,
+      level: 95,
       icon: <FaReact className="text-4xl" />,
       color: 'from-blue-400 to-blue-600',
       description: 'Building interactive user interfaces with modern React patterns'
     },
     {
       name: 'TypeScript',
-      level: 85,
+      level: 92,
       icon: <SiTypescript className="text-4xl" />,
       color: 'from-blue-500 to-blue-700',
       description: 'Type-safe development with advanced TypeScript features'
     },
     {
       name: 'Next.js',
-      level: 88,
+      level: 94,
       icon: <SiNextdotjs className="text-4xl" />,
       color: 'from-gray-600 to-gray-800',
       description: 'Full-stack development with Next.js and server-side rendering'
     },
     {
+      name: 'Tailwind CSS',
+      level: 96,
+      icon: <SiTailwindcss className="text-4xl" />,
+      color: 'from-cyan-400 to-cyan-600',
+      description: 'Modern CSS framework for rapid UI development'
+    },
+    {
+      name: 'UX Design',
+      level: 93,
+      icon: <FaPalette className="text-4xl" />,
+      color: 'from-purple-400 to-purple-600',
+      description: 'User experience design and prototyping with Figma'
+    },
+    {
+      name: 'Cybersecurity',
+      level: 90,
+      icon: <FaShieldAlt className="text-4xl" />,
+      color: 'from-red-400 to-red-600',
+      description: 'Security analysis, penetration testing, and secure coding'
+    },
+    {
       name: 'Node.js',
-      level: 82,
+      level: 88,
       icon: <FaNodeJs className="text-4xl" />,
       color: 'from-green-400 to-green-600',
       description: 'Backend development and API creation with Node.js'
     },
     {
       name: 'Python',
-      level: 80,
+      level: 85,
       icon: <FaPython className="text-4xl" />,
       color: 'from-yellow-400 to-blue-600',
       description: 'Data analysis, automation, and backend development'
-    },
-    {
-      name: 'Cybersecurity',
-      level: 85,
-      icon: <FaShieldAlt className="text-4xl" />,
-      color: 'from-red-400 to-red-600',
-      description: 'Security analysis, penetration testing, and secure coding'
-    },
-    {
-      name: 'UX Design',
-      level: 88,
-      icon: <FaPalette className="text-4xl" />,
-      color: 'from-purple-400 to-purple-600',
-      description: 'User experience design and prototyping with Figma'
-    },
-    {
-      name: 'Tailwind CSS',
-      level: 92,
-      icon: <SiTailwindcss className="text-4xl" />,
-      color: 'from-cyan-400 to-cyan-600',
-      description: 'Modern CSS framework for rapid UI development'
     }
   ];
 
