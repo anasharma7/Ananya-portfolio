@@ -42,27 +42,27 @@ const uxProjects = [
 const cyberProjects = [
   {
     title: 'Network Traffic Visualization',
-    description: 'Interactive visualization showing real-time network traffic patterns, packet flow, and connection states using HTML5 Canvas animations.',
-    color: '#2b6cb0',
-    icon: <FaNetworkWired className="h-6 w-6" />,
-    technologies: ['JavaScript', 'HTML5 Canvas', 'CSS3'],
-    link: 'https://codepen.io/anasharma7/pen/RwXxBVN'
-  },
-  {
-    title: 'Encryption/Decryption Simulator',
-    description: 'Visual demonstration of encryption and decryption processes with interactive key generation and data transformation visualization.',
-    color: '#805ad5',
-    icon: <FaLockOpen className="h-6 w-6" />,
-    technologies: ['JavaScript', 'CSS3', 'SVG'],
-    link: 'https://codepen.io/anasharma7/pen/xxvpJdm'
-  },
-  {
-    title: 'Firewall Simulator',
-    description: 'Interactive simulation of firewall rules and packet filtering, demonstrating how network security policies are enforced.',
+    description: 'Interactive visualization showing real-time network traffic patterns and security analysis.',
     color: '#e53e3e',
+    icon: <FaNetworkWired className="h-6 w-6" />,
+    technologies: ['JavaScript', 'D3.js', 'Cybersecurity'],
+    link: 'https://codepen.io/anasharma7/pen/network-viz'
+  },
+  {
+    title: 'Encryption Process Demo',
+    description: 'Educational demonstration of encryption and decryption processes with visual feedback.',
+    color: '#38a169',
+    icon: <FaLockOpen className="h-6 w-6" />,
+    technologies: ['JavaScript', 'Crypto.js', 'Animation'],
+    link: 'https://codepen.io/anasharma7/pen/encryption-demo'
+  },
+  {
+    title: 'Firewall Simulation',
+    description: 'Interactive firewall simulation showing packet filtering and security rule enforcement.',
+    color: '#dd6b20',
     icon: <FaFire className="h-6 w-6" />,
-    technologies: ['JavaScript', 'CSS3', 'HTML5'],
-    link: 'https://codepen.io/anasharma7/pen/GRVyBEp'
+    technologies: ['JavaScript', 'Canvas API', 'Security'],
+    link: 'https://codepen.io/anasharma7/pen/firewall-sim'
   }
 ];
 
@@ -114,14 +114,7 @@ const ProjectCard = ({ project, type }: { project: Project; type: 'ux' | 'cyber'
 
 const FeaturedProjects = () => {
   return (
-    <div className="relative bg-white dark:bg-gray-900 py-24 overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-red-200 dark:bg-red-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-200 dark:bg-purple-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-200 dark:bg-green-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-3000" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-yellow-200 dark:bg-yellow-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-1000" />
-      
+    <div id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
