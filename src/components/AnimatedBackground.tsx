@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const AnimatedBackground = () => {
@@ -22,65 +21,44 @@ const AnimatedBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Animated particles */}
       {particles.map((i) => (
-        <motion.div
+        <div
           key={i}
-          className="absolute w-2 h-2 bg-primary-400/20 rounded-full"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-          }}
-          animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            ease: "linear",
+          className="absolute w-2 h-2 bg-primary-400/20 rounded-full animate-float"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${Math.random() * 10 + 10}s`,
           }}
         />
       ))}
 
       {/* Floating geometric shapes */}
       {shapes.map((i) => (
-        <motion.div
+        <div
           key={i}
-          className={`absolute ${
+          className={`absolute animate-float ${
             i % 2 === 0 ? 'bg-accent-400/10' : 'bg-secondary-400/10'
           } ${
             i % 3 === 0 ? 'w-16 h-16' : i % 3 === 1 ? 'w-12 h-12' : 'w-8 h-8'
           } ${
             i % 2 === 0 ? 'rounded-full' : 'rotate-45'
           }`}
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            rotate: 0,
-          }}
-          animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            rotate: 360,
-          }}
-          transition={{
-            duration: Math.random() * 20 + 20,
-            repeat: Infinity,
-            ease: "linear",
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 20}s`,
+            animationDuration: `${Math.random() * 20 + 20}s`,
           }}
         />
       ))}
 
       {/* Mouse-following gradient */}
-      <motion.div
-        className="absolute w-96 h-96 bg-gradient-to-r from-primary-400/10 to-accent-400/10 rounded-full blur-3xl"
-        animate={{
-          x: mousePosition.x - 192,
-          y: mousePosition.y - 192,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 50,
-          damping: 20,
+      <div
+        className="absolute w-96 h-96 bg-gradient-to-r from-primary-400/10 to-accent-400/10 rounded-full blur-3xl transition-all duration-300 ease-out"
+        style={{
+          left: mousePosition.x - 192,
+          top: mousePosition.y - 192,
         }}
       />
 

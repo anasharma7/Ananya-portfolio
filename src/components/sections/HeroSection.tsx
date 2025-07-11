@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import Link from 'next/link';
 import AnimatedBackground from '../AnimatedBackground';
@@ -19,85 +18,60 @@ const HeroSection = () => {
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+          <h1 
+            className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white animate-fade-in"
           >
             Hi, I&apos;m Ana Sharma
-          </motion.h1>
+          </h1>
           
-          <motion.div
-            className="mt-4 text-xl text-gray-600 dark:text-gray-300"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
+          <div className="mt-4 text-xl text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <TypewriterText 
               texts={typewriterTexts}
               speed={80}
               className="text-primary-600 dark:text-primary-400 font-semibold"
             />
-          </motion.div>
+          </div>
           
-          <motion.p
-            className="mt-2 text-lg text-gray-500 dark:text-gray-400"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+          <p
+            className="mt-2 text-lg text-gray-500 dark:text-gray-400 animate-slide-up"
+            style={{ animationDelay: '0.6s' }}
           >
             Crafting secure, user-centric digital experiences
-          </motion.p>
+          </p>
           
-          <motion.div 
-            className="mt-8 flex justify-center space-x-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+          <div 
+            className="mt-8 flex justify-center space-x-4 animate-slide-up"
+            style={{ animationDelay: '0.9s' }}
           >
-            <motion.div
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
               <Link href="https://github.com/anasharma7" target="_blank" rel="noopener noreferrer">
                 <FaGithub className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
               </Link>
-            </motion.div>
+            </div>
             
-            <motion.div
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
               <Link href="https://linkedin.com/in/anasharma7" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
               </Link>
-            </motion.div>
+            </div>
             
-            <motion.div
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
               <Link href="https://twitter.com/anasharma7" target="_blank" rel="noopener noreferrer">
                 <FaTwitter className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
           
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+          <div
+            className="mt-12 animate-slide-up"
+            style={{ animationDelay: '1.2s' }}
           >
-            <motion.button
-              className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+            <button
+              className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
             >
               View My Work
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
         </div>
       </div>
     </section>

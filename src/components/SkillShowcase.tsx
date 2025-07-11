@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FaReact, FaNodeJs, FaPython, FaDatabase, FaShieldAlt, FaPalette } from 'react-icons/fa';
 import { SiTypescript, SiTailwindcss, SiNextdotjs, SiFigma } from 'react-icons/si';
@@ -78,33 +77,25 @@ const SkillShowcase = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Technical Skills
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
             A comprehensive overview of my technical expertise
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skill, index) => (
-            <motion.div
+            <div
               key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              onHoverStart={() => setHoveredSkill(skill.name)}
-              onHoverEnd={() => setHoveredSkill(null)}
-              className="relative group"
+              className="relative group animate-scale-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+              onMouseEnter={() => setHoveredSkill(skill.name)}
+              onMouseLeave={() => setHoveredSkill(null)}
             >
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-2">
                 <div className="flex items-center justify-center mb-4">
                   <div className={`p-3 rounded-full bg-gradient-to-r ${skill.color} text-white`}>
                     {skill.icon}
@@ -120,31 +111,25 @@ const SkillShowcase = () => {
                     <span>Proficiency</span>
                     <span>{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <motion.div
-                      className={`h-2 rounded-full bg-gradient-to-r ${skill.color}`}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                    <div
+                      className={`h-2 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                      style={{ width: hoveredSkill === skill.name ? `${skill.level}%` : '0%' }}
                     />
                   </div>
                 </div>
 
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{
-                    opacity: hoveredSkill === skill.name ? 1 : 0,
-                    height: hoveredSkill === skill.name ? 'auto' : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    hoveredSkill === skill.name ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
                 >
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     {skill.description}
                   </p>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

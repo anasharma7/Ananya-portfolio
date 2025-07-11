@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 interface TypewriterTextProps {
@@ -47,19 +46,10 @@ const TypewriterText = ({ texts, speed = 100, className = '' }: TypewriterTextPr
   }, [currentText, currentTextIndex, isDeleting, texts, speed]);
 
   return (
-    <motion.span
-      className={`inline-block ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <span className={`inline-block animate-fade-in ${className}`}>
       {currentText}
-      <motion.span
-        className="inline-block w-0.5 h-6 bg-primary-500 ml-1"
-        animate={{ opacity: [1, 0, 1] }}
-        transition={{ duration: 0.8, repeat: Infinity }}
-      />
-    </motion.span>
+      <span className="inline-block w-0.5 h-6 bg-primary-500 ml-1 animate-blink" />
+    </span>
   );
 };
 
