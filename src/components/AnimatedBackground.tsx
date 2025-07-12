@@ -23,7 +23,7 @@ const AnimatedBackground = () => {
     const stars = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 2.2 + 1.2, // larger stars
+      r: Math.random() * 1.2 + 0.4, // smaller stars
       color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
       twinkleSpeed: Math.random() * 0.3 + 0.07, // slower twinkle
       twinklePhase: Math.random() * Math.PI * 2,
@@ -35,7 +35,7 @@ const AnimatedBackground = () => {
       for (const star of stars) {
         // Glow and fade: use a sine wave for opacity, clamp to [0,1]
         const twinkle = Math.max(0, Math.sin(time * 0.001 * star.twinkleSpeed + star.twinklePhase));
-        const opacity = 0.15 + 0.85 * twinkle; // range from 0.15 to 1
+        const opacity = 0.08 + 0.45 * twinkle; // range from 0.08 to 0.53
         ctx.globalAlpha = opacity;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
