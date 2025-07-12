@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
-const playfair = Playfair_Display({ 
+const caveat = Caveat({ 
   subsets: ["latin"],
-  variable: '--font-playfair'
+  variable: '--font-caveat'
 });
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} ${playfair.variable}`}>
+      <body className={`${inter.className} ${caveat.variable}`}>
         <Layout>{children}</Layout>
       </body>
     </html>

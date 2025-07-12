@@ -3,15 +3,6 @@
 import { useEffect, useState } from 'react';
 
 const AnimatedBackground = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // More particles and shapes, faster and more colorful
   const particles = Array.from({ length: 25 }, (_, i) => i);
@@ -57,14 +48,9 @@ const AnimatedBackground = () => {
         />
       ))}
 
-      {/* Mouse-following gradient */}
-      <div
-        className="absolute w-[500px] h-[500px] bg-gradient-to-r from-primary-400/10 to-accent-400/10 rounded-full blur-3xl transition-all duration-700 ease-out"
-        style={{
-          left: mousePosition.x - 250,
-          top: mousePosition.y - 250,
-        }}
-      />
+      {/* Static gradient orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-primary-400/5 to-accent-400/5 rounded-full blur-3xl animate-pulse-very-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-r from-accent-400/5 to-secondary-400/5 rounded-full blur-3xl animate-pulse-very-slow" style={{ animationDelay: '3s' }} />
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-10">

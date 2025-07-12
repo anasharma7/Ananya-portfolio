@@ -54,8 +54,8 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        serif: ['Playfair Display', 'serif'],
-        display: ['Playfair Display', 'serif'],
+        handwriting: ['Caveat', 'cursive'],
+        display: ['Caveat', 'cursive'],
       },
       animation: {
         'fade-in-up': 'fadeInUp 1s ease-out',
