@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 const STAR_COUNT = 120;
+const STAR_COLORS = ['#b3cfff', '#e0e7ff', '#a5b4fc', '#f0f9ff', '#fff', '#c7d2fe', '#818cf8']; // blue, indigo, white, soft
 
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -18,13 +19,13 @@ const AnimatedBackground = () => {
     canvas.width = width;
     canvas.height = height;
 
-    // Generate stars with twinkle phase
+    // Generate stars with color, twinkle phase, and speed
     const stars = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 1.2 + 0.2,
-      baseOpacity: Math.random() * 0.5 + 0.5,
-      twinkleSpeed: Math.random() * 0.8 + 0.2,
+      r: Math.random() * 1.5 + 0.5,
+      color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
+      twinkleSpeed: Math.random() * 0.3 + 0.07, // slower twinkle
       twinklePhase: Math.random() * Math.PI * 2,
     }));
 
@@ -32,14 +33,15 @@ const AnimatedBackground = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
       for (const star of stars) {
-        // Twinkle by animating opacity with a sine wave
-        const twinkle = Math.sin(time * 0.001 * star.twinkleSpeed + star.twinklePhase) * 0.3 + star.baseOpacity;
-        ctx.globalAlpha = Math.max(0, Math.min(1, twinkle));
+        // Glow and fade: use a sine wave for opacity, clamp to [0,1]
+        const twinkle = Math.max(0, Math.sin(time * 0.001 * star.twinkleSpeed + star.twinklePhase));
+        const opacity = 0.15 + 0.85 * twinkle; // range from 0.15 to 1
+        ctx.globalAlpha = opacity;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
-        ctx.fillStyle = '#fff';
-        ctx.shadowColor = '#fff';
-        ctx.shadowBlur = 8;
+        ctx.fillStyle = star.color;
+        ctx.shadowColor = star.color;
+        ctx.shadowBlur = 16 * opacity;
         ctx.fill();
       }
       ctx.globalAlpha = 1;
