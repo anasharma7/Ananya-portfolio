@@ -21,11 +21,36 @@ const HeroSection = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 
-              className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in"
-            >
-              Hi, I&apos;m Ana Sharma
-            </h1>
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center space-x-4">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in">
+                  Hi, I&apos;m Ana Sharma
+                </h1>
+                {/* Animated waving girl SVG */}
+                <span className="inline-block animate-wave">
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                      {/* Face */}
+                      <circle cx="30" cy="30" r="20" fill="#f9d6b7" />
+                      {/* Hair */}
+                      <ellipse cx="30" cy="28" rx="20" ry="18" fill="#7c4a1e" />
+                      {/* Body */}
+                      <rect x="22" y="40" width="16" height="14" rx="6" fill="#7c4a1e" />
+                      {/* Arm (waving) */}
+                      <g className="origin-[44px_32px]">
+                        <rect x="42" y="28" width="10" height="6" rx="3" fill="#f9d6b7" />
+                        <rect x="50" y="28" width="6" height="4" rx="2" fill="#f9d6b7" />
+                      </g>
+                      {/* Smile */}
+                      <path d="M25 36 Q30 40 35 36" stroke="#a05a2c" strokeWidth="2" fill="none" />
+                      {/* Eyes */}
+                      <circle cx="25" cy="30" r="2" fill="#3b2c1a" />
+                      <circle cx="35" cy="30" r="2" fill="#3b2c1a" />
+                    </g>
+                  </svg>
+                </span>
+              </div>
+            </div>
             
             <div className="mt-4 text-xl text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.3s' }}>
               <TypewriterText 
