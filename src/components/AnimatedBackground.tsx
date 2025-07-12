@@ -28,8 +28,8 @@ const AnimatedBackground = () => {
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             background: `linear-gradient(135deg, #38bdf8${i % 2 ? 'ff' : 'cc'}, #fb923c${i % 3 ? 'ff' : 'cc'}, #8b5cf6${i % 4 ? 'ff' : 'cc'})`,
-            animationDelay: `${Math.random() * 8}s`,
-            animationDuration: `${Math.random() * 15 + 30}s`,
+            animationDelay: `${Math.random() * 20}s`,
+            animationDuration: `${Math.random() * 40 + 80}s`,
             opacity: 0.6 + Math.random() * 0.4,
             filter: 'blur(0.5px)',
           }}
