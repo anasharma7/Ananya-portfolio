@@ -63,7 +63,7 @@ const AnimatedBackground = () => {
     };
   }, []);
 
-  // Shooting star effect
+  // Improved shooting star effect
   useEffect(() => {
     const shootingStar = shootingStarRef.current;
     if (!shootingStar) return;
@@ -72,16 +72,16 @@ const AnimatedBackground = () => {
       if (!shootingStar) return;
       shootingStar.style.transition = 'none';
       shootingStar.style.opacity = '0';
-      shootingStar.style.transform = 'translate(-50%, -50%) scaleX(1)';
+      shootingStar.style.transform = 'translate(-50%, -50%) scaleX(1) translate(0px, 0px)';
       setTimeout(() => {
         if (!shootingStar) return;
-        shootingStar.style.transition = 'all 1.2s cubic-bezier(0.4,0,0.2,1)';
+        shootingStar.style.transition = 'all 1.8s cubic-bezier(0.4,0,0.2,1)';
         shootingStar.style.opacity = '1';
-        shootingStar.style.transform = 'translate(-50%, -50%) scaleX(1.5) translate(400px, 120px)';
+        shootingStar.style.transform = `translate(-50%, -50%) scaleX(1.5) translate(${window.innerWidth * 0.8}px, ${window.innerHeight * 0.8}px)`;
         setTimeout(() => {
           if (!shootingStar) return;
           shootingStar.style.opacity = '0';
-        }, 1000);
+        }, 1600);
       }, 100);
       timeout = setTimeout(animateShootingStar, SHOOTING_STAR_INTERVAL);
     }
@@ -93,11 +93,11 @@ const AnimatedBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Starfield Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block' }} />
-      {/* Shooting Star */}
+      {/* Shooting Star - diagonal, full screen */}
       <div
         ref={shootingStarRef}
-        className="absolute left-1/4 top-1/4 w-48 h-1 bg-gradient-to-r from-white via-pink-200 to-transparent rounded-full opacity-0 shadow-2xl"
-        style={{ filter: 'blur(1px)' }}
+        className="absolute left-0 top-0 w-64 h-1 bg-gradient-to-r from-white via-pink-200 to-transparent rounded-full opacity-0 shadow-2xl"
+        style={{ filter: 'blur(2px)', boxShadow: '0 0 24px 8px #fff, 0 0 48px 16px #ec4899' }}
       />
     </div>
   );
