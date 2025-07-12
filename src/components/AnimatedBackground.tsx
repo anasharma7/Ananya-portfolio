@@ -28,7 +28,7 @@ const AnimatedBackground = () => {
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 20}s`,
-            animationDuration: `${Math.random() * 30 + 60}s`, // Much slower
+            animationDuration: `${Math.random() * 40 + 90}s`, // Even slower
           }}
         />
       ))}
@@ -48,7 +48,7 @@ const AnimatedBackground = () => {
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 30}s`,
-            animationDuration: `${Math.random() * 40 + 80}s`, // Very slow animation
+            animationDuration: `${Math.random() * 60 + 120}s`, // Extremely slow animation
           }}
         />
       ))}
@@ -72,6 +72,16 @@ const AnimatedBackground = () => {
       <div className="absolute top-10 left-10 w-32 h-32 border border-primary-400/10 rounded-full animate-pulse-very-slow" />
       <div className="absolute bottom-10 right-10 w-24 h-24 border border-accent-400/10 rounded-full animate-pulse-very-slow" style={{ animationDelay: '2s' }} />
       <div className="absolute top-1/2 right-10 w-16 h-16 border border-secondary-400/10 rounded-full animate-pulse-very-slow" style={{ animationDelay: '4s' }} />
+      
+      {/* Floating geometric shapes */}
+      <div className="absolute top-20 right-20 w-8 h-8 bg-gradient-to-br from-primary-400/20 to-accent-400/20 rounded-lg rotate-45 animate-float-very-slow" style={{ animationDelay: '5s' }} />
+      <div className="absolute bottom-32 left-32 w-12 h-12 bg-gradient-to-br from-secondary-400/15 to-primary-400/15 rounded-full animate-float-very-slow" style={{ animationDelay: '8s' }} />
+      <div className="absolute top-1/3 left-1/4 w-6 h-6 bg-gradient-to-br from-accent-400/25 to-secondary-400/25 transform rotate-12 animate-float-very-slow" style={{ animationDelay: '12s' }} />
+      
+      {/* Interactive glow orbs */}
+      <div className="absolute top-1/4 right-1/3 w-4 h-4 bg-primary-400/30 rounded-full animate-pulse-very-slow blur-sm" style={{ animationDelay: '3s' }} />
+      <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-accent-400/40 rounded-full animate-pulse-very-slow blur-sm" style={{ animationDelay: '6s' }} />
+      <div className="absolute top-3/4 right-1/4 w-5 h-5 bg-secondary-400/35 rounded-full animate-pulse-very-slow blur-sm" style={{ animationDelay: '9s' }} />
     </div>
   );
 };
