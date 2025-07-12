@@ -38,13 +38,13 @@ const WhyHireMe = () => {
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 sm:text-5xl">
-            Why Hire Me?
+          <h2 className="text-4xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 sm:text-5xl">
+            Crafting Digital Excellence
           </h2>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-            As a passionate Full Stack Developer with a unique blend of technical expertise and creative problem-solving abilities, 
-            I bring a fresh perspective to every project. My approach combines meticulous attention to detail with a user-centric mindset, 
-            ensuring that the solutions I build are not only technically sound but also deliver exceptional user experiences.
+            With a harmonious blend of technical precision and creative vision, I transform complex challenges into elegant digital solutions. 
+            My approach weaves together cutting-edge technology with timeless design principles, creating experiences that resonate deeply 
+            with users while delivering measurable business impact.
           </p>
         </div>
 

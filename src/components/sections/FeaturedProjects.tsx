@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { FaFigma, FaCodepen, FaNetworkWired, FaLockOpen, FaFire } from 'react-icons/fa';
 import ProjectThumbnail from '../ui/ProjectThumbnail';
-import ScrollAnimation from '../ScrollAnimation';
-import MagneticButton from '../ui/MagneticButton';
 import { ReactNode } from 'react';
+import ScrollAnimation from '../ScrollAnimation';
 
 interface Project {
   title: string;
@@ -70,13 +69,12 @@ const cyberProjects = [
 
 const ProjectCard = ({ project, type }: { project: Project; type: 'ux' | 'cyber' }) => {
   return (
-    <ScrollAnimation animation="scale-up" delay={Math.random() * 300}>
-      <Link
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 magnetic-hover"
-      >
+    <Link
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+    >
       <div className="relative overflow-hidden">
         <ProjectThumbnail 
           title={project.title} 
@@ -112,15 +110,14 @@ const ProjectCard = ({ project, type }: { project: Project; type: 'ux' | 'cyber'
         </div>
       </div>
     </Link>
-    </ScrollAnimation>
   );
 };
 
 const FeaturedProjects = () => {
   return (
-    <div id="projects" className="py-20 bg-white dark:bg-gray-900">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollAnimation animation="fade-in-up">
+    <ScrollAnimation>
+      <div id="projects" className="py-20 bg-white dark:bg-gray-900">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
               Featured Projects
@@ -129,50 +126,47 @@ const FeaturedProjects = () => {
               Check out some of my recent work
             </p>
           </div>
-        </ScrollAnimation>
 
-        {/* UX/UI Projects Section */}
-        <ScrollAnimation animation="fade-in-left" delay={200}>
+          {/* UX/UI Projects Section */}
           <div className="mt-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
               UX/UI & HCI Projects
             </h3>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {uxProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} type="ux" />
-            ))}
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {uxProjects.map((project) => (
+                <ProjectCard key={project.title} project={project} type="ux" />
+              ))}
+            </div>
           </div>
-        </div>
-        </ScrollAnimation>
 
-        {/* Cyber Projects Section */}
-        <ScrollAnimation animation="fade-in-right" delay={400}>
+          {/* Cyber Projects Section */}
           <div className="mt-20">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Interactive Security Visualizations
-          </h3>
-          <p className="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">
-            Explore these interactive demonstrations that visualize key cybersecurity concepts. From network traffic patterns to encryption processes and firewall operations, these visualizations help understand complex security protocols through engaging animations and simulations.
-          </p>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {cyberProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} type="cyber" />
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <MagneticButton
-              href="https://codepen.io/anasharma7"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaCodepen className="mr-2 h-5 w-5" />
-              View More Codepen Projects
-            </MagneticButton>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+              Interactive Security Visualizations
+            </h3>
+            <p className="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">
+              Explore these interactive demonstrations that visualize key cybersecurity concepts. From network traffic patterns to encryption processes and firewall operations, these visualizations help understand complex security protocols through engaging animations and simulations.
+            </p>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {cyberProjects.map((project) => (
+                <ProjectCard key={project.title} project={project} type="cyber" />
+              ))}
+            </div>
+            <div className="mt-12 text-center">
+              <Link
+                href="https://codepen.io/anasharma7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
+              >
+                <FaCodepen className="mr-2 h-5 w-5" />
+                View More Codepen Projects
+              </Link>
+            </div>
           </div>
         </div>
-        </ScrollAnimation>
       </div>
-    </div>
+    </ScrollAnimation>
   );
 };
 

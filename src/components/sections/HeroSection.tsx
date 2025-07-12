@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+'use client';
+
+import React from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import Link from 'next/link';
 import AnimatedBackground from '../AnimatedBackground';
 import TypewriterText from '../TypewriterText';
-import WorkPreviewModal from '../WorkPreviewModal';
-import ScrollAnimation from '../ScrollAnimation';
-import MagneticButton from '../ui/MagneticButton';
-import TextReveal from '../TextReveal';
 
 const HeroSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const typewriterTexts = [
     "UX Designer & Security Solutions Architect",
     "Building secure, user-centric experiences",
@@ -24,73 +21,82 @@ const HeroSection = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <ScrollAnimation animation="fade-in-down" delay={200}>
-              <h1 
-                className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white"
+            <h1 
+              className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in"
+            >
+              Hi, I&apos;m Ana Sharma
+            </h1>
+            
+            <div className="mt-4 text-xl text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <TypewriterText 
+                texts={typewriterTexts}
+                speed={80}
+                className="text-primary-600 dark:text-primary-400 font-semibold"
+              />
+            </div>
+            
+            <p
+              className="mt-2 text-lg text-gray-500 dark:text-gray-400 animate-slide-up"
+              style={{ animationDelay: '0.6s' }}
+            >
+              Crafting secure, user-centric digital experiences
+            </p>
+            
+            <div 
+              className="mt-8 flex justify-center space-x-4 animate-slide-up"
+              style={{ animationDelay: '0.9s' }}
+            >
+              <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
+                <Link href="https://github.com/anasharma7" target="_blank" rel="noopener noreferrer">
+                  <FaGithub className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
+                </Link>
+              </div>
+              
+              <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
+                <Link href="https://linkedin.com/in/anasharma7" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
+                </Link>
+              </div>
+              
+              <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
+                <Link href="https://twitter.com/anasharma7" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
+                </Link>
+              </div>
+            </div>
+            
+            <div
+              className="mt-12 animate-slide-up"
+              style={{ animationDelay: '1.2s' }}
+            >
+              <button
+                onClick={() => {
+                  // Smooth scroll to projects section
+                  const projectsSection = document.getElementById('projects');
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+                className="group relative bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-500 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 overflow-hidden"
               >
-                <TextReveal delay={500} speed={100}>
-                  Hi, I&apos;m Ana Sharma
-                </TextReveal>
-              </h1>
-            </ScrollAnimation>
-            
-            <ScrollAnimation animation="fade-in-up" delay={400}>
-              <div className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                <TypewriterText 
-                  texts={typewriterTexts}
-                  speed={80}
-                  className="text-primary-600 dark:text-primary-400 font-semibold"
-                />
-              </div>
-            </ScrollAnimation>
-            
-            <ScrollAnimation animation="fade-in-up" delay={600}>
-              <p className="mt-2 text-lg text-gray-500 dark:text-gray-400">
-                Crafting secure, user-centric digital experiences
-              </p>
-            </ScrollAnimation>
-            
-            <ScrollAnimation animation="bounce-in" delay={800}>
-              <div className="mt-8 flex justify-center space-x-4">
-                <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 magnetic-hover">
-                  <Link href="https://github.com/anasharma7" target="_blank" rel="noopener noreferrer">
-                    <FaGithub className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
-                  </Link>
-                </div>
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
                 
-                <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 magnetic-hover">
-                  <Link href="https://linkedin.com/in/anasharma7" target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
-                  </Link>
-                </div>
-                
-                <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 magnetic-hover">
-                  <Link href="https://twitter.com/anasharma7" target="_blank" rel="noopener noreferrer">
-                    <FaTwitter className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollAnimation>
-            
-            <ScrollAnimation animation="zoom-in" delay={1000}>
-              <div className="mt-12">
-                <MagneticButton
-                  onClick={() => setIsModalOpen(true)}
-                  className="text-lg"
-                >
+                {/* Button text */}
+                <span className="relative z-10 flex items-center">
                   View My Work
-                </MagneticButton>
-              </div>
-            </ScrollAnimation>
+                  <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Work Preview Modal */}
-      <WorkPreviewModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </>
   );
 };
