@@ -1,63 +1,104 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+const STAR_COUNT = 120;
+const SHOOTING_STAR_INTERVAL = 4000;
 
 const AnimatedBackground = () => {
-  // Static, elegant background with sophisticated colors
-  const particles = Array.from({ length: 15 }, (_, i) => i);
-  const shapes = Array.from({ length: 8 }, (_, i) => i);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const shootingStarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let animationFrameId: number;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    // Generate stars
+    const stars = Array.from({ length: STAR_COUNT }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.2 + 0.2,
+      o: Math.random() * 0.5 + 0.5,
+    }));
+
+    function drawStars() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      for (const star of stars) {
+        ctx.globalAlpha = star.o;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+        ctx.fillStyle = '#fff';
+        ctx.shadowColor = '#fff';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function animate() {
+      drawStars();
+      animationFrameId = requestAnimationFrame(animate);
+    }
+    animate();
+
+    function handleResize() {
+      if (!canvas) return;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  // Shooting star effect
+  useEffect(() => {
+    const shootingStar = shootingStarRef.current;
+    if (!shootingStar) return;
+    let timeout: NodeJS.Timeout;
+    function animateShootingStar() {
+      if (!shootingStar) return;
+      shootingStar.style.transition = 'none';
+      shootingStar.style.opacity = '0';
+      shootingStar.style.transform = 'translate(-50%, -50%) scaleX(1)';
+      setTimeout(() => {
+        if (!shootingStar) return;
+        shootingStar.style.transition = 'all 1.2s cubic-bezier(0.4,0,0.2,1)';
+        shootingStar.style.opacity = '1';
+        shootingStar.style.transform = 'translate(-50%, -50%) scaleX(1.5) translate(400px, 120px)';
+        setTimeout(() => {
+          if (!shootingStar) return;
+          shootingStar.style.opacity = '0';
+        }, 1000);
+      }, 100);
+      timeout = setTimeout(animateShootingStar, SHOOTING_STAR_INTERVAL);
+    }
+    animateShootingStar();
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Static gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/20" />
-      
-      {/* Very subtle floating particles - static positions */}
-      {particles.map((i) => (
-        <div
-          key={i}
-          className="absolute w-2 h-2 rounded-full animate-pulse-very-slow"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            background: `linear-gradient(135deg, #8b5cf6${i % 2 ? '20' : '15'}, #ec4899${i % 3 ? '20' : '15'}, #6366f1${i % 4 ? '20' : '15'})`,
-            animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${Math.random() * 20 + 30}s`,
-            opacity: 0.3 + Math.random() * 0.2,
-          }}
-        />
-      ))}
-
-      {/* Static geometric shapes */}
-      {shapes.map((i) => (
-        <div
-          key={i}
-          className={`absolute animate-pulse-very-slow ${
-            i % 2 === 0 ? 'bg-purple-400/5' : 'bg-pink-400/5'
-          } ${
-            i % 3 === 0 ? 'w-32 h-32' : i % 3 === 1 ? 'w-24 h-24' : 'w-20 h-20'
-          } ${
-            i % 2 === 0 ? 'rounded-full' : 'rotate-45'
-          }`}
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 15}s`,
-            animationDuration: `${Math.random() * 25 + 40}s`,
-            opacity: 0.2 + Math.random() * 0.3,
-          }}
-        />
-      ))}
-
-      {/* Static gradient orbs - very subtle */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/3 to-pink-400/3 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-indigo-400/3 to-purple-400/3 rounded-full blur-3xl" />
-
-      {/* Very subtle grid pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/10 to-transparent h-px" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pink-400/10 to-transparent w-px" />
-      </div>
+      {/* Starfield Canvas */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block' }} />
+      {/* Shooting Star */}
+      <div
+        ref={shootingStarRef}
+        className="absolute left-1/4 top-1/4 w-48 h-1 bg-gradient-to-r from-white via-pink-200 to-transparent rounded-full opacity-0 shadow-2xl"
+        style={{ filter: 'blur(1px)' }}
+      />
     </div>
   );
 };

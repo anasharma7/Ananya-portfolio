@@ -54,7 +54,8 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        handwriting: ['Caveat', 'cursive'],
+        handwriting: ['Shadows Into Light', 'cursive'],
+        graffiti: ['Permanent Marker', 'cursive'],
         display: ['Caveat', 'cursive'],
       },
       animation: {

@@ -1,7 +1,7 @@
 'use client';
 
 import { FaCode, FaServer, FaMobile, FaLightbulb, FaPalette, FaShieldAlt, FaRocket, FaBrain, FaEye, FaHeart, FaMagic } from 'react-icons/fa';
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const reasons = [
   {
@@ -50,6 +50,23 @@ const reasons = [
 
 const WhyHireMe = () => {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+  const [spotlight, setSpotlight] = useState<{ x: number; y: number } | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleMouseMove = (e: React.MouseEvent, index: number) => {
+    if (reasons[index].title !== 'Technical Excellence') return;
+    const rect = cardRefs.current[index]?.getBoundingClientRect();
+    if (!rect) return;
+    setSpotlight({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = (index: number) => {
+    if (reasons[index].title !== 'Technical Excellence') return;
+    setSpotlight(null);
+  };
 
   return (
     <div className="relative bg-gradient-to-br from-slate-50 via-purple-50/20 to-pink-50/10 dark:from-slate-900 dark:via-purple-900/20 dark:to-pink-900/10 py-24 overflow-hidden">
@@ -71,7 +88,7 @@ const WhyHireMe = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 sm:text-6xl mb-6">
+          <h2 className="text-5xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 sm:text-6xl mb-6">
             Why Choose Me?
           </h2>
           <p className="max-w-4xl mx-auto text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -88,16 +105,25 @@ const WhyHireMe = () => {
             return (
               <div
                 key={reason.title}
+                ref={el => { cardRefs.current[index] = el; }}
                 className={`relative group transition-all duration-500 ease-out ${
                   isHovered ? 'transform scale-105 z-10' : 'transform scale-100'
                 }`}
                 onMouseEnter={() => setHoveredSkill(index)}
-                onMouseLeave={() => setHoveredSkill(null)}
+                onMouseLeave={() => { setHoveredSkill(null); handleMouseLeave(index); }}
+                onMouseMove={e => handleMouseMove(e, index)}
               >
                 <div
                   className={`relative w-full h-80 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 transition-all duration-500 ${
                     isHovered ? 'shadow-2xl border-purple-200/50 dark:border-purple-700/50' : 'shadow-lg'
                   }`}
+                  style={
+                    reason.title === 'Technical Excellence' && spotlight
+                      ? {
+                          background: `radial-gradient(circle at ${spotlight.x}px ${spotlight.y}px, rgba(168,85,247,0.18) 0%, rgba(236,72,153,0.10) 60%, transparent 100%)`,
+                        }
+                      : undefined
+                  }
                 >
                   {/* Subtle glow effect */}
                   <div
@@ -114,7 +140,7 @@ const WhyHireMe = () => {
                       {reason.icon}
                     </div>
                     
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h3 className={`text-xl font-bold text-gray-900 dark:text-white mb-4 ${reason.title === 'Technical Excellence' ? 'font-graffiti text-2xl text-purple-700 dark:text-purple-300' : ''}`}>
                       {reason.title}
                     </h3>
                     
@@ -124,7 +150,7 @@ const WhyHireMe = () => {
                     
                     {isHovered && (
                       <div className="mt-4 p-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg border border-purple-200/50 dark:border-purple-700/50">
-                        <p className="text-sm font-medium text-purple-700 dark:text-purple-300">
+                        <p className="text-lg font-handwriting text-purple-700 dark:text-purple-300">
                           {reason.question}
                         </p>
                       </div>
