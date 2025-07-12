@@ -14,8 +14,8 @@ const AnimatedBackground = () => {
   }, []);
 
   // More particles and shapes, faster and more colorful
-  const particles = Array.from({ length: 18 }, (_, i) => i);
-  const shapes = Array.from({ length: 8 }, (_, i) => i);
+  const particles = Array.from({ length: 25 }, (_, i) => i);
+  const shapes = Array.from({ length: 12 }, (_, i) => i);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -23,14 +23,15 @@ const AnimatedBackground = () => {
       {particles.map((i) => (
         <div
           key={i}
-          className="absolute w-2 h-2 rounded-full animate-float-very-slow"
+          className="absolute w-3 h-3 rounded-full animate-float-very-slow"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            background: `linear-gradient(135deg, #38bdf8${i % 2 ? '99' : 'cc'}, #fb923c${i % 3 ? '99' : 'cc'})`,
-            animationDelay: `${Math.random() * 10}s`,
-            animationDuration: `${Math.random() * 20 + 40}s`,
-            opacity: 0.5 + Math.random() * 0.5,
+            background: `linear-gradient(135deg, #38bdf8${i % 2 ? 'ff' : 'cc'}, #fb923c${i % 3 ? 'ff' : 'cc'}, #8b5cf6${i % 4 ? 'ff' : 'cc'})`,
+            animationDelay: `${Math.random() * 8}s`,
+            animationDuration: `${Math.random() * 15 + 30}s`,
+            opacity: 0.6 + Math.random() * 0.4,
+            filter: 'blur(0.5px)',
           }}
         />
       ))}

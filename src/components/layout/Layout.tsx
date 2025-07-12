@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
-      <InteractiveCursor />
+      {/* <InteractiveCursor /> */}
       <Navbar />
       <main className="flex-grow pt-16">
         {children}
