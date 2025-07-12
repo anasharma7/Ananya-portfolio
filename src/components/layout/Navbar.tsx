@@ -48,7 +48,7 @@ const Navbar = () => {
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? 'text-blue-600 dark:text-blue-400'
+                    ? 'text-purple-600 dark:text-purple-400'
                     : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
                 }`}
               >
@@ -94,7 +94,7 @@ const Navbar = () => {
                 href={link.href}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   pathname === link.href
-                    ? 'text-blue-600 dark:text-blue-400'
+                    ? 'text-purple-600 dark:text-purple-400'
                     : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
                 }`}
                 onClick={() => setIsMenuOpen(false)}

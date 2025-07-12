@@ -94,13 +94,13 @@ const ProjectCard = ({ project, type }: { project: Project; type: 'ux' | 'cyber'
           {project.technologies.map((tech: string) => (
             <span
               key={tech}
-              className="px-2 py-1 text-sm font-medium text-primary-600 bg-primary-100 dark:bg-primary-900/50 dark:text-primary-400 rounded-full"
+              className="px-2 py-1 text-sm font-medium text-purple-600 bg-purple-100 dark:bg-purple-900/50 dark:text-purple-400 rounded-full"
             >
               {tech}
             </span>
           ))}
         </div>
-        <div className="mt-4 flex items-center text-sm text-primary-600 dark:text-primary-400">
+        <div className="mt-4 flex items-center text-sm text-purple-600 dark:text-purple-400">
           {type === 'ux' ? (
             <FaFigma className="mr-2" />
           ) : (
@@ -157,7 +157,7 @@ const FeaturedProjects = () => {
                 href="https://codepen.io/anasharma7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200"
               >
                 <FaCodepen className="mr-2 h-5 w-5" />
                 View More Codepen Projects

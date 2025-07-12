@@ -48,7 +48,7 @@ const TypewriterText = ({ texts, speed = 100, className = '' }: TypewriterTextPr
   return (
     <span className={`inline-block animate-fade-in ${className}`}>
       {currentText}
-      <span className="inline-block w-0.5 h-6 bg-primary-500 ml-1 animate-blink" />
+      <span className="inline-block w-0.5 h-6 bg-purple-500 ml-1 animate-blink" />
     </span>
   );
 };

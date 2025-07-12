@@ -16,7 +16,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative py-20 bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-b from-purple-50/50 to-white dark:from-slate-900 dark:to-slate-800 overflow-hidden">
         <AnimatedBackground />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@ const HeroSection = () => {
               <TypewriterText 
                 texts={typewriterTexts}
                 speed={80}
-                className="text-primary-600 dark:text-primary-400 font-semibold"
+                className="text-purple-600 dark:text-purple-400 font-semibold"
               />
             </div>
             
@@ -48,19 +48,19 @@ const HeroSection = () => {
             >
               <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="https://github.com/anasharma7" target="_blank" rel="noopener noreferrer">
-                  <FaGithub className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
+                  <FaGithub className="h-8 w-8 text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors" />
                 </Link>
               </div>
               
               <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="https://linkedin.com/in/anasharma7" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
+                  <FaLinkedin className="h-8 w-8 text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors" />
                 </Link>
               </div>
               
               <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="https://twitter.com/anasharma7" target="_blank" rel="noopener noreferrer">
-                  <FaTwitter className="h-8 w-8 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" />
+                  <FaTwitter className="h-8 w-8 text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors" />
                 </Link>
               </div>
             </div>
@@ -80,7 +80,7 @@ const HeroSection = () => {
                     });
                   }
                 }}
-                className="group relative bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-500 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 overflow-hidden"
+                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-500 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 overflow-hidden"
               >
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
