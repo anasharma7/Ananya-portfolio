@@ -120,7 +120,7 @@ const WhyHireMe = () => {
                   style={
                     reason.title === 'Technical Excellence' && spotlight
                       ? {
-                          background: `radial-gradient(circle at ${spotlight.x}px ${spotlight.y}px, rgba(168,85,247,0.18) 0%, rgba(236,72,153,0.10) 60%, transparent 100%)`,
+                          background: `radial-gradient(circle at ${spotlight.x}px ${spotlight.y}px, #b39ddb33 0%, #b39ddb22 60%, transparent 100%)`,
                         }
                       : undefined
                   }
