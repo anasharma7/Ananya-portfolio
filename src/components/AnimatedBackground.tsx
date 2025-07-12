@@ -23,7 +23,7 @@ const AnimatedBackground = () => {
     const stars = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 1.5 + 0.5,
+      r: Math.random() * 2.2 + 1.2, // larger stars
       color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
       twinkleSpeed: Math.random() * 0.3 + 0.07, // slower twinkle
       twinklePhase: Math.random() * Math.PI * 2,
@@ -41,7 +41,7 @@ const AnimatedBackground = () => {
         ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
         ctx.fillStyle = star.color;
         ctx.shadowColor = star.color;
-        ctx.shadowBlur = 16 * opacity;
+        ctx.shadowBlur = 32 * opacity; // more glow
         ctx.fill();
       }
       ctx.globalAlpha = 1;

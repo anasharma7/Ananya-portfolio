@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Shadows_Into_Light, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
+import ScrollProgressBar from '@/components/layout/ScrollProgressBar';
 
 const inter = Inter({ subsets: ["latin"] });
 const shadowsIntoLight = Shadows_Into_Light({ subsets: ["latin"], weight: "400", variable: '--font-shadows-into-light' });
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} ${shadowsIntoLight.variable} ${permanentMarker.variable}`}>
+        <ScrollProgressBar />
         <Layout>{children}</Layout>
       </body>
     </html>
