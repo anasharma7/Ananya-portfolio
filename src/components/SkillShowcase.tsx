@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FaReact, FaNodeJs, FaPython, FaDatabase, FaShieldAlt, FaPalette } from 'react-icons/fa';
 import { SiTypescript, SiTailwindcss, SiNextdotjs, SiFigma } from 'react-icons/si';
+import React from 'react'; // Added missing import for React.cloneElement
 
 interface Skill {
   name: string;
@@ -86,7 +87,7 @@ const SkillShowcase = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {skills.map((skill, index) => (
             <div
               key={skill.name}
@@ -95,38 +96,22 @@ const SkillShowcase = () => {
               onMouseEnter={() => setHoveredSkill(skill.name)}
               onMouseLeave={() => setHoveredSkill(null)}
             >
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-2">
-                <div className="flex items-center justify-center mb-4">
-                  <div className={`p-3 rounded-full bg-gradient-to-r ${skill.color} text-white`}>
-                    {skill.icon}
-                  </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-1">
+                <div className="flex items-center justify-center mb-2">
+                  <div className={`p-2 rounded-full bg-gradient-to-r ${skill.color} text-white`}>{React.cloneElement(skill.icon as any, { className: 'text-2xl' })}</div>
                 </div>
-                
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  {skill.name}
-                </h3>
-                
-                <div className="mb-3">
-                  <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
+                <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-1">{skill.name}</h3>
+                <div className="mb-2">
+                  <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
                     <span>Proficiency</span>
                     <span>{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-                    <div
-                      className={`h-2 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
-                      style={{ width: hoveredSkill === skill.name ? `${skill.level}%` : '0%' }}
-                    />
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1 overflow-hidden">
+                    <div className={`h-1 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`} style={{ width: hoveredSkill === skill.name ? `${skill.level}%` : '0%' }} />
                   </div>
                 </div>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    hoveredSkill === skill.name ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {skill.description}
-                  </p>
+                <div className={`overflow-hidden transition-all duration-300 ${hoveredSkill === skill.name ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{skill.description}</p>
                 </div>
               </div>
             </div>
