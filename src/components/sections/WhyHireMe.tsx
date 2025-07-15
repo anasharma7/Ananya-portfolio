@@ -7,44 +7,51 @@ const reasons = [
   {
     icon: <FaPalette className="h-8 w-8" />,
     title: 'Creative Vision',
-    description: 'I see possibilities where others see problems. Every project is an opportunity to create something beautiful and meaningful.',
+    description: 'I bring a creative approach to every project, turning challenges into opportunities for innovation and beautiful solutions.',
     gradient: 'from-purple-500 to-pink-500',
-    question: 'Need someone who thinks outside the box?'
+    question: 'Looking for fresh ideas?'
   },
   {
     icon: <FaCode className="h-8 w-8" />,
     title: 'Technical Excellence',
-    description: 'Clean, efficient, and scalable code that not only works flawlessly but is a joy to maintain and build upon.',
+    description: 'I deliver clean, scalable, and reliable code that stands the test of time and adapts to your business needs.',
     gradient: 'from-indigo-500 to-purple-500',
-    question: 'Want code that actually works?'
+    question: 'Want robust, maintainable solutions?'
   },
   {
     icon: <FaShieldAlt className="h-8 w-8" />,
     title: 'Security First',
-    description: 'In today\'s digital landscape, security isn\'t optional. I build with protection and privacy at the core.',
+    description: 'Security is at the core of my work, ensuring your data and users are always protected.',
     gradient: 'from-emerald-500 to-teal-500',
-    question: 'Care about keeping things secure?'
+    question: 'Value peace of mind?'
   },
   {
     icon: <FaBrain className="h-8 w-8" />,
-    title: 'Problem Solver',
-    description: 'Complex challenges don\'t intimidate me—they excite me. I love finding elegant solutions to difficult problems.',
+    title: 'Problem Solving',
+    description: 'I thrive on tackling complex problems and finding elegant, effective solutions.',
     gradient: 'from-rose-500 to-pink-500',
-    question: 'Have a tricky problem to solve?'
+    question: 'Need a strategic thinker?'
   },
   {
     icon: <FaRocket className="h-8 w-8" />,
     title: 'Results Driven',
-    description: 'I don\'t just build features—I build solutions that drive real business value and user satisfaction.',
+    description: 'I focus on outcomes, delivering features and products that drive real business value.',
     gradient: 'from-violet-500 to-purple-500',
-    question: 'Want results, not just code?'
+    question: 'Ready to see results?'
   },
   {
     icon: <FaHeart className="h-8 w-8" />,
     title: 'User Focused',
-    description: 'Every decision I make starts with the user. Because great technology is invisible—it just works beautifully.',
+    description: 'I design and build with the end user in mind, creating seamless and delightful experiences.',
     gradient: 'from-pink-500 to-rose-500',
-    question: 'Want users to actually love your product?'
+    question: 'Want happy users?'
+  },
+  {
+    icon: <FaLightbulb className="h-8 w-8" />,
+    title: 'Collaboration & Teamwork',
+    description: 'I thrive in collaborative environments, communicate clearly, and love working with diverse teams to achieve shared goals.',
+    gradient: 'from-blue-400 to-indigo-400',
+    question: 'Looking for a team player?'
   }
 ];
 
@@ -69,31 +76,24 @@ const WhyHireMe = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-slate-50 via-purple-50/20 to-pink-50/10 dark:from-slate-900 dark:via-purple-900/20 dark:to-pink-900/10 py-24 overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-gradient-to-r from-purple-400/30 to-pink-400/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`,
-            }}
-          />
-        ))}
+    <div className="relative bg-gradient-to-br from-slate-50 via-purple-50/20 to-pink-50/10 dark:from-slate-900 dark:via-purple-900/20 dark:to-pink-900/10 py-24 overflow-hidden animate-fade-in-up">
+      {/* Animated SVG wave background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 left-0 w-full h-64 animate-wave-slow">
+          <path fill="#b39ddb22">
+            <animate attributeName="d" dur="12s" repeatCount="indefinite"
+              values="M0,160L60,170C120,180,240,200,360,192C480,184,600,136,720,128C840,120,960,152,1080,181.3C1200,211,1320,229,1380,238.7L1440,248L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z;M0,180L60,160C120,140,240,120,360,128C480,136,600,184,720,192C840,200,960,168,1080,138.7C1200,109,1320,91,1380,81.3L1440,72L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z;M0,160L60,170C120,180,240,200,360,192C480,184,600,136,720,128C840,120,960,152,1080,181.3C1200,211,1320,229,1380,238.7L1440,248L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
+          </path>
+        </svg>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 sm:text-6xl mb-6">
-            Why Choose Me?
+            What I Bring to the Table
           </h2>
           <p className="max-w-4xl mx-auto text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            Great question! Here are six compelling reasons why I might be the perfect fit for your next project. 
-            Hover over each card to discover what makes me different.
+            Here’s how I add value to your team and projects—combining technical expertise, creativity, and a collaborative spirit to help you succeed in today’s job market.
           </p>
         </div>
 

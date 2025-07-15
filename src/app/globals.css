@@ -443,3 +443,11 @@ body {
   transform-origin: 44px 32px;
   animation: wave 1.6s infinite;
 }
+
+@keyframes wave-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-40px); }
+}
+.animate-wave-slow {
+  animation: wave-slow 16s linear infinite alternate;
+}

@@ -71,6 +71,8 @@ const AnimatedBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Starfield Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ display: 'block' }} />
+      {/* Light mode overlay for visibility */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/40 via-indigo-100/30 to-white/0 dark:hidden" />
     </div>
   );
 };
