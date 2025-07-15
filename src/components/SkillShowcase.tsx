@@ -76,18 +76,18 @@ const SkillShowcase = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <section id="skills" className="py-12 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="text-center mb-10 animate-fade-in">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Technical Skills
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-base text-gray-600 dark:text-gray-300">
             A comprehensive overview of my technical expertise
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {skills.map((skill, index) => (
             <div
               key={skill.name}
@@ -96,22 +96,22 @@ const SkillShowcase = () => {
               onMouseEnter={() => setHoveredSkill(skill.name)}
               onMouseLeave={() => setHoveredSkill(null)}
             >
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-1">
-                <div className="flex items-center justify-center mb-2">
-                  <div className={`p-2 rounded-full bg-gradient-to-r ${skill.color} text-white`}>{React.cloneElement(skill.icon as any, { className: 'text-2xl' })}</div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700 transform hover:scale-105 hover:-translate-y-1 min-h-[110px]">
+                <div className="flex items-center justify-center mb-1">
+                  <div className={`p-1 rounded-full bg-gradient-to-r ${skill.color} text-white`}>{React.cloneElement(skill.icon as any, { className: 'text-lg' })}</div>
                 </div>
-                <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-1">{skill.name}</h3>
-                <div className="mb-2">
-                  <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
+                <h3 className="text-xs font-semibold text-gray-900 dark:text-white mb-0.5">{skill.name}</h3>
+                <div className="mb-1">
+                  <div className="flex justify-between text-[10px] text-gray-600 dark:text-gray-400 mb-0.5">
                     <span>Proficiency</span>
                     <span>{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1 overflow-hidden">
-                    <div className={`h-1 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`} style={{ width: hoveredSkill === skill.name ? `${skill.level}%` : '0%' }} />
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-0.5 overflow-hidden">
+                    <div className={`h-0.5 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`} style={{ width: hoveredSkill === skill.name ? `${skill.level}%` : '0%' }} />
                   </div>
                 </div>
-                <div className={`overflow-hidden transition-all duration-300 ${hoveredSkill === skill.name ? 'max-h-12 opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">{skill.description}</p>
+                <div className={`overflow-hidden transition-all duration-300 ${hoveredSkill === skill.name ? 'max-h-8 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-[10px] text-gray-600 dark:text-gray-400">{skill.description}</p>
                 </div>
               </div>
             </div>

@@ -59,6 +59,9 @@ const WhyHireMe = () => {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const [spotlight, setSpotlight] = useState<{ x: number; y: number } | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [idea, setIdea] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent, index: number) => {
     if (reasons[index].title !== 'Technical Excellence') return;
@@ -88,80 +91,50 @@ const WhyHireMe = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 sm:text-6xl mb-6">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 mb-2">
             What I Bring to the Table
           </h2>
-          <p className="max-w-4xl mx-auto text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed">
             Here’s how I add value to your team and projects—combining technical expertise, creativity, and a collaborative spirit to help you succeed in today’s job market.
           </p>
         </div>
 
-        {/* Elegant grid layout instead of floating cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {reasons.map((reason, index) => {
             const isHovered = hoveredSkill === index;
-            
             return (
               <div
                 key={reason.title}
                 ref={el => { cardRefs.current[index] = el; }}
-                className={`relative group transition-all duration-500 ease-out ${
-                  isHovered ? 'transform scale-105 z-10' : 'transform scale-100'
-                }`}
+                className={`relative group transition-all duration-500 ease-out ${isHovered ? 'transform scale-105 z-10' : 'transform scale-100'}`}
                 onMouseEnter={() => setHoveredSkill(index)}
                 onMouseLeave={() => { setHoveredSkill(null); handleMouseLeave(index); }}
                 onMouseMove={e => handleMouseMove(e, index)}
               >
                 <div
-                  className={`relative w-full h-80 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/20 transition-all duration-500 ${
-                    isHovered ? 'shadow-2xl border-purple-200/50 dark:border-purple-700/50' : 'shadow-lg'
-                  }`}
-                  style={
-                    reason.title === 'Technical Excellence' && spotlight
-                      ? {
-                          background: `radial-gradient(circle 180px at ${spotlight.x}px ${spotlight.y}px, #fff8 0%, #b39ddb88 40%, #b39ddb22 80%, transparent 100%)`,
-                        }
-                      : undefined
-                  }
+                  className={`relative w-full h-44 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 transition-all duration-500 ${isHovered ? 'shadow-2xl border-purple-200/50 dark:border-purple-700/50' : 'shadow-lg'}`}
+                  style={reason.title === 'Technical Excellence' && spotlight ? {background: `radial-gradient(circle 90px at ${spotlight.x}px ${spotlight.y}px, #fff8 0%, #b39ddb88 40%, #b39ddb22 80%, transparent 100%)`} : undefined}
                 >
-                  {/* Subtle glow effect */}
-                  <div
-                    className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${reason.gradient} opacity-0 transition-opacity duration-500 ${
-                      isHovered ? 'opacity-10' : ''
-                    }`}
-                  />
-                  
-                  {/* Content */}
-                  <div className="relative z-10 p-8 h-full flex flex-col items-center justify-center text-center">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${reason.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg mb-6 transform transition-all duration-300 ${
-                      isHovered ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
-                    }`}>
-                      {reason.icon}
-                    </div>
-                    
-                    <h3 className={`text-xl font-bold text-gray-900 dark:text-white mb-4 ${reason.title === 'Technical Excellence' ? 'font-graffiti text-2xl text-purple-700 dark:text-purple-300' : ''}`}>
-                      {reason.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${reason.gradient} opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-10' : ''}`} />
+                  <div className="relative z-10 p-4 h-full flex flex-col items-center justify-center text-center">
+                    <div className={`w-8 h-8 bg-gradient-to-br ${reason.gradient} rounded-xl flex items-center justify-center text-white shadow-lg mb-2 transform transition-all duration-300 ${isHovered ? 'scale-110 rotate-6' : 'scale-100 rotate-0'}`}>{reason.icon}</div>
+                    <h3 className={`text-xs font-bold text-gray-900 dark:text-white mb-1 ${reason.title === 'Technical Excellence' ? 'font-graffiti text-sm text-purple-700 dark:text-purple-300' : ''}`}>{reason.title}</h3>
+                    <p className="text-[11px] text-gray-600 dark:text-gray-300 leading-snug">
                       {reason.description}
                     </p>
-                    
                     {isHovered && (
-                      <div className="mt-4 p-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg border border-purple-200/50 dark:border-purple-700/50">
-                        <p className="text-lg font-handwriting text-purple-700 dark:text-purple-300">
+                      <div className="mt-2 p-2 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg border border-purple-200/50 dark:border-purple-700/50">
+                        <p className="text-xs font-handwriting text-purple-700 dark:text-purple-300">
                           {reason.question}
                         </p>
                       </div>
                     )}
                   </div>
-
-                  {/* Subtle floating elements */}
                   {isHovered && (
                     <>
-                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full animate-ping" />
-                      <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full animate-pulse" />
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full animate-ping" />
+                      <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full animate-pulse" />
                     </>
                   )}
                 </div>
@@ -171,20 +144,69 @@ const WhyHireMe = () => {
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-20">
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+        <div className="text-center mt-10">
+          <p className="text-base text-gray-600 dark:text-gray-400 mb-4">
             Ready to bring your vision to life?
           </p>
           <button
             onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              setShowModal(true);
+              setSubmitted(false);
+              setIdea('');
+              // Sparkle animation
+              const btn = document.getElementById('amazing-btn');
+              if (btn) {
+                btn.classList.add('animate-pulse');
+                setTimeout(() => btn.classList.remove('animate-pulse'), 600);
+              }
             }}
-            className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 overflow-hidden"
+            id="amazing-btn"
+            className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 overflow-hidden focus:outline-none"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
-            <span className="relative z-10">Let's Create Something Amazing</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none" />
+            <span className="relative z-10 flex items-center gap-2">
+              <span>Let's Create Something Amazing</span>
+              <span className="text-lg">✨</span>
+            </span>
           </button>
         </div>
+
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-fade-in">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl p-6 w-[90vw] max-w-xs flex flex-col items-center relative">
+              <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 text-gray-400 hover:text-pink-500 text-xl">×</button>
+              {!submitted ? (
+                <>
+                  <div className="mb-2 text-2xl font-handwriting text-purple-600 dark:text-purple-300">Let’s create something amazing together!</div>
+                  <div className="mb-4 text-xs text-gray-600 dark:text-gray-300 text-center">Tell me your dream project and I’ll help you make it real.</div>
+                  <input
+                    type="text"
+                    value={idea}
+                    onChange={e => setIdea(e.target.value)}
+                    placeholder="Describe your idea..."
+                    className="w-full rounded-md border border-purple-200 dark:border-purple-700 px-2 py-1 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  />
+                  <button
+                    onClick={() => {
+                      setSubmitted(true);
+                      setTimeout(() => setShowModal(false), 1800);
+                    }}
+                    disabled={!idea.trim()}
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-1.5 px-4 rounded-lg mt-1 transition-all duration-300 shadow hover:shadow-xl disabled:opacity-50"
+                  >
+                    Send ✨
+                  </button>
+                </>
+              ) : (
+                <div className="flex flex-col items-center justify-center min-h-[100px]">
+                  <div className="text-2xl mb-2 animate-bounce">✨</div>
+                  <div className="text-base font-handwriting text-purple-600 dark:text-purple-300 text-center">Your idea is on its way!</div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
