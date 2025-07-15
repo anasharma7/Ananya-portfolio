@@ -60,13 +60,6 @@ const HeroSection = () => {
               />
             </div>
             
-            <p
-              className="mt-2 text-lg text-gray-500 dark:text-gray-400 animate-slide-up"
-              style={{ animationDelay: '0.6s' }}
-            >
-              Welcome! I love turning ideas into experiences people enjoy.
-            </p>
-            
             <div 
               className="mt-8 flex justify-center space-x-4 animate-slide-up"
               style={{ animationDelay: '0.9s' }}

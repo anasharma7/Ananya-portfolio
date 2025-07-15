@@ -80,10 +80,10 @@ const SkillShowcase = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="text-center mb-10 animate-fade-in">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            What I Know
+            Technical Skills
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300">
-            Here’s a quick look at the tools and skills I use to bring ideas to life.
+            A quick overview of my core technical strengths and tools.
           </p>
         </div>
 
