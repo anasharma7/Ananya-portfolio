@@ -100,7 +100,7 @@ const WhyHireMe = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {reasons.map((reason, index) => {
             const isHovered = hoveredSkill === index;
             return (
@@ -146,28 +146,24 @@ const WhyHireMe = () => {
         {/* Call to action */}
         <div className="text-center mt-10">
           <p className="text-base text-gray-600 dark:text-gray-400 mb-4">
-            Ready to bring your vision to life?
+            Want to share a thought or idea?
           </p>
           <button
             onClick={() => {
               setShowModal(true);
               setSubmitted(false);
               setIdea('');
-              // Sparkle animation
-              const btn = document.getElementById('amazing-btn');
+              const btn = document.getElementById('thought-btn');
               if (btn) {
                 btn.classList.add('animate-pulse');
                 setTimeout(() => btn.classList.remove('animate-pulse'), 600);
               }
             }}
-            id="amazing-btn"
+            id="thought-btn"
             className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 overflow-hidden focus:outline-none"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none" />
-            <span className="relative z-10 flex items-center gap-2">
-              <span>Let's Create Something Amazing</span>
-              <span className="text-lg">✨</span>
-            </span>
+            <span className="relative z-10">Leave a Thought</span>
           </button>
         </div>
 
@@ -178,13 +174,13 @@ const WhyHireMe = () => {
               <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 text-gray-400 hover:text-pink-500 text-xl">×</button>
               {!submitted ? (
                 <>
-                  <div className="mb-2 text-2xl font-handwriting text-purple-600 dark:text-purple-300">Let’s create something amazing together!</div>
-                  <div className="mb-4 text-xs text-gray-600 dark:text-gray-300 text-center">Tell me your dream project and I’ll help you make it real.</div>
+                  <div className="mb-2 text-2xl font-handwriting text-purple-600 dark:text-purple-300">Leave a Thought</div>
+                  <div className="mb-4 text-xs text-gray-600 dark:text-gray-300 text-center">Share a thought, idea, or feedback. I’d love to hear from you!</div>
                   <input
                     type="text"
                     value={idea}
                     onChange={e => setIdea(e.target.value)}
-                    placeholder="Describe your idea..."
+                    placeholder="Type your thought..."
                     className="w-full rounded-md border border-purple-200 dark:border-purple-700 px-2 py-1 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-pink-400"
                   />
                   <button
@@ -195,13 +191,12 @@ const WhyHireMe = () => {
                     disabled={!idea.trim()}
                     className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-1.5 px-4 rounded-lg mt-1 transition-all duration-300 shadow hover:shadow-xl disabled:opacity-50"
                   >
-                    Send ✨
+                    Send
                   </button>
                 </>
               ) : (
                 <div className="flex flex-col items-center justify-center min-h-[100px]">
-                  <div className="text-2xl mb-2 animate-bounce">✨</div>
-                  <div className="text-base font-handwriting text-purple-600 dark:text-purple-300 text-center">Your idea is on its way!</div>
+                  <div className="text-base font-handwriting text-purple-600 dark:text-purple-300 text-center">Thank you for sharing your thought!</div>
                 </div>
               )}
             </div>
