@@ -3,18 +3,16 @@ export default function About() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
-          About Me
+          Get to Know Me
         </h1>
         <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">
-          Learn more about my background and experience
+          A little about who I am and what drives me
         </p>
       </div>
       
       <div className="mt-12 prose prose-lg dark:prose-invert mx-auto">
         <p>
-          I am a passionate Full Stack Developer with a strong foundation in web development
-          and a keen eye for creating exceptional user experiences. My journey in software
-          development began with a curiosity for building things that make a difference.
+          Hey there! I’m Ana—a developer, designer, and lifelong learner. I’m passionate about building things that make life easier, more beautiful, and more fun. My journey started with a simple love for solving problems and has grown into a mission to create digital experiences that truly help people.
         </p>
         
         <h2>Experience</h2>

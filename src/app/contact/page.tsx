@@ -27,10 +27,10 @@ export default function Contact() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
-          Contact Me
+          Let’s Connect
         </h1>
         <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">
-          Get in touch with me for collaborations or questions
+          I’d love to hear from you! Whether you have a project in mind, want to collaborate, or just want to say hi—reach out and let’s chat.
         </p>
       </div>
       

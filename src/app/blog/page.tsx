@@ -3,10 +3,10 @@ export default function Blog() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
-          Blog
+          Words & Ideas
         </h1>
         <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">
-          Thoughts, tutorials, and insights about web development
+          Stories, lessons, and things I’m learning along the way. Thanks for reading!
         </p>
       </div>
       

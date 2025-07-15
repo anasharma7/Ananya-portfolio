@@ -30,10 +30,10 @@ export default function Projects() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
-          My Projects
+          Work I’m Proud Of
         </h1>
         <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">
-          A collection of my work and personal projects
+          Here are some projects I’ve poured my heart and skills into. Each one taught me something new and helped someone solve a real problem.
         </p>
       </div>
       

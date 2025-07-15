@@ -93,10 +93,10 @@ const WhyHireMe = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 mb-2">
-            What I Bring to the Table
+            How I Can Help
           </h2>
           <p className="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-            Here’s how I add value to your team and projects—combining technical expertise, creativity, and a collaborative spirit to help you succeed in today’s job market.
+            I love working with people to turn ideas into reality. Here’s what I can bring to your team—besides a positive attitude and a willingness to learn!
           </p>
         </div>
 

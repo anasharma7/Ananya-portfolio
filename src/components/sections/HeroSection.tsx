@@ -8,10 +8,10 @@ import TypewriterText from '../TypewriterText';
 
 const HeroSection = () => {
   const typewriterTexts = [
-    "UX Designer & Security Solutions Architect",
-    "Building secure, user-centric experiences",
-    "Passionate about innovation & technology",
-    "Creating digital solutions that matter"
+    "Let’s build something meaningful together",
+    "Designing with empathy, coding with care",
+    "Your next teammate in digital innovation",
+    "Driven by curiosity, focused on people"
   ];
 
   return (
@@ -64,7 +64,7 @@ const HeroSection = () => {
               className="mt-2 text-lg text-gray-500 dark:text-gray-400 animate-slide-up"
               style={{ animationDelay: '0.6s' }}
             >
-              Crafting secure, user-centric digital experiences
+              Welcome! I love turning ideas into experiences people enjoy.
             </p>
             
             <div 

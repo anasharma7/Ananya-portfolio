@@ -120,10 +120,10 @@ const FeaturedProjects = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
-              Featured Projects
+              Featured Work
             </h2>
             <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-              Check out some of my recent work
+              A few highlights from my journey—each project is a story of collaboration, creativity, and growth.
             </p>
           </div>
 
