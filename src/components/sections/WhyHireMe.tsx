@@ -103,11 +103,14 @@ const WhyHireMe = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {reasons.map((reason, index) => {
             const isHovered = hoveredSkill === index;
+            // Center the last card if it's the only one in the last row (7th card in a 3-col grid)
+            const isLast = index === reasons.length - 1;
+            const centerOnLarge = isLast && reasons.length % 3 === 1 ? 'lg:col-start-2' : '';
             return (
               <div
                 key={reason.title}
                 ref={el => { cardRefs.current[index] = el; }}
-                className={`relative group transition-all duration-500 ease-out ${isHovered ? 'transform scale-105 z-10' : 'transform scale-100'}`}
+                className={`relative group transition-all duration-500 ease-out ${isHovered ? 'transform scale-105 z-10' : 'transform scale-100'} ${centerOnLarge}`}
                 onMouseEnter={() => setHoveredSkill(index)}
                 onMouseLeave={() => { setHoveredSkill(null); handleMouseLeave(index); }}
                 onMouseMove={e => handleMouseMove(e, index)}
