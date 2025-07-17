@@ -89,7 +89,7 @@ const WhyHireMe = () => {
           </path>
         </svg>
       </div>
-
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 mb-2">
@@ -202,7 +202,7 @@ const WhyHireMe = () => {
                   <div className="text-base font-handwriting text-purple-600 dark:text-purple-300 text-center">Thank you for sharing your thought!</div>
                 </div>
               )}
-            </div>
+              </div>
           </div>
         )}
       </div>
