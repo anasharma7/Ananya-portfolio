@@ -24,7 +24,7 @@ const blogPosts: BlogPost[] = [
     title: 'My Journey with Google Vertex AI: From Confusion to Confidence',
     excerpt: 'Exploring the complexities of Google\'s Vertex AI platform and how I overcame the initial learning curve to build scalable ML pipelines.',
     content: 'When I first encountered Google Vertex AI, I was both excited and overwhelmed. The platform promised to simplify machine learning workflows, but the initial setup and configuration felt like navigating a maze...',
-    coverImage: '/images/blog/vertex-ai.jpg',
+    coverImage: '/images/blog/vertex-ai.svg',
     date: '2024-01-15',
     readTime: '8 min read',
     tags: ['Machine Learning', 'Google Cloud', 'Vertex AI', 'ML Pipelines'],
@@ -36,7 +36,7 @@ const blogPosts: BlogPost[] = [
     title: 'AWS Lambda: The Good, The Bad, and The Unexpected',
     excerpt: 'A deep dive into my experiences with AWS Lambda, including performance optimization, cold starts, and cost management strategies.',
     content: 'AWS Lambda has been a game-changer for serverless architecture, but it comes with its own set of challenges. From cold start issues to memory optimization, here\'s what I learned...',
-    coverImage: '/images/blog/aws-lambda.jpg',
+    coverImage: '/images/blog/aws-lambda.svg',
     date: '2024-01-10',
     readTime: '12 min read',
     tags: ['AWS', 'Serverless', 'Lambda', 'Performance'],
@@ -48,7 +48,7 @@ const blogPosts: BlogPost[] = [
     title: 'Mastering Apache Airflow: Orchestrating Complex Data Workflows',
     excerpt: 'How I learned to design and implement robust data pipelines using Apache Airflow, including best practices and common pitfalls.',
     content: 'Apache Airflow has become the de facto standard for workflow orchestration in data engineering. But mastering it requires understanding not just the basics, but also advanced concepts...',
-    coverImage: '/images/blog/airflow.jpg',
+    coverImage: '/images/blog/airflow.svg',
     date: '2024-01-05',
     readTime: '15 min read',
     tags: ['Data Engineering', 'Apache Airflow', 'ETL', 'Workflows'],
@@ -60,7 +60,7 @@ const blogPosts: BlogPost[] = [
     title: 'Kubernetes Deep Dive: Lessons from Production Deployments',
     excerpt: 'Real-world insights from deploying and managing Kubernetes clusters in production environments.',
     content: 'Kubernetes is powerful, but production deployments reveal challenges that tutorials don\'t cover. From resource management to monitoring, here are the lessons I learned...',
-    coverImage: '/images/blog/kubernetes.jpg',
+    coverImage: '/images/blog/kubernetes.svg',
     date: '2023-12-28',
     readTime: '18 min read',
     tags: ['Kubernetes', 'DevOps', 'Container Orchestration', 'Production'],
@@ -72,7 +72,7 @@ const blogPosts: BlogPost[] = [
     title: 'GCP vs AWS: A Developer\'s Perspective After Using Both',
     excerpt: 'Comparing Google Cloud Platform and AWS from a developer\'s viewpoint, including pricing, features, and developer experience.',
     content: 'Having worked extensively with both GCP and AWS, I\'ve developed preferences for different use cases. Here\'s my honest comparison based on real project experience...',
-    coverImage: '/images/blog/gcp-aws.jpg',
+    coverImage: '/images/blog/gcp-aws.svg',
     date: '2023-12-20',
     readTime: '10 min read',
     tags: ['GCP', 'AWS', 'Cloud Comparison', 'Developer Experience'],
@@ -84,7 +84,7 @@ const blogPosts: BlogPost[] = [
     title: 'React Performance Optimization: Beyond the Basics',
     excerpt: 'Advanced techniques for optimizing React applications, including code splitting, memoization, and bundle analysis.',
     content: 'Performance optimization in React goes far beyond just using React.memo. Here are advanced techniques I\'ve used to significantly improve application performance...',
-    coverImage: '/images/blog/react-performance.jpg',
+    coverImage: '/images/blog/react-performance.svg',
     date: '2023-12-15',
     readTime: '14 min read',
     tags: ['React', 'Performance', 'Frontend', 'Optimization'],
@@ -149,13 +149,12 @@ export default function Blog() {
           >
             {/* Cover Image */}
             <div className="relative h-48 w-full overflow-hidden">
-              <Image
+              <img
                 src={post.coverImage}
                 alt={post.title}
-                fill
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={true}
+                style={{ height: '100%', width: '100%' }}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-400/10 z-10" />
             </div>
@@ -220,13 +219,12 @@ export default function Blog() {
             <div className="relative">
               {/* Cover Image */}
               <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
-                <Image
+                <img
                   src={selectedPost.coverImage}
                   alt={selectedPost.title}
-                  fill
                   className="object-cover w-full h-full"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={true}
+                  style={{ height: '100%', width: '100%' }}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-400/10 z-10" />
               </div>
