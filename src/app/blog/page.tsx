@@ -148,13 +148,16 @@ export default function Blog() {
             onClick={() => setSelectedPost(post)}
           >
             {/* Cover Image */}
-            <div className="relative h-48 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 z-10" />
-              <div className="w-full h-full bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 flex items-center justify-center">
-                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 opacity-20">
-                  {post.title.charAt(0)}
-                </div>
-              </div>
+            <div className="relative h-48 w-full overflow-hidden">
+              <Image
+                src={post.coverImage}
+                alt={post.title}
+                fill
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={true}
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-400/10 z-10" />
             </div>
 
             {/* Content */}
@@ -216,13 +219,16 @@ export default function Blog() {
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="relative">
               {/* Cover Image */}
-              <div className="relative h-64 overflow-hidden rounded-t-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 z-10" />
-                <div className="w-full h-full bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 flex items-center justify-center">
-                  <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 opacity-20">
-                    {selectedPost.title.charAt(0)}
-                  </div>
-                </div>
+              <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
+                <Image
+                  src={selectedPost.coverImage}
+                  alt={selectedPost.title}
+                  fill
+                  className="object-cover w-full h-full"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={true}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-400/10 z-10" />
               </div>
 
               {/* Close Button */}
