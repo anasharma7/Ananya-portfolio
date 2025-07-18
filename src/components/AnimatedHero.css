@@ -1,0 +1,27 @@
+@keyframes girlPop {
+  0% { transform: translate(-50%, 60%); opacity: 0; }
+  10% { transform: translate(-50%, 60%); opacity: 0; }
+  20% { transform: translate(-50%, 0%); opacity: 1; }
+  60% { transform: translate(-50%, 0%); opacity: 1; }
+  80% { transform: translate(-50%, 60%); opacity: 0; }
+  100% { transform: translate(-50%, 60%); opacity: 0; }
+}
+
+.girl-pop-anim {
+  animation: girlPop 4s cubic-bezier(0.7,0,0.3,1) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes handWave {
+  0%, 10%, 80%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg); }
+  35% { transform: rotate(20deg); }
+  45% { transform: rotate(-20deg); }
+  55% { transform: rotate(20deg); }
+  65% { transform: rotate(0deg); }
+}
+
+.girl-hand-group {
+  transform-origin: 120px 80px;
+  animation: handWave 4s cubic-bezier(0.7,0,0.3,1) infinite;
+} 
