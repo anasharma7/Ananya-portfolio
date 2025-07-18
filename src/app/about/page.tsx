@@ -1,51 +1,24 @@
+import AnimatedBackground from '@/components/AnimatedBackground';
+
 export default function About() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center">
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
-          Get to Know Me
-        </h1>
-        <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">
-          A little about who I am and what drives me
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <AnimatedBackground />
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-8 py-20 flex flex-col items-center text-center bg-white/70 dark:bg-slate-900/70 rounded-3xl shadow-2xl backdrop-blur-md border border-blue-200/30 dark:border-blue-900/30">
+        {/* Profile Photo Placeholder */}
+        <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-300 dark:border-blue-700 shadow-lg mb-8 bg-gradient-to-br from-blue-200 via-indigo-200 to-white flex items-center justify-center">
+          {/* Replace src below with your real photo when ready */}
+          <img src="/images/ana-profile.jpg" alt="Ana Sharma" className="object-cover w-full h-full" />
+        </div>
+        <h1 className="text-4xl font-extrabold text-blue-900 dark:text-blue-200 mb-4 font-handwriting">Hi, I’m Ana Sharma</h1>
+        <p className="text-xl text-blue-700 dark:text-blue-300 mb-6 font-semibold">Artist at heart, technologist by trade.</p>
+        <p className="text-lg text-gray-700 dark:text-blue-100 mb-8 max-w-2xl mx-auto animate-fade-in-up">
+          I see the world as a canvas—whether I’m painting, designing, or coding, I’m always searching for beauty, meaning, and connection. My journey in tech began with a love for art and storytelling, and I bring that creative spirit to every project I touch. I believe technology is most powerful when it feels human, and I strive to build digital experiences that are as thoughtful and expressive as a work of art.
         </p>
-      </div>
-      
-      <div className="mt-12 prose prose-lg dark:prose-invert mx-auto">
-        <p>
-          Hey there! I’m Ana—a developer, designer, and lifelong learner. I’m passionate about building things that make life easier, more beautiful, and more fun. My journey started with a simple love for solving problems and has grown into a mission to create digital experiences that truly help people.
-        </p>
-        
-        <h2>Experience</h2>
-        <p>
-          I have worked on various projects ranging from e-commerce platforms to task
-          management applications. My experience includes:
-        </p>
-        <ul>
-          <li>Building responsive and user-friendly web applications</li>
-          <li>Developing full-stack solutions using modern technologies</li>
-          <li>Implementing authentication and authorization systems</li>
-          <li>Creating real-time features using WebSocket</li>
-          <li>Optimizing application performance and user experience</li>
-        </ul>
-        
-        <h2>Skills</h2>
-        <p>
-          My technical expertise includes:
-        </p>
-        <ul>
-          <li>Frontend: React, Next.js, TypeScript, Tailwind CSS</li>
-          <li>Backend: Node.js, Express, Python, Django</li>
-          <li>Databases: MongoDB, PostgreSQL</li>
-          <li>Tools: Git, Docker, AWS</li>
-          <li>Other: REST APIs, WebSocket, CI/CD</li>
-        </ul>
-        
-        <h2>Education</h2>
-        <p>
-          Bachelor&apos;s Degree in Computer Science<br />
-          [Your University Name]<br />
-          [Graduation Year]
-        </p>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mt-6">
+          <a href="mailto:ana@email.com" className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold shadow-lg hover:scale-105 transition-transform">Contact Me</a>
+          <a href="/projects" className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold shadow-lg hover:scale-105 transition-transform">See My Work</a>
+        </div>
       </div>
     </div>
   );
