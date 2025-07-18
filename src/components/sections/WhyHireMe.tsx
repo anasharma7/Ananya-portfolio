@@ -5,37 +5,37 @@ import React, { useState, useRef } from 'react';
 
 const reasons = [
   {
-    icon: <FaPalette className="h-8 w-8" />,
-    title: 'Creative Vision',
-    description: 'I bring a creative approach to every project, turning challenges into opportunities for innovation and beautiful solutions.',
-    gradient: 'from-purple-500 to-pink-500',
-    question: 'Looking for fresh ideas?'
-  },
-  {
     icon: <FaCode className="h-8 w-8" />,
     title: 'Technical Excellence',
-    description: 'I deliver clean, scalable, and reliable code that stands the test of time and adapts to your business needs.',
+    description: 'I care deeply about writing clean, scalable, and reliable code that stands the test of time and adapts to your needs.',
     gradient: 'from-indigo-500 to-purple-500',
     question: 'Want robust, maintainable solutions?'
   },
   {
-    icon: <FaShieldAlt className="h-8 w-8" />,
-    title: 'Security First',
-    description: 'Security is at the core of my work, ensuring your data and users are always protected.',
-    gradient: 'from-emerald-500 to-teal-500',
-    question: 'Value peace of mind?'
+    icon: <FaPalette className="h-8 w-8" />,
+    title: 'Creative Vision',
+    description: 'I love bringing a creative approach to every project, turning challenges into opportunities for innovation and beautiful solutions.',
+    gradient: 'from-purple-500 to-pink-500',
+    question: 'Looking for fresh ideas?'
   },
   {
     icon: <FaBrain className="h-8 w-8" />,
     title: 'Problem Solving',
-    description: 'I thrive on tackling complex problems and finding elegant, effective solutions.',
+    description: 'I thrive on tackling complex problems and finding elegant, effective solutions that make a real difference.',
     gradient: 'from-rose-500 to-pink-500',
     question: 'Need a strategic thinker?'
   },
   {
+    icon: <FaShieldAlt className="h-8 w-8" />,
+    title: 'Security First',
+    description: 'Security is always on my mind—I work to ensure your data and users are protected at every step.',
+    gradient: 'from-emerald-500 to-teal-500',
+    question: 'Value peace of mind?'
+  },
+  {
     icon: <FaRocket className="h-8 w-8" />,
     title: 'Results Driven',
-    description: 'I focus on outcomes, delivering features and products that drive real business value.',
+    description: 'I focus on outcomes, delivering features and products that drive real value for you and your users.',
     gradient: 'from-violet-500 to-purple-500',
     question: 'Ready to see results?'
   },
@@ -49,7 +49,7 @@ const reasons = [
   {
     icon: <FaLightbulb className="h-8 w-8" />,
     title: 'Collaboration & Teamwork',
-    description: 'I thrive in collaborative environments, communicate clearly, and love working with diverse teams to achieve shared goals.',
+    description: 'I love working with others, communicating clearly, and helping teams achieve their goals together.',
     gradient: 'from-blue-400 to-indigo-400',
     question: 'Looking for a team player?'
   }
@@ -93,10 +93,10 @@ const WhyHireMe = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-handwriting font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 mb-2">
-            What I Bring to the Table
+            What I Value Most in My Work
           </h2>
           <p className="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-            Here’s how I add value to your team and projects—combining technical expertise, creativity, and a collaborative spirit to help you succeed in today’s job market.
+            Here’s what matters most to me when I work with a team or on a project. These are the values and qualities I bring to every collaboration, every line of code, and every creative challenge.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ const WhyHireMe = () => {
             className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 overflow-hidden focus:outline-none"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none" />
-            <span className="relative z-10">Leave a Thought</span>
+            <span className="relative z-10">Thoughts are encouraged here</span>
           </button>
         </div>
 

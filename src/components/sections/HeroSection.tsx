@@ -54,26 +54,28 @@ const HeroSection = () => {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in">
                   Hi, I&apos;m Ana Sharma
                 </h1>
-                {/* Animated waving girl SVG */}
+                {/* Cute, human SVG: girl with shoulder-length brown hair */}
                 <span className="inline-block animate-wave">
                   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g>
                       {/* Face */}
-                      <circle cx="30" cy="30" r="20" fill="#f9d6b7" />
-                      {/* Hair */}
-                      <ellipse cx="30" cy="28" rx="20" ry="18" fill="#7c4a1e" />
-                      {/* Body */}
-                      <rect x="22" y="40" width="16" height="14" rx="6" fill="#7c4a1e" />
-                      {/* Arm (waving) */}
-                      <g className="origin-[44px_32px]">
-                        <rect x="42" y="28" width="10" height="6" rx="3" fill="#f9d6b7" />
-                        <rect x="50" y="28" width="6" height="4" rx="2" fill="#f9d6b7" />
-                      </g>
+                      <ellipse cx="30" cy="32" rx="15" ry="16" fill="#f9d6b7" />
+                      {/* Hair (shoulder length, brown) */}
+                      <path d="M15 32 Q10 50 30 58 Q50 50 45 32 Q45 18 30 16 Q15 18 15 32 Z" fill="#7c4a1e" />
+                      {/* Bangs */}
+                      <ellipse cx="30" cy="22" rx="13" ry="7" fill="#7c4a1e" />
+                      {/* Shoulders */}
+                      <ellipse cx="30" cy="54" rx="13" ry="4" fill="#e0bfa3" />
+                      {/* Body (shirt) */}
+                      <rect x="20" y="44" width="20" height="12" rx="6" fill="#a78bfa" />
                       {/* Smile */}
-                      <path d="M25 36 Q30 40 35 36" stroke="#a05a2c" strokeWidth="2" fill="none" />
+                      <path d="M24 38 Q30 44 36 38" stroke="#a05a2c" strokeWidth="2" fill="none" />
                       {/* Eyes */}
-                      <circle cx="25" cy="30" r="2" fill="#3b2c1a" />
-                      <circle cx="35" cy="30" r="2" fill="#3b2c1a" />
+                      <ellipse cx="24" cy="32" rx="2" ry="2.5" fill="#3b2c1a" />
+                      <ellipse cx="36" cy="32" rx="2" ry="2.5" fill="#3b2c1a" />
+                      {/* Blush */}
+                      <ellipse cx="22" cy="36" rx="1.5" ry="0.7" fill="#f7b2b2" />
+                      <ellipse cx="38" cy="36" rx="1.5" ry="0.7" fill="#f7b2b2" />
                     </g>
                   </svg>
                 </span>
@@ -94,19 +96,19 @@ const HeroSection = () => {
             >
               <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="https://github.com/anasharma7" target="_blank" rel="noopener noreferrer">
-                  <FaGithub className="h-8 w-8 text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors" />
+                  <FaGithub className="h-8 w-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-700 hover:to-pink-700 transition-colors" />
                 </Link>
               </div>
               
               <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="https://linkedin.com/in/anasharma7" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin className="h-8 w-8 text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors" />
+                  <FaLinkedin className="h-8 w-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-700 hover:to-pink-700 transition-colors" />
                 </Link>
               </div>
               
               <div className="transform hover:scale-110 hover:-translate-y-1 transition-all duration-300">
                 <Link href="https://twitter.com/anasharma7" target="_blank" rel="noopener noreferrer">
-                  <FaTwitter className="h-8 w-8 text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors" />
+                  <FaTwitter className="h-8 w-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-700 hover:to-pink-700 transition-colors" />
                 </Link>
               </div>
             </div>
