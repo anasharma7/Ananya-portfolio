@@ -1,14 +1,42 @@
 'use client';
 
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaRocket, FaHeart, FaMagic } from 'react-icons/fa';
 import Link from 'next/link';
 import AnimatedBackground from '../AnimatedBackground';
 import TypewriterText from '../TypewriterText';
 
 const HeroSection = () => {
+  const [buttonState, setButtonState] = React.useState(0);
+  const [isAnimating, setIsAnimating] = React.useState(false);
+
+  const buttonStates = [
+    { text: "Let's Explore", icon: <FaRocket className="ml-2 w-5 h-5" />, action: () => window.open('/projects', '_self') },
+    { text: "Get Inspired", icon: <FaMagic className="ml-2 w-5 h-5" />, action: () => {
+      // Create a magical sparkle effect
+      const sparkles = document.createElement('div');
+      sparkles.className = 'fixed inset-0 pointer-events-none z-50';
+      sparkles.innerHTML = Array.from({length: 20}, () => 
+        `<div class="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-ping" style="left: ${Math.random() * 100}%; top: ${Math.random() * 100}%; animation-delay: ${Math.random() * 2}s;"></div>`
+      ).join('');
+      document.body.appendChild(sparkles);
+      setTimeout(() => document.body.removeChild(sparkles), 3000);
+    }},
+    { text: "Connect", icon: <FaHeart className="ml-2 w-5 h-5" />, action: () => window.open('/contact', '_self') }
+  ];
+
+  const handleButtonClick = () => {
+    setIsAnimating(true);
+    buttonStates[buttonState].action();
+    
+    setTimeout(() => {
+      setButtonState((prev) => (prev + 1) % buttonStates.length);
+      setIsAnimating(false);
+    }, 500);
+  };
+
   const typewriterTexts = [
-    "Let’s build something meaningful together",
+    "Let's build something meaningful together",
     "Designing with empathy, coding with care",
     "Your next teammate in digital innovation",
     "Driven by curiosity, focused on people"
@@ -88,27 +116,19 @@ const HeroSection = () => {
               style={{ animationDelay: '1.2s' }}
             >
               <button
-                onClick={() => {
-                  // Smooth scroll to projects section
-                  const projectsSection = document.getElementById('projects');
-                  if (projectsSection) {
-                    projectsSection.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    });
-                  }
-                }}
-                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-500 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 overflow-hidden"
+                onClick={handleButtonClick}
+                disabled={isAnimating}
+                className={`group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-10 rounded-xl transition-all duration-500 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 overflow-hidden ${isAnimating ? 'animate-pulse' : ''}`}
               >
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
                 
                 {/* Button text */}
-                <span className="relative z-10 flex items-center">
-                  View My Work
-                  <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                <span className="relative z-10 flex items-center transition-all duration-300">
+                  {buttonStates[buttonState].text}
+                  <span className={`transform transition-all duration-300 ${isAnimating ? 'rotate-180 scale-110' : 'group-hover:scale-110'}`}>
+                    {buttonStates[buttonState].icon}
+                  </span>
                 </span>
               </button>
             </div>
