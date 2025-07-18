@@ -116,56 +116,56 @@ const ProjectCard = ({ project, type }: { project: Project; type: 'ux' | 'cyber'
 const FeaturedProjects = () => {
   return (
     <ScrollAnimation>
-      <div id="projects" className="py-20 bg-white dark:bg-gray-900">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+    <div id="projects" className="py-20 bg-white dark:bg-gray-900">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
               Featured Work
-            </h2>
-            <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+          </h2>
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
               A few highlights from my journey—each project is a story of collaboration, creativity, and growth.
-            </p>
-          </div>
+          </p>
+        </div>
 
-          {/* UX/UI Projects Section */}
-          <div className="mt-16">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              UX/UI & HCI Projects
-            </h3>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {uxProjects.map((project) => (
-                <ProjectCard key={project.title} project={project} type="ux" />
-              ))}
-            </div>
+        {/* UX/UI Projects Section */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            UX/UI & HCI Projects
+          </h3>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {uxProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} type="ux" />
+            ))}
           </div>
+        </div>
 
-          {/* Cyber Projects Section */}
-          <div className="mt-20">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              Interactive Security Visualizations
-            </h3>
-            <p className="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">
-              Explore these interactive demonstrations that visualize key cybersecurity concepts. From network traffic patterns to encryption processes and firewall operations, these visualizations help understand complex security protocols through engaging animations and simulations.
-            </p>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {cyberProjects.map((project) => (
-                <ProjectCard key={project.title} project={project} type="cyber" />
-              ))}
-            </div>
-            <div className="mt-12 text-center">
-              <Link
-                href="https://codepen.io/anasharma7"
-                target="_blank"
-                rel="noopener noreferrer"
+        {/* Cyber Projects Section */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            Interactive Security Visualizations
+          </h3>
+          <p className="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12">
+            Explore these interactive demonstrations that visualize key cybersecurity concepts. From network traffic patterns to encryption processes and firewall operations, these visualizations help understand complex security protocols through engaging animations and simulations.
+          </p>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {cyberProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} type="cyber" />
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              href="https://codepen.io/anasharma7"
+              target="_blank"
+              rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200"
-              >
-                <FaCodepen className="mr-2 h-5 w-5" />
-                View More Codepen Projects
-              </Link>
-            </div>
+            >
+              <FaCodepen className="mr-2 h-5 w-5" />
+              View More Codepen Projects
+            </Link>
           </div>
         </div>
       </div>
+    </div>
     </ScrollAnimation>
   );
 };

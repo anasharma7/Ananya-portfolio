@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaRocket, FaHeart, FaMagic } from 'rea
 import Link from 'next/link';
 import AnimatedBackground from '../AnimatedBackground';
 import TypewriterText from '../TypewriterText';
+import AnimatedHero from '../AnimatedHero';
 
 const HeroSection = () => {
   const [buttonState, setButtonState] = React.useState(0);
@@ -50,36 +51,12 @@ const HeroSection = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center justify-center space-x-4">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in">
-                  Hi, I&apos;m Ana Sharma
-                </h1>
-                {/* Cute, human SVG: girl with shoulder-length brown hair */}
-                <span className="inline-block animate-wave">
-                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                      {/* Face */}
-                      <ellipse cx="30" cy="32" rx="15" ry="16" fill="#f9d6b7" />
-                      {/* Hair (shoulder length, brown) */}
-                      <path d="M15 32 Q10 50 30 58 Q50 50 45 32 Q45 18 30 16 Q15 18 15 32 Z" fill="#7c4a1e" />
-                      {/* Bangs */}
-                      <ellipse cx="30" cy="22" rx="13" ry="7" fill="#7c4a1e" />
-                      {/* Shoulders */}
-                      <ellipse cx="30" cy="54" rx="13" ry="4" fill="#e0bfa3" />
-                      {/* Body (shirt) */}
-                      <rect x="20" y="44" width="20" height="12" rx="6" fill="#a78bfa" />
-                      {/* Smile */}
-                      <path d="M24 38 Q30 44 36 38" stroke="#a05a2c" strokeWidth="2" fill="none" />
-                      {/* Eyes */}
-                      <ellipse cx="24" cy="32" rx="2" ry="2.5" fill="#3b2c1a" />
-                      <ellipse cx="36" cy="32" rx="2" ry="2.5" fill="#3b2c1a" />
-                      {/* Blush */}
-                      <ellipse cx="22" cy="36" rx="1.5" ry="0.7" fill="#f7b2b2" />
-                      <ellipse cx="38" cy="36" rx="1.5" ry="0.7" fill="#f7b2b2" />
-                    </g>
-                  </svg>
-                </span>
-              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in mb-8">
+                Hi, I&apos;m Ana Sharma
+              </h1>
+              
+              {/* New animated hero with circle and waving girl */}
+              <AnimatedHero />
             </div>
             
             <div className="mt-4 text-xl text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.3s' }}>

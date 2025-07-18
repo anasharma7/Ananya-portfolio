@@ -121,7 +121,7 @@ export default function Blog() {
           Stories, lessons, and things I'm learning along the way. Thanks for reading!
         </p>
       </div>
-
+      
       {/* Category Filter */}
       <div className="flex flex-wrap justify-center gap-3 mb-12">
         {categories.map((category) => (
@@ -160,7 +160,7 @@ export default function Blog() {
             </div>
 
             {/* Content */}
-            <div className="p-6">
+          <div className="p-6">
               {/* Category Badge */}
               <span className="inline-block px-3 py-1 text-xs font-semibold text-purple-600 bg-purple-100 dark:bg-purple-900/50 dark:text-purple-400 rounded-full mb-3">
                 {post.category}
@@ -169,7 +169,7 @@ export default function Blog() {
               {/* Title */}
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                 {post.title}
-              </h2>
+            </h2>
 
               {/* Excerpt */}
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">

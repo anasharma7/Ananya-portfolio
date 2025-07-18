@@ -107,7 +107,7 @@ const WhyHireMe = () => {
             const isLast = index === reasons.length - 1;
             const centerOnLarge = isLast && reasons.length % 3 === 1 ? 'lg:col-start-2' : '';
             return (
-              <div
+              <div 
                 key={reason.title}
                 ref={el => { cardRefs.current[index] = el; }}
                 className={`relative group transition-all duration-500 ease-out ${isHovered ? 'transform scale-105 z-10' : 'transform scale-100'} ${centerOnLarge}`}
