@@ -50,17 +50,13 @@ const HeroSection = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-              <div className="flex-1">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white animate-fade-in mb-6">
-                  Hi, I&apos;m Ana Sharma
-                </h1>
-              </div>
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gray-900 dark:text-white animate-fade-in mb-8">
+                Hi, I&apos;m Ana Sharma
+              </h1>
               
               {/* New animated hero with circle and waving girl */}
-              <div className="flex-1 flex justify-center">
-                <AnimatedHero />
-              </div>
+              <AnimatedHero />
             </div>
             
             <div className="mt-4 text-xl text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.3s' }}>
