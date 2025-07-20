@@ -96,7 +96,7 @@ const WhyHireMe = () => {
             What I Value Most in My Work
           </h2>
           <p className="max-w-2xl mx-auto text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-            Here’s what matters most to me when I work with a team or on a project. These are the values and qualities I bring to every collaboration, every line of code, and every creative challenge.
+            These are the core principles that guide my approach to development, design, and collaboration. I bring these values to every project, ensuring quality, innovation, and meaningful results.
           </p>
         </div>
 

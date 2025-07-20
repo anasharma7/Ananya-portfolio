@@ -19,6 +19,7 @@ const AnimatedHero = () => {
             </radialGradient>
           </defs>
         </svg>
+        
         {/* Girl popping out and waving */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 girl-pop-anim" style={{ width: 160, height: 160 }}>
           <svg width="160" height="160" viewBox="0 0 160 160" fill="none" className="girl-svg">
@@ -50,6 +51,7 @@ const AnimatedHero = () => {
           </svg>
         </div>
       </div>
+      
       {/* Glow effect */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-400/30 via-pink-400/30 to-indigo-400/30 blur-xl animate-pulse"></div>
     </div>
