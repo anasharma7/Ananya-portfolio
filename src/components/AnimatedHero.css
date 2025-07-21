@@ -1,24 +1,24 @@
-.girl-container {
+.bitmoji-girl-container {
   position: relative;
-  width: 200px;
-  height: 200px;
-  animation: popOut 4s ease-in-out infinite;
+  width: 180px;
+  height: 180px;
+  animation: popOutBitmoji 4s cubic-bezier(0.7,0,0.3,1) infinite;
 }
 
-.girl-svg {
+.bitmoji-girl-svg {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-@keyframes popOut {
+@keyframes popOutBitmoji {
   0%, 100% {
-    transform: translateY(100px);
+    transform: translateY(90px);
     opacity: 0;
   }
   20% {
-    transform: translateY(100px);
+    transform: translateY(90px);
     opacity: 0;
   }
   30% {
@@ -30,31 +30,31 @@
     opacity: 1;
   }
   80% {
-    transform: translateY(100px);
+    transform: translateY(90px);
     opacity: 0;
   }
 }
 
-.girl-hand {
-  transform-origin: 150px 100px;
-  animation: wave 4s ease-in-out infinite;
+.bitmoji-girl-arm {
+  transform-origin: 148px 102px;
+  animation: bitmojiWave 4s cubic-bezier(0.7,0,0.3,1) infinite;
 }
 
-@keyframes wave {
+@keyframes bitmojiWave {
   0%, 20%, 80%, 100% {
     transform: rotate(0deg);
   }
   35% {
-    transform: rotate(-30deg);
+    transform: rotate(-18deg);
   }
   45% {
-    transform: rotate(30deg);
+    transform: rotate(18deg);
   }
   55% {
-    transform: rotate(-30deg);
+    transform: rotate(-12deg);
   }
   65% {
-    transform: rotate(30deg);
+    transform: rotate(12deg);
   }
   75% {
     transform: rotate(0deg);
