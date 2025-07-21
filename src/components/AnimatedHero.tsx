@@ -12,38 +12,40 @@ const AnimatedHero = () => {
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2a1745] via-[#1a237e] to-[#0d1333] shadow-2xl"></div>
         {/* Girl Animation Container */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-          <svg width="240" height="240" viewBox="0 0 240 240" fill="none" className="fullgirl-svg">
+          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" className="fullgirl-svg">
             <g className="girl-anim-sequence">
-              {/* Legs climbing */}
-              <rect x="98" y="180" width="10" height="35" rx="5" fill="#b98a5a" className="girl-leg-left" />
-              <rect x="120" y="180" width="10" height="35" rx="5" fill="#b98a5a" className="girl-leg-right" />
-              {/* Body */}
-              <rect x="100" y="130" width="30" height="50" rx="15" fill="#4f8edc" className="girl-body" />
-              {/* Left arm climbing */}
-              <rect x="85" y="140" width="10" height="40" rx="5" fill="#d2a074" className="girl-arm-left" />
-              {/* Right arm waving */}
+              {/* Dress */}
+              <ellipse cx="90" cy="140" rx="24" ry="18" fill="#7c4dff" />
+              <rect x="66" y="120" width="48" height="28" rx="18" fill="#a084e8" />
+              {/* Left leg */}
+              <ellipse cx="80" cy="165" rx="7" ry="13" fill="#d2a074" />
+              {/* Right leg */}
+              <ellipse cx="100" cy="165" rx="7" ry="13" fill="#d2a074" />
+              {/* Left arm (peeking) */}
+              <ellipse cx="60" cy="120" rx="7" ry="15" fill="#d2a074" />
+              {/* Right arm (waving) */}
               <g className="girl-arm-right-group">
-                <rect x="145" y="140" width="10" height="40" rx="5" fill="#d2a074" />
+                <ellipse cx="120" cy="110" rx="7" ry="15" fill="#d2a074" />
                 {/* Hand */}
-                <ellipse cx="150" cy="135" rx="7" ry="5" fill="#d2a074" />
+                <ellipse cx="120" cy="98" rx="6" ry="4" fill="#d2a074" />
               </g>
-              {/* Head (tan skin) */}
-              <ellipse cx="115" cy="120" rx="20" ry="22" fill="#d2a074" className="girl-head" />
-              {/* Hair (shoulder-length, dark brown) */}
-              <path d="M95 120 Q90 150 115 155 Q140 150 135 120 Q135 100 115 95 Q95 100 95 120 Z" fill="#3b2412" className="girl-hair" />
+              {/* Head (round, tan) */}
+              <ellipse cx="90" cy="100" rx="22" ry="24" fill="#d2a074" />
+              {/* Hair (shoulder-length, dark, feminine) */}
+              <path d="M68 100 Q60 120 90 130 Q120 120 112 100 Q112 80 90 75 Q68 80 68 100 Z" fill="#2d1a0b" />
               {/* Bangs */}
-              <ellipse cx="115" cy="108" rx="18" ry="7" fill="#3b2412" />
+              <ellipse cx="90" cy="88" rx="18" ry="8" fill="#2d1a0b" />
               {/* Smile */}
-              <path d="M105 130 Q115 138 125 130" stroke="#7a4a1e" strokeWidth="2" fill="none" />
-              {/* Eyes (smaller, natural) */}
-              <ellipse cx="108" cy="120" rx="2.5" ry="3.2" fill="#2d1a0b" />
-              <ellipse cx="122" cy="120" rx="2.5" ry="3.2" fill="#2d1a0b" />
-              {/* Brows */}
-              <path d="M104 115 Q108 113 112 115" stroke="#2d1a0b" strokeWidth="1" />
-              <path d="M118 115 Q122 113 126 115" stroke="#2d1a0b" strokeWidth="1" />
+              <path d="M80 110 Q90 120 100 110" stroke="#7a4a1e" strokeWidth="2" fill="none" />
+              {/* Eyes (smaller, lashes) */}
+              <ellipse cx="82" cy="100" rx="2.2" ry="3" fill="#2d1a0b" />
+              <ellipse cx="98" cy="100" rx="2.2" ry="3" fill="#2d1a0b" />
+              {/* Lashes */}
+              <path d="M80 98 Q81 96 83 98" stroke="#2d1a0b" strokeWidth="0.8" />
+              <path d="M96 98 Q97 96 99 98" stroke="#2d1a0b" strokeWidth="0.8" />
               {/* Blush */}
-              <ellipse cx="105" cy="127" rx="2.5" ry="1" fill="#e7b7a3" />
-              <ellipse cx="125" cy="127" rx="2.5" ry="1" fill="#e7b7a3" />
+              <ellipse cx="78" cy="108" rx="2.5" ry="1" fill="#e7b7a3" />
+              <ellipse cx="102" cy="108" rx="2.5" ry="1" fill="#e7b7a3" />
             </g>
           </svg>
         </div>
