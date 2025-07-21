@@ -1,118 +1,67 @@
-.bitmoji-girl-container {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  animation: popOutBitmoji 4s cubic-bezier(0.7,0,0.3,1) infinite;
+/* Main container for the SVG */
+.walking-girl-svg {
+  width: 240px;
+  height: 240px;
+  overflow: visible !important; /* Allow character to be seen outside the SVG bounds */
 }
 
-.bitmoji-girl-svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* The main animation for the girl walking along the path */
+#girl-character {
+  /* This is a modern CSS property to animate along an SVG path */
+  offset-path: path("M40,120 A80,80 0 1,1 200,120");
+  offset-rotate: 0deg; /* Keep the character upright */
+  animation: walk-the-path 8s linear infinite;
 }
 
-@keyframes popOutBitmoji {
-  0%, 100% {
-    transform: translateY(90px);
-    opacity: 0;
+@keyframes walk-the-path {
+  from {
+    offset-distance: 0%;
   }
-  20% {
-    transform: translateY(90px);
-    opacity: 0;
-  }
-  30% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-  70% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-  80% {
-    transform: translateY(90px);
-    opacity: 0;
+  to {
+    offset-distance: 100%;
   }
 }
 
-.bitmoji-girl-arm {
-  transform-origin: 148px 102px;
-  animation: bitmojiWave 4s cubic-bezier(0.7,0,0.3,1) infinite;
+/* Leg walking animation */
+.girl-legs {
+  animation: walk-legs 0.5s linear infinite;
+}
+@keyframes walk-legs {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+.girl-leg-left {
+  transform-origin: center;
+  animation: swing-leg-left 0.5s ease-in-out infinite;
+}
+.girl-leg-right {
+  transform-origin: center;
+  animation: swing-leg-right 0.5s ease-in-out infinite;
+}
+@keyframes swing-leg-left {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(-15deg); }
+}
+@keyframes swing-leg-right {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
 }
 
-@keyframes bitmojiWave {
-  0%, 20%, 80%, 100% {
+/* Arm waving animation */
+.girl-arm-right-waving {
+  transform-origin: 28px -5px; /* Set rotation point to shoulder */
+  animation: wave-hello 8s linear infinite;
+}
+@keyframes wave-hello {
+  /* Don't wave for the first part of the walk */
+  0%, 35%, 65%, 100% {
     transform: rotate(0deg);
   }
-  35% {
-    transform: rotate(-18deg);
-  }
-  45% {
-    transform: rotate(18deg);
-  }
-  55% {
-    transform: rotate(-12deg);
-  }
-  65% {
-    transform: rotate(12deg);
-  }
-  75% {
-    transform: rotate(0deg);
-  }
-} 
-
-.fullgirl-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.girl-anim-sequence {
-  animation: girlPeekWaveSlide 4s cubic-bezier(0.7,0,0.3,1) infinite;
-  transform-origin: 90px 180px;
-}
-
-@keyframes girlPeekWaveSlide {
-  0%, 100% {
-    transform: translateY(60px) scale(0.9);
-    opacity: 0;
-  }
-  15% {
-    transform: translateY(0px) scale(1);
-    opacity: 1;
-  }
-  70% {
-    transform: translateY(0px) scale(1);
-    opacity: 1;
-  }
-  85% {
-    transform: translateY(60px) scale(0.9);
-    opacity: 0;
-  }
-}
-
-.girl-arm-right-group {
-  transform-origin: 120px 98px;
-  animation: girlWaveSimple 4s cubic-bezier(0.7,0,0.3,1) infinite;
-}
-
-@keyframes girlWaveSimple {
-  0%, 15%, 85%, 100% {
-    transform: rotate(0deg);
-  }
-  30% {
-    transform: rotate(-18deg);
-  }
-  40% {
-    transform: rotate(18deg);
-  }
-  50% {
-    transform: rotate(-12deg);
-  }
-  60% {
-    transform: rotate(12deg);
-  }
-  70% {
-    transform: rotate(0deg);
-  }
+  /* Wave when she's at the top */
+  40% { transform: rotate(-25deg); }
+  45% { transform: rotate(25deg); }
+  50% { transform: rotate(-25deg); }
+  55% { transform: rotate(25deg); }
+  60% { transform: rotate(0deg); }
 } 

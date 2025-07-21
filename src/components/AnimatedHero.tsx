@@ -3,57 +3,54 @@
 import React from 'react';
 import './AnimatedHero.css';
 
-const SKIN = '#c68642';
-const BLUSH = '#e7b7a3';
+const SKIN = '#c68642'; // Warm, tan skin tone
+const HAIR = '#3b2412'; // Dark brown
+const DRESS = '#7c4dff';
+const DRESS_ACCENT = '#a084e8';
 
 const AnimatedHero = () => {
   return (
+    // Force a fresh build with a minor change
     <div className="relative w-60 h-60 mx-auto mb-8">
       {/* Main Circle Container */}
       <div className="relative w-full h-full">
         {/* Darker Background Circle */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2a1745] via-[#1a237e] to-[#0d1333] shadow-2xl"></div>
-        {/* Girl Animation Container */}
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" className="fullgirl-svg">
-            <g className="girl-anim-sequence">
-              {/* Dress */}
-              <ellipse cx="90" cy="140" rx="24" ry="18" fill="#7c4dff" />
-              <rect x="66" y="120" width="48" height="28" rx="18" fill="#a084e8" />
-              {/* Left leg */}
-              <ellipse cx="80" cy="165" rx="7" ry="13" fill={SKIN} />
-              {/* Right leg */}
-              <ellipse cx="100" cy="165" rx="7" ry="13" fill={SKIN} />
-              {/* Left arm (peeking) */}
-              <ellipse cx="60" cy="120" rx="7" ry="15" fill={SKIN} />
-              {/* Right arm (waving) */}
-              <g className="girl-arm-right-group">
-                <ellipse cx="120" cy="110" rx="7" ry="15" fill={SKIN} />
-                {/* Hand */}
-                <ellipse cx="120" cy="98" rx="6" ry="4" fill={SKIN} />
+        {/* SVG Container for Animation */}
+        <div className="absolute inset-0 flex items-center justify-center overflow-visible">
+          <svg width="240" height="240" viewBox="0 0 240 240" fill="none" className="walking-girl-svg">
+            {/* The invisible path the girl will walk on */}
+            <path id="walk-path" d="M40,120 A80,80 0 1,1 200,120" stroke="transparent" />
+
+            {/* The group for the entire girl character, this will be animated */}
+            <g id="girl-character">
+              {/* Legs for walking animation */}
+              <g className="girl-legs">
+                <ellipse className="girl-leg-left" cx="0" cy="18" rx="4" ry="8" fill={SKIN} />
+                <ellipse className="girl-leg-right" cx="10" cy="18" rx="4" ry="8" fill={SKIN} />
               </g>
-              {/* Head (round, tan) */}
-              <ellipse cx="90" cy="100" rx="22" ry="24" fill={SKIN} />
-              {/* Hair (shoulder-length, dark, feminine) */}
-              <path d="M68 100 Q60 120 90 130 Q120 120 112 100 Q112 80 90 75 Q68 80 68 100 Z" fill="#2d1a0b" />
-              {/* Bangs */}
-              <ellipse cx="90" cy="88" rx="18" ry="8" fill="#2d1a0b" />
-              {/* Eyes */}
-              <ellipse cx="82" cy="100" rx="2.5" ry="3.2" fill="#2d1a0b" />
-              <ellipse cx="98" cy="100" rx="2.5" ry="3.2" fill="#2d1a0b" />
-              {/* Lashes */}
-              <path d="M80 98 Q81 96 83 98" stroke="#2d1a0b" strokeWidth="0.8" />
-              <path d="M96 98 Q97 96 99 98" stroke="#2d1a0b" strokeWidth="0.8" />
-              {/* Brows */}
-              <path d="M80 94 Q82 92 84 94" stroke="#2d1a0b" strokeWidth="0.8" />
-              <path d="M96 94 Q98 92 100 94" stroke="#2d1a0b" strokeWidth="0.8" />
-              {/* Nose */}
-              <ellipse cx="90" cy="104" rx="1.2" ry="2" fill="#a05a2c" opacity="0.5" />
-              {/* Smile */}
-              <path d="M82 110 Q90 116 98 110" stroke="#7a4a1e" strokeWidth="2" fill="none" />
-              {/* Blush */}
-              <ellipse cx="78" cy="108" rx="2.5" ry="1" fill={BLUSH} />
-              <ellipse cx="102" cy="108" rx="2.5" ry="1" fill={BLUSH} />
+              {/* Dress */}
+              <ellipse cx="5" cy="0" rx="14" ry="10" fill={DRESS} />
+              <rect x="-9" y="-12" width="28" height="18" rx="10" fill={DRESS_ACCENT} />
+              {/* Arms */}
+              <ellipse className="girl-arm-left" cx="-18" cy="-5" rx="4" ry="9" fill={SKIN} />
+              <g className="girl-arm-right-waving">
+                <ellipse cx="28" cy="-5" rx="4" ry="9" fill={SKIN} />
+                <ellipse cx="28" cy="-12" rx="4" ry="3" fill={SKIN} />
+              </g>
+              {/* Head */}
+              <ellipse cx="5" cy="-25" rx="14" ry="15" fill={SKIN} />
+              {/* Hair */}
+              <path d="M-9 -25 Q-15 -5 5 0 Q25 -5 19 -25 Q22 -40 5 -45 Q-12 -40 -9 -25 Z" fill={HAIR} />
+              {/* Earrings */}
+              <circle cx="-8" cy="-20" r="1.5" fill="gold" />
+              <circle cx="18" cy="-20" r="1.5" fill="gold" />
+              {/* Face Features */}
+              <g className="girl-face">
+                <ellipse cx="0" cy="-26" rx="1.5" ry="2" fill="#2d1a0b" />
+                <ellipse cx="10" cy="-26" rx="1.5" ry="2" fill="#2d1a0b" />
+                <path d="M2 -20 Q5 -17 8 -20" stroke="#7a4a1e" strokeWidth="1" fill="none" />
+              </g>
             </g>
           </svg>
         </div>
