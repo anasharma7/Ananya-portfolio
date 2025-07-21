@@ -3,6 +3,9 @@
 import React from 'react';
 import './AnimatedHero.css';
 
+const SKIN = '#c68642';
+const BLUSH = '#e7b7a3';
+
 const AnimatedHero = () => {
   return (
     <div className="relative w-60 h-60 mx-auto mb-8">
@@ -18,34 +21,39 @@ const AnimatedHero = () => {
               <ellipse cx="90" cy="140" rx="24" ry="18" fill="#7c4dff" />
               <rect x="66" y="120" width="48" height="28" rx="18" fill="#a084e8" />
               {/* Left leg */}
-              <ellipse cx="80" cy="165" rx="7" ry="13" fill="#d2a074" />
+              <ellipse cx="80" cy="165" rx="7" ry="13" fill={SKIN} />
               {/* Right leg */}
-              <ellipse cx="100" cy="165" rx="7" ry="13" fill="#d2a074" />
+              <ellipse cx="100" cy="165" rx="7" ry="13" fill={SKIN} />
               {/* Left arm (peeking) */}
-              <ellipse cx="60" cy="120" rx="7" ry="15" fill="#d2a074" />
+              <ellipse cx="60" cy="120" rx="7" ry="15" fill={SKIN} />
               {/* Right arm (waving) */}
               <g className="girl-arm-right-group">
-                <ellipse cx="120" cy="110" rx="7" ry="15" fill="#d2a074" />
+                <ellipse cx="120" cy="110" rx="7" ry="15" fill={SKIN} />
                 {/* Hand */}
-                <ellipse cx="120" cy="98" rx="6" ry="4" fill="#d2a074" />
+                <ellipse cx="120" cy="98" rx="6" ry="4" fill={SKIN} />
               </g>
               {/* Head (round, tan) */}
-              <ellipse cx="90" cy="100" rx="22" ry="24" fill="#d2a074" />
+              <ellipse cx="90" cy="100" rx="22" ry="24" fill={SKIN} />
               {/* Hair (shoulder-length, dark, feminine) */}
               <path d="M68 100 Q60 120 90 130 Q120 120 112 100 Q112 80 90 75 Q68 80 68 100 Z" fill="#2d1a0b" />
               {/* Bangs */}
               <ellipse cx="90" cy="88" rx="18" ry="8" fill="#2d1a0b" />
-              {/* Smile */}
-              <path d="M80 110 Q90 120 100 110" stroke="#7a4a1e" strokeWidth="2" fill="none" />
-              {/* Eyes (smaller, lashes) */}
-              <ellipse cx="82" cy="100" rx="2.2" ry="3" fill="#2d1a0b" />
-              <ellipse cx="98" cy="100" rx="2.2" ry="3" fill="#2d1a0b" />
+              {/* Eyes */}
+              <ellipse cx="82" cy="100" rx="2.5" ry="3.2" fill="#2d1a0b" />
+              <ellipse cx="98" cy="100" rx="2.5" ry="3.2" fill="#2d1a0b" />
               {/* Lashes */}
               <path d="M80 98 Q81 96 83 98" stroke="#2d1a0b" strokeWidth="0.8" />
               <path d="M96 98 Q97 96 99 98" stroke="#2d1a0b" strokeWidth="0.8" />
+              {/* Brows */}
+              <path d="M80 94 Q82 92 84 94" stroke="#2d1a0b" strokeWidth="0.8" />
+              <path d="M96 94 Q98 92 100 94" stroke="#2d1a0b" strokeWidth="0.8" />
+              {/* Nose */}
+              <ellipse cx="90" cy="104" rx="1.2" ry="2" fill="#a05a2c" opacity="0.5" />
+              {/* Smile */}
+              <path d="M82 110 Q90 116 98 110" stroke="#7a4a1e" strokeWidth="2" fill="none" />
               {/* Blush */}
-              <ellipse cx="78" cy="108" rx="2.5" ry="1" fill="#e7b7a3" />
-              <ellipse cx="102" cy="108" rx="2.5" ry="1" fill="#e7b7a3" />
+              <ellipse cx="78" cy="108" rx="2.5" ry="1" fill={BLUSH} />
+              <ellipse cx="102" cy="108" rx="2.5" ry="1" fill={BLUSH} />
             </g>
           </svg>
         </div>
