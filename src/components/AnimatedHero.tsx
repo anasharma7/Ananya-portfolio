@@ -3,57 +3,66 @@
 import React from 'react';
 import './AnimatedHero.css';
 
-const SKIN = '#c68642'; // Warm, tan skin tone
-const HAIR = '#3b2412'; // Dark brown
-const DRESS = '#7c4dff';
-const DRESS_ACCENT = '#a084e8';
+// --- Character Style Constants ---
+const SKIN_TONE = '#d2a074'; // Light brown, tan skin tone
+const HAIR_COLOR = '#4a2c2a'; // Dark, rich brown
+const SHIRT_COLOR = '#ffacc7'; // Cute pink shirt
+const SHORTS_COLOR = '#6c96ff'; // Blue shorts
+const HEELS_COLOR = '#333333'; // Black heels
 
 const AnimatedHero = () => {
   return (
-    // Force a fresh build with a minor change
+    // Force a fresh build on Vercel with a minor change
     <div className="relative w-60 h-60 mx-auto mb-8">
-      {/* Main Circle Container */}
-      <div className="relative w-full h-full">
-        {/* Darker Background Circle */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2a1745] via-[#1a237e] to-[#0d1333] shadow-2xl"></div>
-        {/* SVG Container for Animation */}
-        <div className="absolute inset-0 flex items-center justify-center overflow-visible">
-          <svg width="240" height="240" viewBox="0 0 240 240" fill="none" className="walking-girl-svg">
-            {/* The invisible path the girl will walk on */}
-            <path id="walk-path" d="M40,120 A80,80 0 1,1 200,120" stroke="transparent" />
+      {/* Circle Background */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2a1745] via-[#1a237e] to-[#0d1333] shadow-2xl"></div>
+      
+      {/* SVG Container for the Animation */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-visible">
+        <svg width="240" height="240" viewBox="0 0 240 240" fill="none" className="walking-girl-svg">
+          {/* This is the invisible circular path the character will walk on */}
+          <path id="walk-path" d="M40,120 A80,80 0 1,1 200,120" stroke="transparent" />
 
-            {/* The group for the entire girl character, this will be animated */}
-            <g id="girl-character">
-              {/* Legs for walking animation */}
-              <g className="girl-legs">
-                <ellipse className="girl-leg-left" cx="0" cy="18" rx="4" ry="8" fill={SKIN} />
-                <ellipse className="girl-leg-right" cx="10" cy="18" rx="4" ry="8" fill={SKIN} />
-              </g>
-              {/* Dress */}
-              <ellipse cx="5" cy="0" rx="14" ry="10" fill={DRESS} />
-              <rect x="-9" y="-12" width="28" height="18" rx="10" fill={DRESS_ACCENT} />
-              {/* Arms */}
-              <ellipse className="girl-arm-left" cx="-18" cy="-5" rx="4" ry="9" fill={SKIN} />
-              <g className="girl-arm-right-waving">
-                <ellipse cx="28" cy="-5" rx="4" ry="9" fill={SKIN} />
-                <ellipse cx="28" cy="-12" rx="4" ry="3" fill={SKIN} />
-              </g>
-              {/* Head */}
-              <ellipse cx="5" cy="-25" rx="14" ry="15" fill={SKIN} />
+          {/* This group contains the entire character. It will be animated to follow the path. */}
+          <g id="girl-character">
+            {/* --- Character Body Parts --- */}
+            
+            {/* Legs & Shoes */}
+            <g className="girl-legs">
+              <ellipse className="girl-leg-left" cx="0" cy="20" rx="4" ry="12" fill={SKIN_TONE} />
+              <ellipse className="girl-leg-right" cx="12" cy="20" rx="4" ry="12" fill={SKIN_TONE} />
+              <path className="girl-heel-left" d="M -4 30 L 0 32 L 4 30 L 0 28 Z" fill={HEELS_COLOR} />
+              <path className="girl-heel-right" d="M 8 30 L 12 32 L 16 30 L 12 28 Z" fill={HEELS_COLOR} />
+            </g>
+
+            {/* Clothes: Shirt and Shorts */}
+            <rect x="-8" y="0" width="28" height="15" rx="7" fill={SHIRT_COLOR} />
+            <rect x="-6" y="14" width="24" height="10" rx="5" fill={SHORTS_COLOR} />
+
+            {/* Arms */}
+            <ellipse className="girl-arm-left" cx="-18" cy="8" rx="4" ry="10" fill={SKIN_TONE} />
+            <g className="girl-arm-right-waving">
+              <ellipse cx="28" cy="8" rx="4" ry="10" fill={SKIN_TONE} />
+              <ellipse cx="28" cy="-1" rx="4" ry="3" fill={SKIN_TONE} />
+            </g>
+
+            {/* Head and Face */}
+            <g className="girl-head-group">
+              <ellipse cx="6" cy="-15" rx="16" ry="16" fill={SKIN_TONE} />
               {/* Hair */}
-              <path d="M-9 -25 Q-15 -5 5 0 Q25 -5 19 -25 Q22 -40 5 -45 Q-12 -40 -9 -25 Z" fill={HAIR} />
+              <path d="M-10 -15 Q-15 10 6 15 Q27 10 22 -15 Q28 -30 6 -35 Q-16 -30 -10 -15 Z" fill={HAIR_COLOR} />
               {/* Earrings */}
-              <circle cx="-8" cy="-20" r="1.5" fill="gold" />
-              <circle cx="18" cy="-20" r="1.5" fill="gold" />
+              <circle cx="-9" cy="-10" r="1.5" fill="gold" />
+              <circle cx="21" cy="-10" r="1.5" fill="gold" />
               {/* Face Features */}
               <g className="girl-face">
-                <ellipse cx="0" cy="-26" rx="1.5" ry="2" fill="#2d1a0b" />
-                <ellipse cx="10" cy="-26" rx="1.5" ry="2" fill="#2d1a0b" />
-                <path d="M2 -20 Q5 -17 8 -20" stroke="#7a4a1e" strokeWidth="1" fill="none" />
+                <ellipse cx="1" cy="-16" rx="1.5" ry="2.5" fill="#2d1a0b" />
+                <ellipse cx="11" cy="-16" rx="1.5" ry="2.5" fill="#2d1a0b" />
+                <path d="M3 -8 Q6 -5 9 -8" stroke="#7a4a1e" strokeWidth="1" fill="none" />
               </g>
             </g>
-          </svg>
-        </div>
+          </g>
+        </svg>
       </div>
     </div>
   );
