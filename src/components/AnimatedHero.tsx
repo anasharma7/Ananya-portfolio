@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './AnimatedHero.css';
+import { motion, useAnimation } from 'framer-motion';
 
 // --- Character Style Constants ---
 const SKIN_TONE = '#d2a074'; // Light brown, tan skin tone
@@ -11,6 +12,35 @@ const SHORTS_COLOR = '#6c96ff'; // Blue shorts
 const HEELS_COLOR = '#333333'; // Black heels
 
 const AnimatedHero = () => {
+  const controls = useAnimation();
+  const armControls = useAnimation();
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    const sequence = async () => {
+      // 1. Start hidden
+      await controls.set({ y: 120, opacity: 0 });
+      await armControls.set({ rotate: 0 });
+      // 2. Pop up
+      await controls.start({ y: 0, opacity: 1, transition: { duration: 1.2, ease: 'easeOut' } });
+      // 3. Arm wave (after pop up)
+      await armControls.start({
+        rotate: [0, -15, 15, -15, 15, 0],
+        transition: { duration: 0.8, times: [0, 0.2, 0.4, 0.6, 0.8, 1], repeat: 2, repeatType: 'loop' }
+      });
+      // 4. Wait a moment, then slide down
+      await new Promise(res => setTimeout(res, 600));
+      await controls.start({ y: 120, opacity: 0, transition: { duration: 0.8, ease: 'easeIn' } });
+    };
+    // Initial run
+    sequence();
+    // Loop every 10s
+    interval = setInterval(sequence, 10000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [controls, armControls]);
+
   return (
     // Force a fresh build on Vercel with a minor change
     <div className="relative w-60 h-60 mx-auto mb-8">
@@ -24,7 +54,12 @@ const AnimatedHero = () => {
           <path id="walk-path" d="M40,120 A80,80 0 1,1 200,120" stroke="transparent" />
 
           {/* This group contains the entire character. It will be animated to follow the path. */}
-          <g id="girl-character">
+          <motion.g
+            id="girl-character"
+            animate={controls}
+            initial={{ y: 120, opacity: 0 }}
+            style={{ willChange: 'transform' }}
+          >
             {/* --- Character Body Parts --- */}
             
             {/* Legs & Shoes */}
@@ -41,10 +76,15 @@ const AnimatedHero = () => {
 
             {/* Arms */}
             <ellipse className="girl-arm-left" cx="-18" cy="8" rx="4" ry="10" fill={SKIN_TONE} />
-            <g className="girl-arm-right-waving">
+            <motion.g
+              className="girl-arm-right-waving"
+              animate={armControls}
+              initial={{ rotate: 0 }}
+              style={{ transformOrigin: '28px -5px' }}
+            >
               <ellipse cx="28" cy="8" rx="4" ry="10" fill={SKIN_TONE} />
               <ellipse cx="28" cy="-1" rx="4" ry="3" fill={SKIN_TONE} />
-            </g>
+            </motion.g>
 
             {/* Head and Face */}
             <g className="girl-head-group">
@@ -61,7 +101,7 @@ const AnimatedHero = () => {
                 <path d="M3 -8 Q6 -5 9 -8" stroke="#7a4a1e" strokeWidth="1" fill="none" />
               </g>
             </g>
-          </g>
+          </motion.g>
         </svg>
       </div>
     </div>

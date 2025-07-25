@@ -5,12 +5,17 @@
   overflow: visible !important; /* Allow character to be seen outside the SVG bounds */
 }
 
-/* The main animation for the girl walking along the path */
+/* Remove animation from #girl-character to avoid conflict with Framer Motion */
 #girl-character {
-  /* This is a modern CSS property to animate along an SVG path */
-  offset-path: path("M40,120 A80,80 0 1,1 200,120");
-  offset-rotate: 0deg; /* Keep the character upright */
-  animation: walk-the-path 8s linear infinite;
+  /* offset-path: path("M40,120 A80,80 0 1,1 200,120"); */
+  /* offset-rotate: 0deg; */
+  /* animation: walk-the-path 8s linear infinite; */
+}
+
+/* Remove animation from .girl-arm-right-waving to avoid conflict with Framer Motion */
+.girl-arm-right-waving {
+  transform-origin: 28px -5px; /* Set rotation point to shoulder */
+  /* animation: wave-hello 8s linear infinite; */
 }
 
 @keyframes walk-the-path {
@@ -48,20 +53,16 @@
   50% { transform: rotate(15deg); }
 }
 
-/* Arm waving animation */
-.girl-arm-right-waving {
-  transform-origin: 28px -5px; /* Set rotation point to shoulder */
-  animation: wave-hello 8s linear infinite;
-}
+/* Remove wave-hello keyframes since Framer Motion handles waving */
+/*
 @keyframes wave-hello {
-  /* Don't wave for the first part of the walk */
   0%, 35%, 65%, 100% {
     transform: rotate(0deg);
   }
-  /* Wave when she's at the top */
   40% { transform: rotate(-25deg); }
   45% { transform: rotate(25deg); }
   50% { transform: rotate(-25deg); }
   55% { transform: rotate(25deg); }
   60% { transform: rotate(0deg); }
 } 
+*/ 
