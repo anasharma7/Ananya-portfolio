@@ -5,64 +5,24 @@
   overflow: visible !important; /* Allow character to be seen outside the SVG bounds */
 }
 
-/* Remove animation from #girl-character to avoid conflict with Framer Motion */
+/* Remove all conflicting animations - Framer Motion handles everything now */
 #girl-character {
-  /* offset-path: path("M40,120 A80,80 0 1,1 200,120"); */
-  /* offset-rotate: 0deg; */
-  /* animation: walk-the-path 8s linear infinite; */
+  /* All animations handled by Framer Motion */
 }
 
-/* Remove animation from .girl-arm-right-waving to avoid conflict with Framer Motion */
 .girl-arm-right-waving {
-  transform-origin: 28px -5px; /* Set rotation point to shoulder */
-  /* animation: wave-hello 8s linear infinite; */
+  /* Animation handled by Framer Motion */
 }
 
-@keyframes walk-the-path {
-  from {
-    offset-distance: 0%;
-  }
-  to {
-    offset-distance: 100%;
-  }
-}
-
-/* Leg walking animation */
+/* Keep only the leg walking animation for subtle movement */
 .girl-legs {
   animation: walk-legs 0.5s linear infinite;
 }
+
 @keyframes walk-legs {
   0% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
+  50% { transform: translateY(2px); }
   100% { transform: translateY(0); }
 }
-.girl-leg-left {
-  transform-origin: center;
-  animation: swing-leg-left 0.5s ease-in-out infinite;
-}
-.girl-leg-right {
-  transform-origin: center;
-  animation: swing-leg-right 0.5s ease-in-out infinite;
-}
-@keyframes swing-leg-left {
-  0%, 100% { transform: rotate(15deg); }
-  50% { transform: rotate(-15deg); }
-}
-@keyframes swing-leg-right {
-  0%, 100% { transform: rotate(-15deg); }
-  50% { transform: rotate(15deg); }
-}
 
-/* Remove wave-hello keyframes since Framer Motion handles waving */
-/*
-@keyframes wave-hello {
-  0%, 35%, 65%, 100% {
-    transform: rotate(0deg);
-  }
-  40% { transform: rotate(-25deg); }
-  45% { transform: rotate(25deg); }
-  50% { transform: rotate(-25deg); }
-  55% { transform: rotate(25deg); }
-  60% { transform: rotate(0deg); }
-} 
-*/ 
+/* Remove all other keyframes since Framer Motion handles them */ 
