@@ -6,12 +6,22 @@ import { motion, useAnimation } from 'framer-motion';
 
 // --- Character Style Constants ---
 const SKIN_TONE = '#d2a074'; // Light brown, tan skin tone
-
 const HAIR_COLOR = '#4a2c2a'; // Rich dark brown hair
 const SHIRT_COLOR = '#ffacc7'; // Cute pink shirt
 const JEANS_COLOR = '#6c96ff'; // Blue jeans
 const EYE_COLOR = '#2d1a0b'; // Dark brown eyes
 const LIP_COLOR = '#c44569'; // Natural lip color
+
+// Animation timing constants for better maintainability
+const ANIMATION_TIMING = {
+  POP_UP_DURATION: 1.2,
+  ARM_WAVE_DURATION: 1.2,
+  SLIDE_DOWN_DURATION: 1.0,
+  BLINK_DURATION: 0.1,
+  SEQUENCE_INTERVAL: 8000,
+  BLINK_INTERVAL: 5000,
+  WAIT_BEFORE_SLIDE: 800
+} as const;
 
 const AnimatedHero = () => {
   const controls = useAnimation();
@@ -23,71 +33,79 @@ const AnimatedHero = () => {
     let blinkInterval: NodeJS.Timeout;
     
     const sequence = async () => {
-      // 1. Start hidden
-      await controls.set({ y: 120, opacity: 0, scale: 0.8 });
-      await armControls.set({ rotate: 0 });
-      
-      // 2. Pop up with bounce effect
-      await controls.start({ 
-        y: 0, 
-        opacity: 1, 
-        scale: 1,
-        transition: { 
-          duration: 1.2, 
-          ease: [0.25, 0.46, 0.45, 0.94], // Custom bounce
-          scale: {
-            type: "spring",
-            stiffness: 300,
-            damping: 15
+      try {
+        // 1. Start hidden
+        await controls.set({ y: 120, opacity: 0, scale: 0.8 });
+        await armControls.set({ rotate: 0 });
+        
+        // 2. Pop up with bounce effect
+        await controls.start({ 
+          y: 0, 
+          opacity: 1, 
+          scale: 1,
+          transition: { 
+            duration: ANIMATION_TIMING.POP_UP_DURATION, 
+            ease: [0.25, 0.46, 0.45, 0.94], // Custom bounce
+            scale: {
+              type: "spring",
+              stiffness: 300,
+              damping: 15
+            }
+          } 
+        });
+        
+        // 3. Arm wave (after pop up)
+        await armControls.start({
+          rotate: [0, -20, 20, -20, 20, 0],
+          transition: { 
+            duration: ANIMATION_TIMING.ARM_WAVE_DURATION, 
+            times: [0, 0.2, 0.4, 0.6, 0.8, 1], 
+            ease: "easeInOut",
+            repeat: 2, 
+            repeatType: 'loop' 
           }
-        } 
-      });
-      
-      // 3. Arm wave (after pop up)
-      await armControls.start({
-        rotate: [0, -20, 20, -20, 20, 0],
-        transition: { 
-          duration: 1.2, 
-          times: [0, 0.2, 0.4, 0.6, 0.8, 1], 
-          ease: "easeInOut",
-          repeat: 2, 
-          repeatType: 'loop' 
-        }
-      });
-      
-      // 4. Wait a moment, then slide down
-      await new Promise(res => setTimeout(res, 800));
-      await controls.start({ 
-        y: 120, 
-        opacity: 0, 
-        scale: 0.8,
-        transition: { 
-          duration: 1.0, 
-          ease: "easeIn" 
-        } 
-      });
+        });
+        
+        // 4. Wait a moment, then slide down
+        await new Promise(res => setTimeout(res, ANIMATION_TIMING.WAIT_BEFORE_SLIDE));
+        await controls.start({ 
+          y: 120, 
+          opacity: 0, 
+          scale: 0.8,
+          transition: { 
+            duration: ANIMATION_TIMING.SLIDE_DOWN_DURATION, 
+            ease: "easeIn" 
+          } 
+        });
+      } catch (error) {
+        console.error('Animation sequence error:', error);
+      }
     };
 
     // Eye blink animation every 5 seconds
     const blinkSequence = async () => {
-      await eyeControls.start({ 
-        scaleY: 0.1,
-        transition: { duration: 0.1 }
-      });
-      await eyeControls.start({ 
-        scaleY: 1,
-        transition: { duration: 0.1 }
-      });
+      try {
+        await eyeControls.start({ 
+          scaleY: 0.1,
+          transition: { duration: ANIMATION_TIMING.BLINK_DURATION }
+        });
+        await eyeControls.start({ 
+          scaleY: 1,
+          transition: { duration: ANIMATION_TIMING.BLINK_DURATION }
+        });
+      } catch (error) {
+        console.error('Blink animation error:', error);
+      }
     };
 
     // Initial run
     sequence();
     
     // Loop every 8 seconds
-    interval = setInterval(sequence, 8000);
+    interval = setInterval(sequence, ANIMATION_TIMING.SEQUENCE_INTERVAL);
     
     // Blink every 5 seconds
-    blinkInterval = setInterval(blinkSequence, 5000);
+    blinkInterval = setInterval(blinkSequence, ANIMATION_TIMING.BLINK_INTERVAL);
     
     return () => {
       clearInterval(interval);
