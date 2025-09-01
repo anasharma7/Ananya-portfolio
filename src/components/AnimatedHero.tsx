@@ -6,6 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 
 // --- Character Style Constants ---
 const SKIN_TONE = '#d2a074'; // Light brown, tan skin tone
+
 const HAIR_COLOR = '#4a2c2a'; // Rich dark brown hair
 const SHIRT_COLOR = '#ffacc7'; // Cute pink shirt
 const JEANS_COLOR = '#6c96ff'; // Blue jeans
