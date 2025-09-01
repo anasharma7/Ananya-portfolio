@@ -169,6 +169,10 @@ const AnimatedHero = () => {
                 <path d="M-7 -10 Q-12 12 5 18 Q22 12 17 -10 Q21 -25 5 -30 Q-12 -25 -7 -10 Z" fill={HAIR_COLOR} opacity="0.7" />
                 {/* Hair highlights */}
                 <path d="M-8 -12 Q-13 8 5 16 Q23 8 18 -12 Q22 -26 5 -31 Q-13 -26 -8 -12 Z" fill="#6b4226" opacity="0.4" />
+                {/* Additional hair texture for realism */}
+                <path d="M-10 -18 Q-16 2 5 19 Q26 2 20 -18 Q25 -32 5 -37 Q-16 -32 -10 -18 Z" fill={HAIR_COLOR} opacity="0.3" />
+                {/* Hair shine effect */}
+                <ellipse cx="2" cy="-25" rx="3" ry="1" fill="#6b4226" opacity="0.2" />
               </g>
               
               {/* Face Features - Realistic young woman */}
@@ -200,6 +204,9 @@ const AnimatedHero = () => {
                 {/* Pupils */}
                 <ellipse cx="-3" cy="-22" rx="0.6" ry="0.9" fill="black" />
                 <ellipse cx="13" cy="-22" rx="0.6" ry="0.9" fill="black" />
+                {/* Eye shine for more life */}
+                <ellipse cx="-2.5" cy="-23" rx="0.3" ry="0.4" fill="white" />
+                <ellipse cx="13.5" cy="-23" rx="0.3" ry="0.4" fill="white" />
                 
                 {/* Eyebrows - more defined */}
                 <path d="M-5 -26 Q-3 -28 -1 -27" stroke="#2d1a0b" strokeWidth="1.2" fill="none" strokeLinecap="round" />
