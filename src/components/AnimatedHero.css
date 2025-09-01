@@ -2,27 +2,36 @@
 .walking-girl-svg {
   width: 240px;
   height: 240px;
-  overflow: visible !important; /* Allow character to be seen outside the SVG bounds */
+  overflow: visible !important;
 }
 
-/* Remove all conflicting animations - Framer Motion handles everything now */
-#girl-character {
-  /* All animations handled by Framer Motion */
+/* Terminal styles for the new AnimatedHero */
+.terminal-container {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #3b82f6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.girl-arm-right-waving {
-  /* Animation handled by Framer Motion */
+/* Typing cursor animation */
+.typing-cursor {
+  animation: blink 1s infinite;
 }
 
-/* Keep only the leg walking animation for subtle movement */
-.girl-legs {
-  animation: walk-legs 0.5s linear infinite;
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
-@keyframes walk-legs {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(2px); }
-  100% { transform: translateY(0); }
+/* Skill highlight effect */
+.skill-active {
+  color: #10b981;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* Remove all other keyframes since Framer Motion handles them */ 
+.skill-inactive {
+  color: #9ca3af;
+  transition: color 0.3s ease;
+} 
