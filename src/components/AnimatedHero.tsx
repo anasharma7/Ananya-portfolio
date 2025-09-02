@@ -259,78 +259,47 @@ const AnimatedHero = () => {
             ease: "easeInOut"
           }}
         >
-          {/* Realistic Airplane Design */}
-          <svg width="120" height="60" viewBox="0 0 120 60" className="relative z-20">
-            {/* Main Aircraft Body - Long, sleek fuselage */}
-            <ellipse cx="60" cy="30" rx="40" ry="10" fill="url(#airplaneGradient)" stroke="#fff" strokeWidth="2" />
+          {/* Cartoon Style Airplane - Matching Reference Image */}
+          <svg width="140" height="80" viewBox="0 0 140 80" className="relative z-20">
+            {/* Main Fuselage - White body */}
+            <ellipse cx="70" cy="40" rx="45" ry="12" fill="white" stroke="#333" strokeWidth="2" />
             
-            {/* Aircraft Nose - Pointed and aerodynamic */}
-            <path d="M90 30 L100 25 L100 35 Z" fill="#ff6b6b" stroke="#fff" strokeWidth="2" />
+            {/* Blue Nose */}
+            <ellipse cx="105" cy="40" rx="15" ry="8" fill="#0066cc" stroke="#333" strokeWidth="2" />
             
-            {/* Cockpit Windows - Multiple realistic windows */}
-            <ellipse cx="75" cy="25" r="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
-            <ellipse cx="75" cy="35" r="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
-            <ellipse cx="70" cy="25" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
-            <ellipse cx="70" cy="35" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
+            {/* Blue Stripe Connecting Windows */}
+            <rect x="25" y="38" width="70" height="4" fill="#0066cc" stroke="none" />
             
-            {/* Main Wings - Large, realistic airplane wings */}
-            <path d="M40 20 L20 5 L30 15 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
-            <path d="M40 40 L20 55 L30 45 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
+            {/* Windows - Light blue circles */}
+            <circle cx="35" cy="40" r="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
+            <circle cx="45" cy="40" r="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
+            <circle cx="55" cy="40" r="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
+            <circle cx="65" cy="40" r="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
+            <circle cx="75" cy="40" r="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
             
-            {/* Wing Details - Wing flaps and ailerons */}
-            <path d="M30 15 L25 8 L35 12 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
-            <path d="M30 45 L25 52 L35 48 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
+            {/* Cockpit Windows - Larger windshield */}
+            <ellipse cx="90" cy="35" rx="6" ry="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
+            <ellipse cx="90" cy="45" rx="6" ry="4" fill="#87ceeb" stroke="#333" strokeWidth="1" />
             
-            {/* Tail Section - Vertical and horizontal stabilizers */}
-            <path d="M25 15 L20 5 L30 10 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
-            <path d="M25 45 L20 55 L30 50 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
-            <path d="M20 10 L15 8 L25 12 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
-            <path d="M20 50 L15 52 L25 48 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
+            {/* Top Wing - Positioned towards rear */}
+            <path d="M50 25 L30 15 L40 20 Z" fill="white" stroke="#333" strokeWidth="2" />
+            <path d="M30 15 L25 12 L35 18 Z" fill="#0066cc" stroke="#333" strokeWidth="1" />
             
-            {/* Engine Nacelles - Realistic jet engines */}
-            <ellipse cx="35" cy="20" rx="6" ry="3" fill="#333" stroke="#fff" strokeWidth="1" />
-            <ellipse cx="35" cy="40" rx="6" ry="3" fill="#333" stroke="#fff" strokeWidth="1" />
+            {/* Bottom Wing - Larger, horizontal */}
+            <path d="M45 55 L20 65 L35 60 Z" fill="white" stroke="#333" strokeWidth="2" />
+            <path d="M20 65 L15 68 L25 62 Z" fill="#0066cc" stroke="#333" strokeWidth="1" />
             
-            {/* Engine Thrusters - Glowing engine exhaust */}
-            <motion.ellipse
-              cx="32" cy="20" rx="4" ry="2"
-              fill="#ffa500"
-              animate={{
-                rx: [4, 6, 4],
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{
-                duration: 0.4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.ellipse
-              cx="32" cy="40" rx="4" ry="2"
-              fill="#ffa500"
-              animate={{
-                rx: [4, 6, 4],
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{
-                duration: 0.4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            {/* Engine Nacelles - Grey, under bottom wing */}
+            <ellipse cx="35" cy="58" rx="8" ry="4" fill="#666" stroke="#333" strokeWidth="1" />
+            <ellipse cx="25" cy="58" rx="8" ry="4" fill="#666" stroke="#333" strokeWidth="1" />
             
-            {/* Landing Gear - Retracted position */}
-            <ellipse cx="50" cy="20" rx="2" ry="1" fill="#666" stroke="#fff" strokeWidth="0.5" />
-            <ellipse cx="50" cy="40" rx="2" ry="1" fill="#666" stroke="#fff" strokeWidth="0.5" />
+            {/* Tail Fin - Vertical stabilizer */}
+            <path d="M25 20 L20 5 L30 10 Z" fill="white" stroke="#333" strokeWidth="2" />
+            <path d="M20 5 L18 2 L28 8 Z" fill="#0066cc" stroke="#333" strokeWidth="1" />
             
-            {/* Gradient Definition */}
-            <defs>
-              <linearGradient id="airplaneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#4ecdc4" />
-                <stop offset="50%" stopColor="#45b7d1" />
-                <stop offset="100%" stopColor="#96ceb4" />
-              </linearGradient>
-            </defs>
+            {/* Landing Gear - Retracted */}
+            <ellipse cx="60" cy="25" rx="3" ry="1.5" fill="#666" stroke="#333" strokeWidth="0.5" />
+            <ellipse cx="60" cy="55" rx="3" ry="1.5" fill="#666" stroke="#333" strokeWidth="0.5" />
           </svg>
           
           {/* Smoke Trail - More realistic contrails */}
