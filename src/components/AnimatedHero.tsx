@@ -185,46 +185,129 @@ const AnimatedHero = () => {
       {/* Center Content - Floating Elements with Fade Transitions */}
       <div className="relative z-10 flex items-center justify-center h-full">
         
-        {/* Main Floating Icon */}
+        {/* Animated Flying Rocket with Smoke */}
         <motion.div
-          className="text-8xl mb-8"
-          initial={{ opacity: 0, scale: 0.5, y: 50 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 2, ease: "easeOut" }}
+          className="absolute"
+          initial={{ x: -200, y: 0 }}
+          animate={{ 
+            x: [200, 0, -200],
+            y: [0, -20, 0]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         >
-          🚀
-        </motion.div>
-
-        {/* Floating Text Elements */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {[
-            { text: "Hello World", delay: 0.5, color: "from-cyan-400 to-blue-500" },
-            { text: "Code & Create", delay: 1.5, color: "from-pink-400 to-purple-500" },
-            { text: "Build & Deploy", delay: 2.5, color: "from-yellow-400 to-orange-500" },
-            { text: "Innovate & Inspire", delay: 3.5, color: "from-green-400 to-teal-500" }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="absolute text-2xl md:text-3xl font-bold text-white"
-              initial={{ opacity: 0, y: 30, scale: 0.8 }}
-              animate={{ 
-                opacity: [0, 1, 1, 0],
-                y: [30, 0, 0, -30],
-                scale: [0.8, 1, 1, 0.8]
+          {/* Rocket Body */}
+          <svg width="80" height="120" viewBox="0 0 80 120" className="relative z-20">
+            {/* Rocket Body */}
+            <path 
+              d="M40 0 L60 20 L60 100 L20 100 L20 20 Z" 
+              fill="url(#rocketGradient)"
+              stroke="#fff"
+              strokeWidth="2"
+            />
+            
+            {/* Rocket Nose */}
+            <path 
+              d="M40 0 L60 20 L20 20 Z" 
+              fill="#ff6b6b"
+              stroke="#fff"
+              strokeWidth="2"
+            />
+            
+            {/* Rocket Fins */}
+            <path 
+              d="M20 80 L10 100 L20 100 Z" 
+              fill="#4ecdc4"
+              stroke="#fff"
+              strokeWidth="1"
+            />
+            <path 
+              d="M60 80 L70 100 L60 100 Z" 
+              fill="#4ecdc4"
+              stroke="#fff"
+              strokeWidth="1"
+            />
+            
+            {/* Windows */}
+            <circle cx="40" cy="40" r="8" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            <circle cx="40" cy="60" r="6" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            
+            {/* Engine Flames */}
+            <motion.path
+              d="M30 100 L25 120 L35 120 Z"
+              fill="#ffa500"
+              stroke="#ff4500"
+              strokeWidth="1"
+              animate={{
+                d: [
+                  "M30 100 L25 120 L35 120 Z",
+                  "M30 100 L20 130 L40 130 Z",
+                  "M30 100 L25 120 L35 120 Z"
+                ]
               }}
               transition={{
-                duration: 4,
+                duration: 0.5,
                 repeat: Infinity,
-                delay: item.delay,
                 ease: "easeInOut"
               }}
-            >
-              <span className={`bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
-                {item.text}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+            />
+            <motion.path
+              d="M50 100 L45 120 L55 120 Z"
+              fill="#ffa500"
+              stroke="#ff4500"
+              strokeWidth="1"
+              animate={{
+                d: [
+                  "M50 100 L45 120 L55 120 Z",
+                  "M50 100 L40 130 L60 130 Z",
+                  "M50 100 L45 120 L55 120 Z"
+                ]
+              }}
+              transition={{
+                duration: 0.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            
+            {/* Gradient Definition */}
+            <defs>
+              <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#4ecdc4" />
+                <stop offset="50%" stopColor="#45b7d1" />
+                <stop offset="100%" stopColor="#96ceb4" />
+              </linearGradient>
+            </defs>
+          </svg>
+          
+          {/* Smoke Trail */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
+            {Array.from({ length: 8 }, (_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-gray-300 rounded-full opacity-60"
+                style={{
+                  left: `${-20 + i * 5}px`,
+                  top: `${-10 - i * 8}px`
+                }}
+                animate={{
+                  opacity: [0.6, 0.3, 0],
+                  scale: [1, 1.5, 2],
+                  y: [-10 - i * 8, -30 - i * 8, -50 - i * 8]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
+        </motion.div>
 
         {/* Floating Tech Icons */}
         <div className="absolute inset-0 flex items-center justify-center">
