@@ -118,6 +118,101 @@ const AnimatedHero = () => {
         ))}
       </div>
 
+      {/* Additional Ripple Effects */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 15 }, (_, i) => (
+          <motion.div
+            key={`ripple-${i}`}
+            className="absolute border border-white/20 rounded-full"
+            style={{
+              left: '50%',
+              top: '50%',
+              width: '20px',
+              height: '20px',
+              transform: 'translate(-50%, -50%)'
+            }}
+            animate={{
+              width: [20, 300, 600],
+              height: [20, 300, 600],
+              opacity: [0.8, 0.4, 0],
+              scale: [1, 1.2, 1.5]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Expanding Wave Effects */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 8 }, (_, i) => (
+          <motion.div
+            key={`wave-${i}`}
+            className="absolute border-2 border-cyan-400/30 rounded-full"
+            style={{
+              left: '50%',
+              top: '50%',
+              width: '50px',
+              height: '50px',
+              transform: 'translate(-50%, -50%)'
+            }}
+            animate={{
+              width: [50, 200, 400, 600],
+              height: [50, 200, 400, 600],
+              opacity: [0.6, 0.3, 0.1, 0],
+              rotate: [0, 180, 360]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating Geometric Elements */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }, (_, i) => (
+          <motion.div
+            key={`geo-${i}`}
+            className="absolute"
+            style={{
+              left: `${20 + (i % 5) * 15}%`,
+              top: `${20 + Math.floor(i / 5) * 15}%`,
+              width: '15px',
+              height: '15px'
+            }}
+            animate={{
+              rotate: [0, 180, 360],
+              scale: [1, 1.4, 1],
+              opacity: [0.3, 1, 0.3]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.2
+            }}
+          >
+            {i % 4 === 0 ? (
+              <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
+            ) : i % 4 === 1 ? (
+              <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-400 transform rotate-45" />
+            ) : i % 4 === 2 ? (
+              <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-400 transform rotate-45" />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-green-400 to-teal-400 rounded-lg" />
+            )}
+          </motion.div>
+        ))}
+      </div>
+
       {/* Geometric Grid Pattern */}
       <div className="absolute inset-0 opacity-20">
         <svg width="100%" height="100%" viewBox="0 0 100 100">
@@ -128,41 +223,6 @@ const AnimatedHero = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
-      </div>
-
-      {/* Floating Geometric Elements */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 12 }, (_, i) => (
-          <motion.div
-            key={`geo-${i}`}
-            className="absolute"
-            style={{
-              left: `${20 + (i % 4) * 20}%`,
-              top: `${20 + Math.floor(i / 4) * 20}%`,
-              width: '20px',
-              height: '20px'
-            }}
-            animate={{
-              rotate: [0, 180, 360],
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 1, 0.3]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.2
-            }}
-          >
-            {i % 3 === 0 ? (
-              <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 rounded-full" />
-            ) : i % 3 === 1 ? (
-              <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-400 transform rotate-45" />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-400 transform rotate-45" />
-            )}
-          </motion.div>
-        ))}
       </div>
 
       {/* Interactive Light Rays */}
