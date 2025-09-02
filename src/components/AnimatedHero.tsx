@@ -191,7 +191,7 @@ const AnimatedHero = () => {
           initial={{ x: -200, y: 0 }}
           animate={{ 
             x: [200, 0, -200],
-            y: [0, -20, 0]
+            y: 0
           }}
           transition={{
             duration: 8,
@@ -199,75 +199,45 @@ const AnimatedHero = () => {
             ease: "easeInOut"
           }}
         >
-          {/* Rocket Body */}
-          <svg width="80" height="120" viewBox="0 0 80 120" className="relative z-20">
-            {/* Rocket Body */}
-            <path 
-              d="M40 0 L60 20 L60 100 L20 100 L20 20 Z" 
-              fill="url(#rocketGradient)"
-              stroke="#fff"
-              strokeWidth="2"
-            />
+          {/* Rocket Body - More spaceship-like */}
+          <svg width="100" height="60" viewBox="0 0 100 60" className="relative z-20">
+            {/* Main Spaceship Body */}
+            <ellipse cx="50" cy="30" rx="35" ry="15" fill="url(#spaceshipGradient)" stroke="#fff" strokeWidth="2" />
             
-            {/* Rocket Nose */}
-            <path 
-              d="M40 0 L60 20 L20 20 Z" 
-              fill="#ff6b6b"
-              stroke="#fff"
-              strokeWidth="2"
-            />
+            {/* Spaceship Nose */}
+            <ellipse cx="75" cy="30" rx="15" ry="8" fill="#ff6b6b" stroke="#fff" strokeWidth="2" />
             
-            {/* Rocket Fins */}
-            <path 
-              d="M20 80 L10 100 L20 100 Z" 
-              fill="#4ecdc4"
-              stroke="#fff"
-              strokeWidth="1"
-            />
-            <path 
-              d="M60 80 L70 100 L60 100 Z" 
-              fill="#4ecdc4"
-              stroke="#fff"
-              strokeWidth="1"
-            />
+            {/* Cockpit Windows */}
+            <ellipse cx="65" cy="25" rx="6" ry="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            <ellipse cx="65" cy="35" rx="6" ry="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
             
-            {/* Windows */}
-            <circle cx="40" cy="40" r="8" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
-            <circle cx="40" cy="60" r="6" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            {/* Wings */}
+            <path d="M30 20 L15 10 L25 15 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            <path d="M30 40 L15 50 L25 45 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
             
-            {/* Engine Flames */}
-            <motion.path
-              d="M30 100 L25 120 L35 120 Z"
+            {/* Engine Thrusters */}
+            <motion.circle
+              cx="25" cy="25" r="4"
               fill="#ffa500"
-              stroke="#ff4500"
-              strokeWidth="1"
               animate={{
-                d: [
-                  "M30 100 L25 120 L35 120 Z",
-                  "M30 100 L20 130 L40 130 Z",
-                  "M30 100 L25 120 L35 120 Z"
-                ]
+                r: [4, 6, 4],
+                opacity: [0.8, 1, 0.8]
               }}
               transition={{
-                duration: 0.5,
+                duration: 0.3,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
             />
-            <motion.path
-              d="M50 100 L45 120 L55 120 Z"
+            <motion.circle
+              cx="25" cy="35" r="4"
               fill="#ffa500"
-              stroke="#ff4500"
-              strokeWidth="1"
               animate={{
-                d: [
-                  "M50 100 L45 120 L55 120 Z",
-                  "M50 100 L40 130 L60 130 Z",
-                  "M50 100 L45 120 L55 120 Z"
-                ]
+                r: [4, 6, 4],
+                opacity: [0.8, 1, 0.8]
               }}
               transition={{
-                duration: 0.5,
+                duration: 0.3,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -275,7 +245,7 @@ const AnimatedHero = () => {
             
             {/* Gradient Definition */}
             <defs>
-              <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="spaceshipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#4ecdc4" />
                 <stop offset="50%" stopColor="#45b7d1" />
                 <stop offset="100%" stopColor="#96ceb4" />
@@ -284,19 +254,19 @@ const AnimatedHero = () => {
           </svg>
           
           {/* Smoke Trail */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
-            {Array.from({ length: 8 }, (_, i) => (
+          <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
+            {Array.from({ length: 6 }, (_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-2 h-2 bg-gray-300 rounded-full opacity-60"
+                className="absolute w-3 h-3 bg-gray-400 rounded-full opacity-60"
                 style={{
-                  left: `${-20 + i * 5}px`,
-                  top: `${-10 - i * 8}px`
+                  left: `${-15 - i * 8}px`,
+                  top: `${-5 + (i % 2) * 10}px`
                 }}
                 animate={{
                   opacity: [0.6, 0.3, 0],
                   scale: [1, 1.5, 2],
-                  y: [-10 - i * 8, -30 - i * 8, -50 - i * 8]
+                  x: [-15 - i * 8, -25 - i * 8, -35 - i * 8]
                 }}
                 transition={{
                   duration: 2,
@@ -308,6 +278,24 @@ const AnimatedHero = () => {
             ))}
           </div>
         </motion.div>
+
+        {/* Flight Path - Dotted Circle Line */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <svg width="400" height="400" viewBox="0 0 400 400" className="absolute">
+            <defs>
+              <pattern id="dottedLine" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="2" fill="white" opacity="0.6" />
+              </pattern>
+            </defs>
+            <circle 
+              cx="200" cy="200" r="150" 
+              fill="none" 
+              stroke="url(#dottedLine)" 
+              strokeWidth="3"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
 
         {/* Floating Tech Icons */}
         <div className="absolute inset-0 flex items-center justify-center">
