@@ -199,28 +199,32 @@ const AnimatedHero = () => {
             ease: "easeInOut"
           }}
         >
-          {/* Rocket Body - More spaceship-like */}
-          <svg width="100" height="60" viewBox="0 0 100 60" className="relative z-20">
-            {/* Main Spaceship Body */}
-            <ellipse cx="50" cy="30" rx="35" ry="15" fill="url(#spaceshipGradient)" stroke="#fff" strokeWidth="2" />
+          {/* Airplane Body - More realistic design */}
+          <svg width="80" height="40" viewBox="0 0 80 40" className="relative z-20">
+            {/* Main Aircraft Body */}
+            <ellipse cx="40" cy="20" rx="25" ry="8" fill="url(#airplaneGradient)" stroke="#fff" strokeWidth="1.5" />
             
-            {/* Spaceship Nose */}
-            <ellipse cx="75" cy="30" rx="15" ry="8" fill="#ff6b6b" stroke="#fff" strokeWidth="2" />
+            {/* Aircraft Nose */}
+            <ellipse cx="60" cy="20" rx="12" ry="6" fill="#ff6b6b" stroke="#fff" strokeWidth="1.5" />
             
             {/* Cockpit Windows */}
-            <ellipse cx="65" cy="25" rx="6" ry="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
-            <ellipse cx="65" cy="35" rx="6" ry="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            <ellipse cx="55" cy="18" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
+            <ellipse cx="55" cy="22" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
             
-            {/* Wings */}
-            <path d="M30 20 L15 10 L25 15 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
-            <path d="M30 40 L15 50 L25 45 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            {/* Main Wings */}
+            <path d="M25 15 L15 8 L20 12 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            <path d="M25 25 L15 32 L20 28 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            
+            {/* Tail Wings */}
+            <path d="M20 12 L18 5 L22 8 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            <path d="M20 28 L18 35 L22 32 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
             
             {/* Engine Thrusters */}
             <motion.circle
-              cx="25" cy="25" r="4"
+              cx="22" cy="18" r="2.5"
               fill="#ffa500"
               animate={{
-                r: [4, 6, 4],
+                r: [2.5, 3.5, 2.5],
                 opacity: [0.8, 1, 0.8]
               }}
               transition={{
@@ -230,10 +234,10 @@ const AnimatedHero = () => {
               }}
             />
             <motion.circle
-              cx="25" cy="35" r="4"
+              cx="22" cy="22" r="2.5"
               fill="#ffa500"
               animate={{
-                r: [4, 6, 4],
+                r: [2.5, 3.5, 2.5],
                 opacity: [0.8, 1, 0.8]
               }}
               transition={{
@@ -245,7 +249,7 @@ const AnimatedHero = () => {
             
             {/* Gradient Definition */}
             <defs>
-              <linearGradient id="spaceshipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="airplaneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#4ecdc4" />
                 <stop offset="50%" stopColor="#45b7d1" />
                 <stop offset="100%" stopColor="#96ceb4" />
@@ -255,21 +259,21 @@ const AnimatedHero = () => {
           
           {/* Smoke Trail */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
-            {Array.from({ length: 6 }, (_, i) => (
+            {Array.from({ length: 4 }, (_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-3 h-3 bg-gray-400 rounded-full opacity-60"
+                className="absolute w-2 h-2 bg-gray-400 rounded-full opacity-60"
                 style={{
-                  left: `${-15 - i * 8}px`,
-                  top: `${-5 + (i % 2) * 10}px`
+                  left: `${-10 - i * 6}px`,
+                  top: `${-3 + (i % 2) * 6}px`
                 }}
                 animate={{
                   opacity: [0.6, 0.3, 0],
-                  scale: [1, 1.5, 2],
-                  x: [-15 - i * 8, -25 - i * 8, -35 - i * 8]
+                  scale: [1, 1.3, 1.8],
+                  x: [-10 - i * 6, -16 - i * 6, -22 - i * 6]
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 1.5,
                   repeat: Infinity,
                   delay: i * 0.1,
                   ease: "easeOut"
@@ -279,19 +283,19 @@ const AnimatedHero = () => {
           </div>
         </motion.div>
 
-        {/* Flight Path - Dotted Circle Line */}
+        {/* Flight Path - Smaller Dotted Circle Line */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <svg width="400" height="400" viewBox="0 0 400 400" className="absolute">
+          <svg width="300" height="300" viewBox="0 0 300 300" className="absolute">
             <defs>
-              <pattern id="dottedLine" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="10" cy="10" r="2" fill="white" opacity="0.6" />
+              <pattern id="dottedLine" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+                <circle cx="7.5" cy="7.5" r="1.5" fill="white" opacity="0.6" />
               </pattern>
             </defs>
             <circle 
-              cx="200" cy="200" r="150" 
+              cx="150" cy="150" r="100" 
               fill="none" 
               stroke="url(#dottedLine)" 
-              strokeWidth="3"
+              strokeWidth="2"
               opacity="0.4"
             />
           </svg>
