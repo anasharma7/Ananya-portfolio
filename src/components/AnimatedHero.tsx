@@ -185,12 +185,12 @@ const AnimatedHero = () => {
       {/* Center Content - Floating Elements with Fade Transitions */}
       <div className="relative z-10 flex items-center justify-center h-full">
         
-        {/* Animated Flying Rocket with Smoke */}
+        {/* Animated Flying Airplane */}
         <motion.div
           className="absolute"
           initial={{ x: -200, y: 0 }}
           animate={{ 
-            x: [200, 0, -200],
+            x: [-200, 0, 200],
             y: 0
           }}
           transition={{
@@ -199,53 +199,69 @@ const AnimatedHero = () => {
             ease: "easeInOut"
           }}
         >
-          {/* Airplane Body - More realistic design */}
-          <svg width="80" height="40" viewBox="0 0 80 40" className="relative z-20">
-            {/* Main Aircraft Body */}
-            <ellipse cx="40" cy="20" rx="25" ry="8" fill="url(#airplaneGradient)" stroke="#fff" strokeWidth="1.5" />
+          {/* Realistic Airplane Design */}
+          <svg width="120" height="60" viewBox="0 0 120 60" className="relative z-20">
+            {/* Main Aircraft Body - Long, sleek fuselage */}
+            <ellipse cx="60" cy="30" rx="40" ry="10" fill="url(#airplaneGradient)" stroke="#fff" strokeWidth="2" />
             
-            {/* Aircraft Nose */}
-            <ellipse cx="60" cy="20" rx="12" ry="6" fill="#ff6b6b" stroke="#fff" strokeWidth="1.5" />
+            {/* Aircraft Nose - Pointed and aerodynamic */}
+            <path d="M90 30 L100 25 L100 35 Z" fill="#ff6b6b" stroke="#fff" strokeWidth="2" />
             
-            {/* Cockpit Windows */}
-            <ellipse cx="55" cy="18" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
-            <ellipse cx="55" cy="22" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
+            {/* Cockpit Windows - Multiple realistic windows */}
+            <ellipse cx="75" cy="25" r="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            <ellipse cx="75" cy="35" r="4" fill="#87ceeb" stroke="#fff" strokeWidth="1" />
+            <ellipse cx="70" cy="25" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
+            <ellipse cx="70" cy="35" r="3" fill="#87ceeb" stroke="#fff" strokeWidth="0.5" />
             
-            {/* Main Wings */}
-            <path d="M25 15 L15 8 L20 12 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
-            <path d="M25 25 L15 32 L20 28 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            {/* Main Wings - Large, realistic airplane wings */}
+            <path d="M40 20 L20 5 L30 15 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
+            <path d="M40 40 L20 55 L30 45 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
             
-            {/* Tail Wings */}
-            <path d="M20 12 L18 5 L22 8 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
-            <path d="M20 28 L18 35 L22 32 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1" />
+            {/* Wing Details - Wing flaps and ailerons */}
+            <path d="M30 15 L25 8 L35 12 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
+            <path d="M30 45 L25 52 L35 48 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
             
-            {/* Engine Thrusters */}
-            <motion.circle
-              cx="22" cy="18" r="2.5"
+            {/* Tail Section - Vertical and horizontal stabilizers */}
+            <path d="M25 15 L20 5 L30 10 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
+            <path d="M25 45 L20 55 L30 50 Z" fill="#4ecdc4" stroke="#fff" strokeWidth="1.5" />
+            <path d="M20 10 L15 8 L25 12 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
+            <path d="M20 50 L15 52 L25 48 Z" fill="#45b7d1" stroke="#fff" strokeWidth="1" />
+            
+            {/* Engine Nacelles - Realistic jet engines */}
+            <ellipse cx="35" cy="20" rx="6" ry="3" fill="#333" stroke="#fff" strokeWidth="1" />
+            <ellipse cx="35" cy="40" rx="6" ry="3" fill="#333" stroke="#fff" strokeWidth="1" />
+            
+            {/* Engine Thrusters - Glowing engine exhaust */}
+            <motion.ellipse
+              cx="32" cy="20" rx="4" ry="2"
               fill="#ffa500"
               animate={{
-                r: [2.5, 3.5, 2.5],
+                rx: [4, 6, 4],
                 opacity: [0.8, 1, 0.8]
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.4,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
             />
-            <motion.circle
-              cx="22" cy="22" r="2.5"
+            <motion.ellipse
+              cx="32" cy="40" rx="4" ry="2"
               fill="#ffa500"
               animate={{
-                r: [2.5, 3.5, 2.5],
+                rx: [4, 6, 4],
                 opacity: [0.8, 1, 0.8]
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.4,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
             />
+            
+            {/* Landing Gear - Retracted position */}
+            <ellipse cx="50" cy="20" rx="2" ry="1" fill="#666" stroke="#fff" strokeWidth="0.5" />
+            <ellipse cx="50" cy="40" rx="2" ry="1" fill="#666" stroke="#fff" strokeWidth="0.5" />
             
             {/* Gradient Definition */}
             <defs>
@@ -257,25 +273,25 @@ const AnimatedHero = () => {
             </defs>
           </svg>
           
-          {/* Smoke Trail */}
+          {/* Smoke Trail - More realistic contrails */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
-            {Array.from({ length: 4 }, (_, i) => (
+            {Array.from({ length: 6 }, (_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-2 h-2 bg-gray-400 rounded-full opacity-60"
+                className="absolute w-3 h-3 bg-gray-300 rounded-full opacity-50"
                 style={{
-                  left: `${-10 - i * 6}px`,
-                  top: `${-3 + (i % 2) * 6}px`
+                  left: `${-15 - i * 8}px`,
+                  top: `${-5 + (i % 2) * 10}px`
                 }}
                 animate={{
-                  opacity: [0.6, 0.3, 0],
-                  scale: [1, 1.3, 1.8],
-                  x: [-10 - i * 6, -16 - i * 6, -22 - i * 6]
+                  opacity: [0.5, 0.2, 0],
+                  scale: [1, 1.5, 2.5],
+                  x: [-15 - i * 8, -25 - i * 8, -40 - i * 8]
                 }}
                 transition={{
-                  duration: 1.5,
+                  duration: 2,
                   repeat: Infinity,
-                  delay: i * 0.1,
+                  delay: i * 0.15,
                   ease: "easeOut"
                 }}
               />
@@ -283,20 +299,20 @@ const AnimatedHero = () => {
           </div>
         </motion.div>
 
-        {/* Flight Path - Smaller Dotted Circle Line */}
+        {/* Flight Path - Smaller, more subtle dotted circle */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <svg width="300" height="300" viewBox="0 0 300 300" className="absolute">
+          <svg width="250" height="250" viewBox="0 0 250 250" className="absolute">
             <defs>
-              <pattern id="dottedLine" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-                <circle cx="7.5" cy="7.5" r="1.5" fill="white" opacity="0.6" />
+              <pattern id="dottedLine" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+                <circle cx="6" cy="6" r="1" fill="white" opacity="0.4" />
               </pattern>
             </defs>
             <circle 
-              cx="150" cy="150" r="100" 
+              cx="125" cy="125" r="80" 
               fill="none" 
               stroke="url(#dottedLine)" 
-              strokeWidth="2"
-              opacity="0.4"
+              strokeWidth="1.5"
+              opacity="0.3"
             />
           </svg>
         </div>
