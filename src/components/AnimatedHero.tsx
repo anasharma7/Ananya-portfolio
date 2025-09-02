@@ -182,6 +182,152 @@ const AnimatedHero = () => {
         }}
       />
 
+      {/* Center Content - Floating Elements with Fade Transitions */}
+      <div className="relative z-10 flex items-center justify-center h-full">
+        
+        {/* Main Floating Icon */}
+        <motion.div
+          className="text-8xl mb-8"
+          initial={{ opacity: 0, scale: 0.5, y: 50 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+        >
+          🚀
+        </motion.div>
+
+        {/* Floating Text Elements */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {[
+            { text: "Hello World", delay: 0.5, color: "from-cyan-400 to-blue-500" },
+            { text: "Code & Create", delay: 1.5, color: "from-pink-400 to-purple-500" },
+            { text: "Build & Deploy", delay: 2.5, color: "from-yellow-400 to-orange-500" },
+            { text: "Innovate & Inspire", delay: 3.5, color: "from-green-400 to-teal-500" }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="absolute text-2xl md:text-3xl font-bold text-white"
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              animate={{ 
+                opacity: [0, 1, 1, 0],
+                y: [30, 0, 0, -30],
+                scale: [0.8, 1, 1, 0.8]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                delay: item.delay,
+                ease: "easeInOut"
+              }}
+            >
+              <span className={`bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
+                {item.text}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Floating Tech Icons */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {[
+            { icon: "⚛️", x: -100, y: -80, delay: 0.8 },
+            { icon: "📱", x: 100, y: -80, delay: 1.2 },
+            { icon: "☁️", x: -100, y: 80, delay: 1.6 },
+            { icon: "🔧", x: 100, y: 80, delay: 2.0 }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="absolute text-4xl"
+              style={{ left: `${50 + item.x}%`, top: `${50 + item.y}%` }}
+              initial={{ opacity: 0, scale: 0, rotate: 0 }}
+              animate={{ 
+                opacity: [0, 1, 1, 0],
+                scale: [0, 1, 1, 0],
+                rotate: [0, 360]
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                delay: item.delay,
+                ease: "easeInOut"
+              }}
+            >
+              {item.icon}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Central Glowing Orb */}
+        <motion.div
+          className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ 
+            opacity: [0.3, 0.8, 0.3],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            filter: 'blur(20px)',
+            boxShadow: '0 0 60px rgba(147, 51, 234, 0.6)'
+          }}
+        />
+
+        {/* Floating Code Snippets */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {[
+            { code: "npm start", x: -120, y: -40, delay: 1.0 },
+            { code: "git push", x: 120, y: -40, delay: 1.4 },
+            { code: "docker build", x: -120, y: 40, delay: 1.8 },
+            { code: "deploy", x: 120, y: 40, delay: 2.2 }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="absolute text-sm font-mono text-gray-300 bg-black/20 px-3 py-1 rounded-lg backdrop-blur-sm"
+              style={{ left: `${50 + item.x}%`, top: `${50 + item.y}%` }}
+              initial={{ opacity: 0, x: item.x > 0 ? 20 : -20 }}
+              animate={{ 
+                opacity: [0, 1, 1, 0],
+                x: [item.x > 0 ? 20 : -20, 0, 0, item.x > 0 ? 20 : -20]
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                delay: item.delay,
+                ease: "easeInOut"
+              }}
+            >
+              {item.code}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Pulsing Rings */}
+        {[1, 2, 3].map((ring) => (
+          <motion.div
+            key={ring}
+            className="absolute border-2 border-white/20 rounded-full"
+            style={{
+              width: `${200 + ring * 60}px`,
+              height: `${200 + ring * 60}px`
+            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
+              opacity: [0, 0.3, 0],
+              scale: [0.8, 1, 1.2]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: ring * 0.5,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </div>
+
       {/* Morphing Border */}
       <motion.div
         className="absolute inset-4 border-2 border-transparent"
