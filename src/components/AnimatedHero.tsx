@@ -57,10 +57,81 @@ const AnimatedHero = () => {
       
       {/* Abstract Background with Morphing Shapes */}
       <div className="absolute inset-0">
+        {/* Global Travel Background - World Landmarks */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500">
+          {/* Simple White Clouds */}
+          <div className="absolute top-10 left-20 w-16 h-8 bg-white rounded-full opacity-80"></div>
+          <div className="absolute top-15 left-60 w-12 h-6 bg-white rounded-full opacity-70"></div>
+          <div className="absolute top-8 right-32 w-14 h-7 bg-white rounded-full opacity-75"></div>
+          <div className="absolute top-20 right-16 w-10 h-5 bg-white rounded-full opacity-65"></div>
+          
+          {/* Sparkles/Stars */}
+          {Array.from({ length: 12 }, (_, i) => (
+            <div
+              key={`sparkle-${i}`}
+              className="absolute text-white text-xs font-bold"
+              style={{
+                left: `${15 + (i % 4) * 20}%`,
+                top: `${10 + Math.floor(i / 4) * 15}%`,
+                transform: 'rotate(45deg)'
+              }}
+            >
+              ✕
+            </div>
+          ))}
+          
+          {/* World Landmarks */}
+          <div className="absolute bottom-8 left-0 right-0 flex justify-around items-end px-8">
+            {/* Mount Fuji */}
+            <div className="relative">
+              <div className="w-8 h-12 bg-gray-400 rounded-t-full"></div>
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-white rounded-t-full"></div>
+            </div>
+            
+            {/* Pagoda */}
+            <div className="relative">
+              <div className="w-6 h-16 bg-red-600 rounded-t-lg"></div>
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-5 h-3 bg-green-600 rounded-t-lg"></div>
+              <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-4 h-3 bg-green-600 rounded-t-lg"></div>
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-green-600 rounded-t-lg"></div>
+            </div>
+            
+            {/* Arc de Triomphe */}
+            <div className="relative">
+              <div className="w-8 h-12 bg-gray-500 rounded-t-lg"></div>
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-gray-400 rounded-t-lg"></div>
+            </div>
+            
+            {/* Stepped Pyramid */}
+            <div className="relative">
+              <div className="w-10 h-8 bg-yellow-700 rounded-t-lg"></div>
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-yellow-600 rounded-t-lg"></div>
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-6 h-4 bg-yellow-500 rounded-t-lg"></div>
+            </div>
+            
+            {/* Big Ben */}
+            <div className="relative">
+              <div className="w-6 h-16 bg-yellow-800 rounded-t-lg"></div>
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full"></div>
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full"></div>
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-3 bg-black rounded-t-lg"></div>
+            </div>
+            
+            {/* Eiffel Tower */}
+            <div className="relative">
+              <div className="w-6 h-20 bg-gray-600 rounded-t-lg"></div>
+              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-gray-500"></div>
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-6 h-2 bg-gray-500"></div>
+              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-gray-500"></div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Original morphing shapes with reduced opacity */}
         {morphingShapes.map((shape) => (
           <motion.div
             key={shape.id}
-            className="absolute"
+            className="absolute opacity-30"
             style={{
               left: `${shape.x}%`,
               top: `${shape.y}%`,
@@ -328,19 +399,23 @@ const AnimatedHero = () => {
               <rect x="100" y="55" width="7" height="7" rx="3.5" fill="#ffffff" opacity="0.8" />
             </g>
             
-            {/* Main Wings - 3D with proper perspective and tilt */}
+            {/* Main Wings - Proper Airplane Wings with Realistic Design */}
             <g className="wings" filter="url(#shadow)">
-              {/* Top wing - swept back with 3D effect */}
-              <path d="M40 35 L20 25 L30 32 L50 42 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M30 32 L25 28 L35 35 L45 40 Z" fill="#ffffff" opacity="0.9" />
+              {/* Top wing - Proper swept-back aircraft wing */}
+              <path d="M35 35 L15 28 L25 35 L45 42 L55 40 L45 35 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
+              <path d="M25 35 L20 30 L30 36 L40 40 L45 38 L35 35 Z" fill="#ffffff" opacity="0.9" />
               
-              {/* Bottom wing - larger, more prominent */}
-              <path d="M45 75 L15 85 L25 78 L55 68 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M25 78 L20 82 L30 75 L50 70 Z" fill="#ffffff" opacity="0.9" />
+              {/* Bottom wing - Larger, more prominent aircraft wing */}
+              <path d="M40 75 L10 82 L20 78 L50 68 L60 70 L50 75 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
+              <path d="M20 78 L15 80 L25 76 L45 70 L50 72 L40 75 Z" fill="#ffffff" opacity="0.9" />
               
-              {/* Wing tips with red accent */}
-              <path d="M20 25 L15 23 L25 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
-              <path d="M15 85 L10 87 L20 80 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
+              {/* Wing tips with red accent - proper aircraft wingtip design */}
+              <path d="M15 28 L10 26 L20 32 L25 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
+              <path d="M10 82 L5 84 L15 80 L20 78 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
+              
+              {/* Wing flaps and ailerons for realism */}
+              <path d="M25 35 L20 33 L30 37 L35 35 Z" fill="#e9ecef" stroke="#495057" strokeWidth="1" opacity="0.7" />
+              <path d="M20 78 L15 80 L25 76 L30 78 Z" fill="#e9ecef" stroke="#495057" strokeWidth="1" opacity="0.7" />
             </g>
             
             {/* Engine Nacelles - 3D cylindrical with proper perspective */}
