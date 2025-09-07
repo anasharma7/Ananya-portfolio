@@ -22,14 +22,41 @@ import { motion } from 'framer-motion';
  */
 const AnimatedHero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
+    // Check for dark mode
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark') || 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(isDark);
+    };
+
+    // Initial check
+    checkDarkMode();
+
+    // Listen for dark mode changes
+    const darkModeObserver = new MutationObserver(checkDarkMode);
+    darkModeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', checkDarkMode);
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      darkModeObserver.disconnect();
+      mediaQuery.removeEventListener('change', checkDarkMode);
+    };
   }, []);
 
   // Create morphing shapes
@@ -57,19 +84,39 @@ const AnimatedHero = () => {
       
       {/* Abstract Background with Morphing Shapes */}
       <div className="absolute inset-0">
-        {/* Global Travel Background - World Landmarks */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500">
-          {/* Simple White Clouds */}
-          <div className="absolute top-10 left-20 w-16 h-8 bg-white rounded-full opacity-80"></div>
-          <div className="absolute top-15 left-60 w-12 h-6 bg-white rounded-full opacity-70"></div>
-          <div className="absolute top-8 right-32 w-14 h-7 bg-white rounded-full opacity-75"></div>
-          <div className="absolute top-20 right-16 w-10 h-5 bg-white rounded-full opacity-65"></div>
+        {/* Global Travel Background - World Landmarks with Dark Mode Support */}
+        <div className={`absolute inset-0 transition-all duration-1000 ${
+          isDarkMode 
+            ? 'bg-gradient-to-b from-slate-800 via-slate-900 to-black' 
+            : 'bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500'
+        }`}>
+          {/* Enhanced Clouds with Dark Mode Support */}
+          <div className={`absolute top-8 left-16 w-20 h-10 rounded-full opacity-80 transition-all duration-1000 ${
+            isDarkMode ? 'bg-gray-600' : 'bg-white'
+          }`}></div>
+          <div className={`absolute top-12 left-50 w-16 h-8 rounded-full opacity-70 transition-all duration-1000 ${
+            isDarkMode ? 'bg-gray-500' : 'bg-white'
+          }`}></div>
+          <div className={`absolute top-6 right-28 w-18 h-9 rounded-full opacity-75 transition-all duration-1000 ${
+            isDarkMode ? 'bg-gray-600' : 'bg-white'
+          }`}></div>
+          <div className={`absolute top-15 right-12 w-14 h-7 rounded-full opacity-65 transition-all duration-1000 ${
+            isDarkMode ? 'bg-gray-500' : 'bg-white'
+          }`}></div>
+          <div className={`absolute top-20 left-40 w-12 h-6 rounded-full opacity-60 transition-all duration-1000 ${
+            isDarkMode ? 'bg-gray-400' : 'bg-white'
+          }`}></div>
+          <div className={`absolute top-4 left-70 w-15 h-8 rounded-full opacity-70 transition-all duration-1000 ${
+            isDarkMode ? 'bg-gray-500' : 'bg-white'
+          }`}></div>
           
-          {/* Sparkles/Stars */}
+          {/* Sparkles/Stars with Dark Mode Support */}
           {Array.from({ length: 12 }, (_, i) => (
             <div
               key={`sparkle-${i}`}
-              className="absolute text-white text-xs font-bold"
+              className={`absolute text-xs font-bold transition-all duration-1000 ${
+                isDarkMode ? 'text-yellow-300' : 'text-white'
+              }`}
               style={{
                 left: `${15 + (i % 4) * 20}%`,
                 top: `${10 + Math.floor(i / 4) * 15}%`,
@@ -116,7 +163,7 @@ const AnimatedHero = () => {
               <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full"></div>
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-3 bg-black rounded-t-lg"></div>
             </div>
-            
+            ``
             {/* Eiffel Tower */}
             <div className="relative">
               <div className="w-6 h-20 bg-gray-600 rounded-t-lg"></div>
@@ -316,246 +363,88 @@ const AnimatedHero = () => {
       {/* Center Content - Floating Elements with Fade Transitions */}
       <div className="relative z-10 flex items-center justify-center h-full">
         
-        {/* Enhanced Animated Flying Airplane */}
+        {/* Simple Realistic Airplane - Matching Reference Image */}
         <motion.div
           className="absolute"
-          initial={{ x: -220, y: 0, rotateZ: -12, rotateX: 5 }}
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)'
+          }}
           animate={{ 
-            x: [-220, 0, 220],
-            y: [-15, 0, -15],
-            rotateZ: [-12, -3, -12],
-            rotateX: [5, 2, 5]
+            rotate: [0, 360]
           }}
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
         >
-          {/* Enhanced 3D Realistic Airplane */}
-          <svg width="200" height="140" viewBox="0 0 200 140" className="relative z-20">
-            <defs>
-              {/* Enhanced 3D gradients and shadows */}
-              <linearGradient id="fuselageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="25%" stopColor="#f8f9fa" />
-                <stop offset="50%" stopColor="#e9ecef" />
-                <stop offset="75%" stopColor="#dee2e6" />
-                <stop offset="100%" stopColor="#ced4da" />
-              </linearGradient>
-              
-              <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="30%" stopColor="#f1f3f4" />
-                <stop offset="70%" stopColor="#e8eaed" />
-                <stop offset="100%" stopColor="#dee2e6" />
-              </linearGradient>
-              
-              <linearGradient id="engineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#adb5bd" />
-                <stop offset="30%" stopColor="#6c757d" />
-                <stop offset="70%" stopColor="#495057" />
-                <stop offset="100%" stopColor="#343a40" />
-              </linearGradient>
-              
-              <linearGradient id="noseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0066cc" />
-                <stop offset="50%" stopColor="#0052a3" />
-                <stop offset="100%" stopColor="#003d7a" />
-              </linearGradient>
-              
-              <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-                <feDropShadow dx="4" dy="4" stdDeviation="5" floodColor="#000000" floodOpacity="0.5"/>
-              </filter>
-              
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
+          {/* Simple Airplane SVG - Clean and Realistic */}
+          <svg width="120" height="60" viewBox="0 0 120 60" className="relative z-20">
+            {/* Main Fuselage - Simple white body */}
+            <ellipse cx="60" cy="30" rx="35" ry="8" fill="white" stroke="#333" strokeWidth="1" />
             
-            {/* Enhanced Main Fuselage - More realistic proportions */}
-            <g className="fuselage" filter="url(#shadow)">
-              {/* Main body - more streamlined */}
-              <ellipse cx="100" cy="70" rx="45" ry="12" fill="url(#fuselageGradient)" stroke="#495057" strokeWidth="2" />
-              
-              {/* Top surface highlight */}
-              <ellipse cx="100" cy="65" rx="42" ry="8" fill="#ffffff" opacity="0.9" />
-              
-              {/* Bottom surface shadow */}
-              <ellipse cx="100" cy="75" rx="42" ry="8" fill="#6c757d" opacity="0.4" />
-              
-              {/* Fuselage side highlights */}
-              <ellipse cx="85" cy="70" rx="8" ry="10" fill="#ffffff" opacity="0.6" />
-              <ellipse cx="115" cy="70" rx="8" ry="10" fill="#ffffff" opacity="0.6" />
-            </g>
+            {/* Nose - Blue pointed nose */}
+            <ellipse cx="95" cy="30" rx="12" ry="6" fill="#0066cc" stroke="#333" strokeWidth="1" />
             
-            {/* Enhanced Nose Cone - More aerodynamic */}
-            <g className="nose" filter="url(#shadow)">
-              <ellipse cx="145" cy="70" rx="20" ry="8" fill="url(#noseGradient)" stroke="#495057" strokeWidth="2" />
-              <ellipse cx="145" cy="68" rx="18" ry="6" fill="#ffffff" opacity="0.7" />
-              <ellipse cx="150" cy="70" rx="8" ry="4" fill="#ffffff" opacity="0.5" />
-            </g>
+            {/* Windows - Simple black rectangles */}
+            <rect x="25" y="28" width="4" height="4" fill="black" />
+            <rect x="35" y="28" width="4" height="4" fill="black" />
+            <rect x="45" y="28" width="4" height="4" fill="black" />
+            <rect x="55" y="28" width="4" height="4" fill="black" />
+            <rect x="65" y="28" width="4" height="4" fill="black" />
+            <rect x="75" y="28" width="4" height="4" fill="black" />
             
-            {/* Enhanced Windows with better positioning */}
-            <g className="windows">
-              {/* Passenger windows - more realistic spacing */}
-              <circle cx="60" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
-              <circle cx="60" cy="68" r="3" fill="#ffffff" opacity="0.8" />
-              
-              <circle cx="75" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
-              <circle cx="75" cy="68" r="3" fill="#ffffff" opacity="0.8" />
-              
-              <circle cx="90" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
-              <circle cx="90" cy="68" r="3" fill="#ffffff" opacity="0.8" />
-              
-              <circle cx="105" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
-              <circle cx="105" cy="68" r="3" fill="#ffffff" opacity="0.8" />
-              
-              <circle cx="120" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
-              <circle cx="120" cy="68" r="3" fill="#ffffff" opacity="0.8" />
-              
-              {/* Enhanced cockpit windows */}
-              <ellipse cx="130" cy="65" rx="8" ry="6" fill="#87ceeb" stroke="#495057" strokeWidth="2" filter="url(#shadow)" />
-              <ellipse cx="130" cy="63" rx="7" ry="5" fill="#ffffff" opacity="0.9" />
-              <ellipse cx="130" cy="75" rx="8" ry="6" fill="#87ceeb" stroke="#495057" strokeWidth="2" filter="url(#shadow)" />
-              <ellipse cx="130" cy="73" rx="7" ry="5" fill="#ffffff" opacity="0.9" />
-            </g>
+            {/* Cockpit Windows - Larger */}
+            <rect x="85" y="26" width="6" height="8" fill="black" />
             
-            {/* Enhanced Wings - More realistic aircraft design */}
-            <g className="wings" filter="url(#shadow)">
-              {/* Main wing - more aerodynamic shape */}
-              <path d="M55 55 L25 45 L35 55 L75 65 L85 63 L75 55 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M35 55 L30 50 L40 58 L70 65 L75 63 L65 55 Z" fill="#ffffff" opacity="0.9" />
-              
-              {/* Wing root fairing */}
-              <ellipse cx="55" cy="60" rx="8" ry="3" fill="#e9ecef" stroke="#495057" strokeWidth="1" />
-              
-              {/* Wing flaps */}
-              <path d="M35 55 L30 53 L40 57 L45 55 Z" fill="#dee2e6" stroke="#495057" strokeWidth="1" opacity="0.8" />
-              <path d="M45 55 L40 53 L50 57 L55 55 Z" fill="#dee2e6" stroke="#495057" strokeWidth="1" opacity="0.8" />
-              
-              {/* Wing tips with red accent */}
-              <path d="M25 45 L20 43 L30 50 L35 48 Z" fill="#dc3545" stroke="#495057" strokeWidth="1.5" />
-              
-              {/* Winglet */}
-              <path d="M20 43 L18 40 L22 45 L25 43 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
-            </g>
+            {/* Main Wings - Simple white wings */}
+            <ellipse cx="50" cy="25" rx="25" ry="6" fill="white" stroke="#333" strokeWidth="1" />
+            <ellipse cx="50" cy="35" rx="25" ry="6" fill="white" stroke="#333" strokeWidth="1" />
             
-            {/* Enhanced Engines - More realistic positioning */}
-            <g className="engines" filter="url(#shadow)">
-              {/* Left engine */}
-              <ellipse cx="40" cy="85" rx="12" ry="6" fill="url(#engineGradient)" stroke="#212529" strokeWidth="2" />
-              <ellipse cx="40" cy="83" rx="10" ry="4" fill="#adb5bd" opacity="0.9" />
-              
-              {/* Right engine */}
-              <ellipse cx="25" cy="85" rx="12" ry="6" fill="url(#engineGradient)" stroke="#212529" strokeWidth="2" />
-              <ellipse cx="25" cy="83" rx="10" ry="4" fill="#adb5bd" opacity="0.9" />
-              
-              {/* Engine fan blades */}
-              <circle cx="40" cy="85" r="8" fill="none" stroke="#6c757d" strokeWidth="1" opacity="0.6" />
-              <circle cx="25" cy="85" r="8" fill="none" stroke="#6c757d" strokeWidth="1" opacity="0.6" />
-              
-              {/* Enhanced engine exhaust with glow */}
-              <motion.ellipse
-                cx="38" cy="85" rx="8" ry="4"
-                fill="#ff6b35"
-                filter="url(#glow)"
-                animate={{
-                  rx: [8, 12, 8],
-                  opacity: [0.8, 1, 0.8]
-                }}
-                transition={{
-                  duration: 0.8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.ellipse
-                cx="23" cy="85" rx="8" ry="4"
-                fill="#ff6b35"
-                filter="url(#glow)"
-                animate={{
-                  rx: [8, 12, 8],
-                  opacity: [0.8, 1, 0.8]
-                }}
-                transition={{
-                  duration: 0.8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </g>
+            {/* Wing Tips - Red accents */}
+            <ellipse cx="25" cy="25" rx="4" ry="2" fill="#dc3545" />
+            <ellipse cx="25" cy="35" rx="4" ry="2" fill="#dc3545" />
+            <ellipse cx="75" cy="25" rx="4" ry="2" fill="#dc3545" />
+            <ellipse cx="75" cy="35" rx="4" ry="2" fill="#dc3545" />
             
-            {/* Enhanced Tail Section */}
-            <g className="tail" filter="url(#shadow)">
-              {/* Vertical stabilizer - more realistic */}
-              <path d="M30 50 L25 25 L35 35 L40 50 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M35 35 L30 30 L38 40 L40 45 Z" fill="#ffffff" opacity="0.9" />
-              
-              {/* Horizontal stabilizers */}
-              <path d="M25 25 L20 22 L30 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1.5" />
-              <path d="M25 35 L20 38 L30 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1.5" />
-              
-              {/* Tail cone */}
-              <ellipse cx="20" cy="70" rx="8" ry="4" fill="url(#fuselageGradient)" stroke="#495057" strokeWidth="1" />
-            </g>
+            {/* Engines - Simple gray cylinders */}
+            <ellipse cx="30" cy="40" rx="6" ry="3" fill="#666" stroke="#333" strokeWidth="1" />
+            <ellipse cx="20" cy="40" rx="6" ry="3" fill="#666" stroke="#333" strokeWidth="1" />
             
-            {/* Enhanced Landing Gear - More realistic */}
-            <g className="landing-gear" filter="url(#shadow)">
-              <ellipse cx="70" cy="30" rx="6" ry="3" fill="#6c757d" stroke="#495057" strokeWidth="1" />
-              <ellipse cx="70" cy="28" rx="4" ry="2" fill="#adb5bd" opacity="0.9" />
-              <ellipse cx="70" cy="95" rx="6" ry="3" fill="#6c757d" stroke="#495057" strokeWidth="1" />
-              <ellipse cx="70" cy="93" rx="4" ry="2" fill="#adb5bd" opacity="0.9" />
-            </g>
+            {/* Tail - Simple white tail with red accent */}
+            <ellipse cx="15" cy="20" rx="8" ry="4" fill="white" stroke="#333" strokeWidth="1" />
+            <ellipse cx="15" cy="20" rx="3" ry="2" fill="#dc3545" />
           </svg>
           
-          {/* Enhanced Smoke Trail - More realistic contrails */}
+          {/* Simple Smoke Trail */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
-            {Array.from({ length: 12 }, (_, i) => (
+            {Array.from({ length: 6 }, (_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-5 h-5 bg-gray-200 rounded-full opacity-70"
+                className={`absolute w-3 h-3 rounded-full opacity-60 transition-all duration-1000 ${
+                  isDarkMode ? 'bg-gray-400' : 'bg-gray-200'
+                }`}
                 style={{
-                  left: `${-30 - i * 15}px`,
-                  top: `${-12 + (i % 3) * 24}px`
+                  left: `${-20 - i * 8}px`,
+                  top: `${-5 + (i % 2) * 10}px`
                 }}
                 animate={{
-                  opacity: [0.7, 0.4, 0.1, 0],
-                  scale: [1, 1.5, 2.5, 4],
-                  x: [-30 - i * 15, -45 - i * 15, -70 - i * 15, -100 - i * 15]
+                  opacity: [0.6, 0.3, 0],
+                  scale: [1, 1.5, 2],
+                  x: [-20 - i * 8, -35 - i * 8, -50 - i * 8]
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 3,
                   repeat: Infinity,
-                  delay: i * 0.08,
+                  delay: i * 0.1,
                   ease: "easeOut"
                 }}
               />
             ))}
           </div>
         </motion.div>
-
-        {/* Flight Path - Smaller, more subtle dotted circle */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <svg width="250" height="250" viewBox="0 0 250 250" className="absolute">
-            <defs>
-              <pattern id="dottedLine" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
-                <circle cx="6" cy="6" r="1" fill="white" opacity="0.4" />
-              </pattern>
-            </defs>
-            <circle 
-              cx="125" cy="125" r="80" 
-              fill="none" 
-              stroke="url(#dottedLine)" 
-              strokeWidth="1.5"
-              opacity="0.3"
-            />
-          </svg>
-        </div>
 
         {/* Floating Tech Icons */}
         <div className="absolute inset-0 flex items-center justify-center">
