@@ -316,186 +316,222 @@ const AnimatedHero = () => {
       {/* Center Content - Floating Elements with Fade Transitions */}
       <div className="relative z-10 flex items-center justify-center h-full">
         
-        {/* Animated Flying Airplane */}
+        {/* Enhanced Animated Flying Airplane */}
         <motion.div
           className="absolute"
-          initial={{ x: -200, y: 0, rotateZ: -15 }}
+          initial={{ x: -220, y: 0, rotateZ: -12, rotateX: 5 }}
           animate={{ 
-            x: [-200, 0, 200],
-            y: [-20, 0, -20],
-            rotateZ: [-15, -5, -15]
+            x: [-220, 0, 220],
+            y: [-15, 0, -15],
+            rotateZ: [-12, -3, -12],
+            rotateX: [5, 2, 5]
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         >
-          {/* 3D Realistic Airplane with Tilt */}
-          <svg width="180" height="120" viewBox="0 0 180 120" className="relative z-20">
+          {/* Enhanced 3D Realistic Airplane */}
+          <svg width="200" height="140" viewBox="0 0 200 140" className="relative z-20">
             <defs>
-              {/* 3D gradients and shadows */}
+              {/* Enhanced 3D gradients and shadows */}
               <linearGradient id="fuselageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="30%" stopColor="#f8f9fa" />
-                <stop offset="70%" stopColor="#e9ecef" />
-                <stop offset="100%" stopColor="#dee2e6" />
+                <stop offset="25%" stopColor="#f8f9fa" />
+                <stop offset="50%" stopColor="#e9ecef" />
+                <stop offset="75%" stopColor="#dee2e6" />
+                <stop offset="100%" stopColor="#ced4da" />
               </linearGradient>
               
               <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="50%" stopColor="#f1f3f4" />
-                <stop offset="100%" stopColor="#e8eaed" />
+                <stop offset="30%" stopColor="#f1f3f4" />
+                <stop offset="70%" stopColor="#e8eaed" />
+                <stop offset="100%" stopColor="#dee2e6" />
               </linearGradient>
               
               <linearGradient id="engineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#6c757d" />
-                <stop offset="50%" stopColor="#495057" />
+                <stop offset="0%" stopColor="#adb5bd" />
+                <stop offset="30%" stopColor="#6c757d" />
+                <stop offset="70%" stopColor="#495057" />
                 <stop offset="100%" stopColor="#343a40" />
               </linearGradient>
               
-              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="3" dy="3" stdDeviation="4" floodColor="#000000" floodOpacity="0.4"/>
+              <linearGradient id="noseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0066cc" />
+                <stop offset="50%" stopColor="#0052a3" />
+                <stop offset="100%" stopColor="#003d7a" />
+              </linearGradient>
+              
+              <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="4" dy="4" stdDeviation="5" floodColor="#000000" floodOpacity="0.5"/>
+              </filter>
+              
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
               </filter>
             </defs>
             
-            {/* Main Fuselage - 3D rectangular with perspective */}
+            {/* Enhanced Main Fuselage - More realistic proportions */}
             <g className="fuselage" filter="url(#shadow)">
-              {/* Main body - rectangular with rounded corners */}
-              <rect x="30" y="45" width="80" height="20" rx="10" ry="10" fill="url(#fuselageGradient)" stroke="#495057" strokeWidth="2" />
+              {/* Main body - more streamlined */}
+              <ellipse cx="100" cy="70" rx="45" ry="12" fill="url(#fuselageGradient)" stroke="#495057" strokeWidth="2" />
               
               {/* Top surface highlight */}
-              <rect x="32" y="43" width="76" height="16" rx="8" ry="8" fill="#ffffff" opacity="0.8" />
+              <ellipse cx="100" cy="65" rx="42" ry="8" fill="#ffffff" opacity="0.9" />
               
               {/* Bottom surface shadow */}
-              <rect x="32" y="59" width="76" height="16" rx="8" ry="8" fill="#6c757d" opacity="0.3" />
+              <ellipse cx="100" cy="75" rx="42" ry="8" fill="#6c757d" opacity="0.4" />
+              
+              {/* Fuselage side highlights */}
+              <ellipse cx="85" cy="70" rx="8" ry="10" fill="#ffffff" opacity="0.6" />
+              <ellipse cx="115" cy="70" rx="8" ry="10" fill="#ffffff" opacity="0.6" />
             </g>
             
-            {/* 3D Nose Cone - Pointed with perspective */}
+            {/* Enhanced Nose Cone - More aerodynamic */}
             <g className="nose" filter="url(#shadow)">
-              <path d="M110 45 L130 50 L110 65 Z" fill="#0066cc" stroke="#495057" strokeWidth="2" />
-              <path d="M112 47 L128 50 L112 63 Z" fill="#ffffff" opacity="0.6" />
+              <ellipse cx="145" cy="70" rx="20" ry="8" fill="url(#noseGradient)" stroke="#495057" strokeWidth="2" />
+              <ellipse cx="145" cy="68" rx="18" ry="6" fill="#ffffff" opacity="0.7" />
+              <ellipse cx="150" cy="70" rx="8" ry="4" fill="#ffffff" opacity="0.5" />
             </g>
             
-            {/* Windows with 3D depth */}
+            {/* Enhanced Windows with better positioning */}
             <g className="windows">
-              {/* Passenger windows - rectangular with depth */}
-              <rect x="40" y="48" width="6" height="6" rx="3" fill="#87ceeb" stroke="#495057" strokeWidth="1" filter="url(#shadow)" />
-              <rect x="40" y="46" width="5" height="5" rx="2.5" fill="#ffffff" opacity="0.7" />
+              {/* Passenger windows - more realistic spacing */}
+              <circle cx="60" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
+              <circle cx="60" cy="68" r="3" fill="#ffffff" opacity="0.8" />
               
-              <rect x="55" y="48" width="6" height="6" rx="3" fill="#87ceeb" stroke="#495057" strokeWidth="1" filter="url(#shadow)" />
-              <rect x="55" y="46" width="5" height="5" rx="2.5" fill="#ffffff" opacity="0.7" />
+              <circle cx="75" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
+              <circle cx="75" cy="68" r="3" fill="#ffffff" opacity="0.8" />
               
-              <rect x="70" y="48" width="6" height="6" rx="3" fill="#87ceeb" stroke="#495057" strokeWidth="1" filter="url(#shadow)" />
-              <rect x="70" y="46" width="5" height="5" rx="2.5" fill="#ffffff" opacity="0.7" />
+              <circle cx="90" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
+              <circle cx="90" cy="68" r="3" fill="#ffffff" opacity="0.8" />
               
-              <rect x="85" y="48" width="6" height="6" rx="3" fill="#87ceeb" stroke="#495057" strokeWidth="1" filter="url(#shadow)" />
-              <rect x="85" y="46" width="5" height="5" rx="2.5" fill="#ffffff" opacity="0.7" />
+              <circle cx="105" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
+              <circle cx="105" cy="68" r="3" fill="#ffffff" opacity="0.8" />
               
-              {/* Cockpit windows - larger and more prominent */}
-              <rect x="100" y="43" width="8" height="8" rx="4" fill="#87ceeb" stroke="#495057" strokeWidth="2" filter="url(#shadow)" />
-              <rect x="100" y="41" width="7" height="7" rx="3.5" fill="#ffffff" opacity="0.8" />
-              <rect x="100" y="57" width="8" height="8" rx="4" fill="#87ceeb" stroke="#495057" strokeWidth="2" filter="url(#shadow)" />
-              <rect x="100" y="55" width="7" height="7" rx="3.5" fill="#ffffff" opacity="0.8" />
+              <circle cx="120" cy="70" r="4" fill="#87ceeb" stroke="#495057" strokeWidth="1.5" filter="url(#shadow)" />
+              <circle cx="120" cy="68" r="3" fill="#ffffff" opacity="0.8" />
+              
+              {/* Enhanced cockpit windows */}
+              <ellipse cx="130" cy="65" rx="8" ry="6" fill="#87ceeb" stroke="#495057" strokeWidth="2" filter="url(#shadow)" />
+              <ellipse cx="130" cy="63" rx="7" ry="5" fill="#ffffff" opacity="0.9" />
+              <ellipse cx="130" cy="75" rx="8" ry="6" fill="#87ceeb" stroke="#495057" strokeWidth="2" filter="url(#shadow)" />
+              <ellipse cx="130" cy="73" rx="7" ry="5" fill="#ffffff" opacity="0.9" />
             </g>
             
-            {/* Main Wings - Proper Airplane Wings with Realistic Design */}
+            {/* Enhanced Wings - More realistic aircraft design */}
             <g className="wings" filter="url(#shadow)">
-              {/* Top wing - Proper swept-back aircraft wing */}
-              <path d="M35 35 L15 28 L25 35 L45 42 L55 40 L45 35 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M25 35 L20 30 L30 36 L40 40 L45 38 L35 35 Z" fill="#ffffff" opacity="0.9" />
+              {/* Main wing - more aerodynamic shape */}
+              <path d="M55 55 L25 45 L35 55 L75 65 L85 63 L75 55 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
+              <path d="M35 55 L30 50 L40 58 L70 65 L75 63 L65 55 Z" fill="#ffffff" opacity="0.9" />
               
-              {/* Bottom wing - Larger, more prominent aircraft wing */}
-              <path d="M40 75 L10 82 L20 78 L50 68 L60 70 L50 75 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M20 78 L15 80 L25 76 L45 70 L50 72 L40 75 Z" fill="#ffffff" opacity="0.9" />
+              {/* Wing root fairing */}
+              <ellipse cx="55" cy="60" rx="8" ry="3" fill="#e9ecef" stroke="#495057" strokeWidth="1" />
               
-              {/* Wing tips with red accent - proper aircraft wingtip design */}
-              <path d="M15 28 L10 26 L20 32 L25 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
-              <path d="M10 82 L5 84 L15 80 L20 78 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
+              {/* Wing flaps */}
+              <path d="M35 55 L30 53 L40 57 L45 55 Z" fill="#dee2e6" stroke="#495057" strokeWidth="1" opacity="0.8" />
+              <path d="M45 55 L40 53 L50 57 L55 55 Z" fill="#dee2e6" stroke="#495057" strokeWidth="1" opacity="0.8" />
               
-              {/* Wing flaps and ailerons for realism */}
-              <path d="M25 35 L20 33 L30 37 L35 35 Z" fill="#e9ecef" stroke="#495057" strokeWidth="1" opacity="0.7" />
-              <path d="M20 78 L15 80 L25 76 L30 78 Z" fill="#e9ecef" stroke="#495057" strokeWidth="1" opacity="0.7" />
+              {/* Wing tips with red accent */}
+              <path d="M25 45 L20 43 L30 50 L35 48 Z" fill="#dc3545" stroke="#495057" strokeWidth="1.5" />
+              
+              {/* Winglet */}
+              <path d="M20 43 L18 40 L22 45 L25 43 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
             </g>
             
-            {/* Engine Nacelles - 3D cylindrical with proper perspective */}
+            {/* Enhanced Engines - More realistic positioning */}
             <g className="engines" filter="url(#shadow)">
               {/* Left engine */}
-              <rect x="35" y="72" width="16" height="8" rx="4" fill="url(#engineGradient)" stroke="#212529" strokeWidth="1.5" />
-              <rect x="35" y="70" width="14" height="6" rx="3" fill="#adb5bd" opacity="0.8" />
+              <ellipse cx="40" cy="85" rx="12" ry="6" fill="url(#engineGradient)" stroke="#212529" strokeWidth="2" />
+              <ellipse cx="40" cy="83" rx="10" ry="4" fill="#adb5bd" opacity="0.9" />
               
               {/* Right engine */}
-              <rect x="20" y="72" width="16" height="8" rx="4" fill="url(#engineGradient)" stroke="#212529" strokeWidth="1.5" />
-              <rect x="20" y="70" width="14" height="6" rx="3" fill="#adb5bd" opacity="0.8" />
+              <ellipse cx="25" cy="85" rx="12" ry="6" fill="url(#engineGradient)" stroke="#212529" strokeWidth="2" />
+              <ellipse cx="25" cy="83" rx="10" ry="4" fill="#adb5bd" opacity="0.9" />
               
-              {/* Engine exhaust - glowing orange effect */}
-              <motion.rect
-                x="33" y="72" width="12" height="6" rx="3"
+              {/* Engine fan blades */}
+              <circle cx="40" cy="85" r="8" fill="none" stroke="#6c757d" strokeWidth="1" opacity="0.6" />
+              <circle cx="25" cy="85" r="8" fill="none" stroke="#6c757d" strokeWidth="1" opacity="0.6" />
+              
+              {/* Enhanced engine exhaust with glow */}
+              <motion.ellipse
+                cx="38" cy="85" rx="8" ry="4"
                 fill="#ff6b35"
+                filter="url(#glow)"
                 animate={{
-                  width: [12, 16, 12],
+                  rx: [8, 12, 8],
                   opacity: [0.8, 1, 0.8]
                 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.8,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
               />
-              <motion.rect
-                x="18" y="72" width="12" height="6" rx="3"
+              <motion.ellipse
+                cx="23" cy="85" rx="8" ry="4"
                 fill="#ff6b35"
+                filter="url(#glow)"
                 animate={{
-                  width: [12, 16, 12],
+                  rx: [8, 12, 8],
                   opacity: [0.8, 1, 0.8]
                 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.8,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
               />
             </g>
             
-            {/* Tail Section - 3D with proper perspective */}
+            {/* Enhanced Tail Section */}
             <g className="tail" filter="url(#shadow)">
-              {/* Vertical stabilizer */}
-              <path d="M25 35 L20 15 L30 22 L35 32 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
-              <path d="M30 22 L25 18 L32 25 L35 30 Z" fill="#ffffff" opacity="0.9" />
+              {/* Vertical stabilizer - more realistic */}
+              <path d="M30 50 L25 25 L35 35 L40 50 Z" fill="url(#wingGradient)" stroke="#495057" strokeWidth="2" />
+              <path d="M35 35 L30 30 L38 40 L40 45 Z" fill="#ffffff" opacity="0.9" />
               
               {/* Horizontal stabilizers */}
-              <path d="M20 15 L15 12 L25 18 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
-              <path d="M20 22 L15 25 L25 19 Z" fill="#dc3545" stroke="#495057" strokeWidth="1" />
+              <path d="M25 25 L20 22 L30 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1.5" />
+              <path d="M25 35 L20 38 L30 30 Z" fill="#dc3545" stroke="#495057" strokeWidth="1.5" />
+              
+              {/* Tail cone */}
+              <ellipse cx="20" cy="70" rx="8" ry="4" fill="url(#fuselageGradient)" stroke="#495057" strokeWidth="1" />
             </g>
             
-            {/* Landing Gear - Retracted with 3D effect */}
+            {/* Enhanced Landing Gear - More realistic */}
             <g className="landing-gear" filter="url(#shadow)">
-              <rect x="60" y="25" width="8" height="4" rx="2" fill="#6c757d" stroke="#495057" strokeWidth="1" />
-              <rect x="60" y="23" width="6" height="3" rx="1.5" fill="#adb5bd" opacity="0.8" />
-              <rect x="60" y="85" width="8" height="4" rx="2" fill="#6c757d" stroke="#495057" strokeWidth="1" />
-              <rect x="60" y="83" width="6" height="3" rx="1.5" fill="#adb5bd" opacity="0.8" />
+              <ellipse cx="70" cy="30" rx="6" ry="3" fill="#6c757d" stroke="#495057" strokeWidth="1" />
+              <ellipse cx="70" cy="28" rx="4" ry="2" fill="#adb5bd" opacity="0.9" />
+              <ellipse cx="70" cy="95" rx="6" ry="3" fill="#6c757d" stroke="#495057" strokeWidth="1" />
+              <ellipse cx="70" cy="93" rx="4" ry="2" fill="#adb5bd" opacity="0.9" />
             </g>
           </svg>
           
           {/* Enhanced Smoke Trail - More realistic contrails */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
-            {Array.from({ length: 10 }, (_, i) => (
+            {Array.from({ length: 12 }, (_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-4 h-4 bg-gray-200 rounded-full opacity-60"
+                className="absolute w-5 h-5 bg-gray-200 rounded-full opacity-70"
                 style={{
-                  left: `${-25 - i * 12}px`,
-                  top: `${-10 + (i % 2) * 20}px`
+                  left: `${-30 - i * 15}px`,
+                  top: `${-12 + (i % 3) * 24}px`
                 }}
                 animate={{
-                  opacity: [0.6, 0.3, 0],
-                  scale: [1, 2, 3.5],
-                  x: [-25 - i * 12, -40 - i * 12, -65 - i * 12]
+                  opacity: [0.7, 0.4, 0.1, 0],
+                  scale: [1, 1.5, 2.5, 4],
+                  x: [-30 - i * 15, -45 - i * 15, -70 - i * 15, -100 - i * 15]
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
-                  delay: i * 0.1,
+                  delay: i * 0.08,
                   ease: "easeOut"
                 }}
               />
