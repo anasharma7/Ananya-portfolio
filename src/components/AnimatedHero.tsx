@@ -84,11 +84,11 @@ const AnimatedHero = () => {
       
       {/* Abstract Background with Morphing Shapes */}
       <div className="absolute inset-0">
-        {/* Global Travel Background - World Landmarks with Dark Mode Support */}
+        {/* Paper-inspired Background with Dark Mode Support */}
         <div className={`absolute inset-0 transition-all duration-1000 ${
           isDarkMode 
             ? 'bg-gradient-to-b from-slate-800 via-slate-900 to-black' 
-            : 'bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500'
+            : 'bg-gradient-to-b from-amber-50 via-orange-50 to-yellow-50'
         }`}>
           {/* Enhanced Clouds with Dark Mode Support */}
           <div className={`absolute top-8 left-16 w-20 h-10 rounded-full opacity-80 transition-all duration-1000 ${
@@ -110,6 +110,7 @@ const AnimatedHero = () => {
             isDarkMode ? 'bg-gray-500' : 'bg-white'
           }`}></div>
           
+
           {/* Sparkles/Stars with Dark Mode Support */}
           {Array.from({ length: 12 }, (_, i) => (
             <div
@@ -363,88 +364,182 @@ const AnimatedHero = () => {
       {/* Center Content - Floating Elements with Fade Transitions */}
       <div className="relative z-10 flex items-center justify-center h-full">
         
-        {/* Simple Realistic Airplane - Matching Reference Image */}
-        <motion.div
-          className="absolute"
-          style={{
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)'
-          }}
-          animate={{ 
-            rotate: [0, 360]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          {/* Simple Airplane SVG - Clean and Realistic */}
-          <svg width="120" height="60" viewBox="0 0 120 60" className="relative z-20">
-            {/* Main Fuselage - Simple white body */}
-            <ellipse cx="60" cy="30" rx="35" ry="8" fill="white" stroke="#333" strokeWidth="1" />
+        {/* Paper Unfolding Animation - Inspired by Dribbble Design */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {/* Paper Layer 1 - Base Layer */}
+          <motion.div
+            className="absolute w-80 h-80 bg-gradient-to-br from-blue-50 to-blue-100 shadow-2xl"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 1
+            }}
+            animate={{ 
+              rotateX: [0, 5, 0],
+              rotateY: [0, 3, 0],
+              scale: [1, 1.02, 1]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {/* Paper texture */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent opacity-50"></div>
+          </motion.div>
+
+          {/* Paper Layer 2 - Unfolding */}
+          <motion.div
+            className="absolute w-72 h-72 bg-gradient-to-br from-purple-50 to-pink-100 shadow-xl"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 0.9
+            }}
+            animate={{ 
+              rotateX: [0, -8, 0],
+              rotateY: [0, -5, 0],
+              scale: [0.9, 0.95, 0.9]
+            }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+          >
+            {/* Paper texture */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/30 to-transparent opacity-60"></div>
+          </motion.div>
+
+          {/* Paper Layer 3 - Main Content Layer */}
+          <motion.div
+            className="absolute w-64 h-64 bg-gradient-to-br from-green-50 to-teal-100 shadow-lg"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 0.8
+            }}
+            animate={{ 
+              rotateX: [0, 10, 0],
+              rotateY: [0, 7, 0],
+              scale: [0.8, 0.88, 0.8]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          >
+            {/* Paper texture */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/40 to-transparent opacity-70"></div>
             
-            {/* Nose - Blue pointed nose */}
-            <ellipse cx="95" cy="30" rx="12" ry="6" fill="#0066cc" stroke="#333" strokeWidth="1" />
-            
-            {/* Windows - Simple black rectangles */}
-            <rect x="25" y="28" width="4" height="4" fill="black" />
-            <rect x="35" y="28" width="4" height="4" fill="black" />
-            <rect x="45" y="28" width="4" height="4" fill="black" />
-            <rect x="55" y="28" width="4" height="4" fill="black" />
-            <rect x="65" y="28" width="4" height="4" fill="black" />
-            <rect x="75" y="28" width="4" height="4" fill="black" />
-            
-            {/* Cockpit Windows - Larger */}
-            <rect x="85" y="26" width="6" height="8" fill="black" />
-            
-            {/* Main Wings - Simple white wings */}
-            <ellipse cx="50" cy="25" rx="25" ry="6" fill="white" stroke="#333" strokeWidth="1" />
-            <ellipse cx="50" cy="35" rx="25" ry="6" fill="white" stroke="#333" strokeWidth="1" />
-            
-            {/* Wing Tips - Red accents */}
-            <ellipse cx="25" cy="25" rx="4" ry="2" fill="#dc3545" />
-            <ellipse cx="25" cy="35" rx="4" ry="2" fill="#dc3545" />
-            <ellipse cx="75" cy="25" rx="4" ry="2" fill="#dc3545" />
-            <ellipse cx="75" cy="35" rx="4" ry="2" fill="#dc3545" />
-            
-            {/* Engines - Simple gray cylinders */}
-            <ellipse cx="30" cy="40" rx="6" ry="3" fill="#666" stroke="#333" strokeWidth="1" />
-            <ellipse cx="20" cy="40" rx="6" ry="3" fill="#666" stroke="#333" strokeWidth="1" />
-            
-            {/* Tail - Simple white tail with red accent */}
-            <ellipse cx="15" cy="20" rx="8" ry="4" fill="white" stroke="#333" strokeWidth="1" />
-            <ellipse cx="15" cy="20" rx="3" ry="2" fill="#dc3545" />
-          </svg>
-          
-          {/* Simple Smoke Trail */}
-          <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
-            {Array.from({ length: 6 }, (_, i) => (
+            {/* Content on the paper */}
+            <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                key={i}
-                className={`absolute w-3 h-3 rounded-full opacity-60 transition-all duration-1000 ${
-                  isDarkMode ? 'bg-gray-400' : 'bg-gray-200'
-                }`}
-                style={{
-                  left: `${-20 - i * 8}px`,
-                  top: `${-5 + (i % 2) * 10}px`
-                }}
+                className="text-6xl font-bold text-gray-700"
                 animate={{
-                  opacity: [0.6, 0.3, 0],
-                  scale: [1, 1.5, 2],
-                  x: [-20 - i * 8, -35 - i * 8, -50 - i * 8]
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 2, 0]
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 2,
                   repeat: Infinity,
-                  delay: i * 0.1,
-                  ease: "easeOut"
+                  ease: "easeInOut"
                 }}
-              />
-            ))}
-          </div>
-        </motion.div>
+              >
+                ✨
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Paper Layer 4 - Top Layer */}
+          <motion.div
+            className="absolute w-56 h-56 bg-gradient-to-br from-yellow-50 to-orange-100 shadow-md"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 0.7
+            }}
+            animate={{ 
+              rotateX: [0, -12, 0],
+              rotateY: [0, -8, 0],
+              scale: [0.7, 0.78, 0.7]
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1.5
+            }}
+          >
+            {/* Paper texture */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/50 to-transparent opacity-80"></div>
+            
+            {/* Content on the top paper */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="text-4xl font-bold text-gray-600"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, -2, 0]
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                🚀
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Floating Paper Pieces */}
+          {Array.from({ length: 6 }, (_, i) => (
+            <motion.div
+              key={i}
+              className={`absolute w-8 h-8 shadow-lg ${
+                i % 3 === 0 ? 'bg-white' : 
+                i % 3 === 1 ? 'bg-blue-100' : 'bg-purple-100'
+              }`}
+              style={{
+                left: `${30 + (i % 3) * 20}%`,
+                top: `${20 + Math.floor(i / 3) * 30}%`,
+                transform: 'rotate(45deg)'
+              }}
+              animate={{
+                y: [0, -20, 0],
+                rotate: [45, 50, 45],
+                opacity: [0.6, 1, 0.6]
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.3
+              }}
+            />
+          ))}
+        </div>
 
         {/* Floating Tech Icons */}
         <div className="absolute inset-0 flex items-center justify-center">
