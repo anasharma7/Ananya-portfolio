@@ -11,8 +11,103 @@ const HeroSection = () => {
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const buttonStates = [
-    { text: "Let's Explore", icon: <FaRocket className="ml-2 w-5 h-5" />, action: () => window.open('/projects', '_self') },
-    { text: "Get Inspired", icon: <FaMagic className="ml-2 w-5 h-5" />, action: () => {
+    { text: "Show Me Magic", icon: <FaMagic className="ml-2 w-5 h-5" />, action: () => {
+      // Create EPIC full-screen particle explosion effect
+      const explosion = document.createElement('div');
+      explosion.className = 'fixed inset-0 pointer-events-none z-50 overflow-hidden';
+      explosion.style.background = 'radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, rgba(236, 72, 153, 0.1) 50%, transparent 100%)';
+      
+      // Create massive particle explosion
+      const particles = [];
+      const codeSnippets = ['React', 'TypeScript', 'Next.js', 'Node.js', 'Python', 'AWS', 'Docker', 'MongoDB', 'PostgreSQL', 'GraphQL', 'Tailwind', 'Framer Motion'];
+      
+      // Create 200+ particles for explosion
+      for (let i = 0; i < 200; i++) {
+        const particle = document.createElement('div');
+        const size = Math.random() * 8 + 2;
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 300 + 100;
+        const x = window.innerWidth / 2;
+        const y = window.innerHeight / 2;
+        
+        particle.className = 'absolute rounded-full';
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.background = `linear-gradient(45deg, 
+          hsl(${Math.random() * 60 + 260}, 70%, 60%), 
+          hsl(${Math.random() * 60 + 300}, 70%, 60%)
+        )`;
+        particle.style.boxShadow = `0 0 ${size * 2}px currentColor`;
+        
+        particles.push({ element: particle, angle, velocity, x, y, size });
+        explosion.appendChild(particle);
+      }
+      
+      // Add floating code snippets
+      for (let i = 0; i < 12; i++) {
+        const codeElement = document.createElement('div');
+        codeElement.className = 'absolute px-4 py-2 rounded-lg text-sm font-mono font-bold text-white shadow-lg';
+        codeElement.style.background = 'linear-gradient(45deg, #8b5cf6, #ec4899)';
+        codeElement.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+        codeElement.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+        codeElement.style.transform = 'scale(0)';
+        codeElement.style.opacity = '0';
+        codeElement.textContent = codeSnippets[i];
+        explosion.appendChild(codeElement);
+        
+        // Animate code snippets
+        setTimeout(() => {
+          codeElement.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          codeElement.style.transform = 'scale(1) rotate(360deg)';
+          codeElement.style.opacity = '1';
+        }, i * 100);
+        
+        // Remove code snippets
+        setTimeout(() => {
+          codeElement.style.transition = 'all 0.5s ease-out';
+          codeElement.style.transform = 'scale(0) rotate(-180deg)';
+          codeElement.style.opacity = '0';
+        }, 2000 + i * 100);
+      }
+      
+      document.body.appendChild(explosion);
+      
+      // Animate particles explosion
+      let startTime = Date.now();
+      const animateParticles = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = elapsed / 2000; // 2 second animation
+        
+        particles.forEach((particle, index) => {
+          const distance = particle.velocity * progress;
+          const newX = particle.x + Math.cos(particle.angle) * distance;
+          const newY = particle.y + Math.sin(particle.angle) * distance;
+          const scale = Math.max(0, 1 - progress);
+          const opacity = Math.max(0, 1 - progress * 1.5);
+          
+          particle.element.style.left = `${newX}px`;
+          particle.element.style.top = `${newY}px`;
+          particle.element.style.transform = `scale(${scale})`;
+          particle.element.style.opacity = opacity;
+        });
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateParticles);
+        } else {
+          // Cleanup
+          setTimeout(() => {
+            if (document.body.contains(explosion)) {
+              document.body.removeChild(explosion);
+            }
+          }, 1000);
+        }
+      };
+      
+      requestAnimationFrame(animateParticles);
+    }},
+    { text: "Get Inspired", icon: <FaRocket className="ml-2 w-5 h-5" />, action: () => {
       // Create a magical sparkle effect
       const sparkles = document.createElement('div');
       sparkles.className = 'fixed inset-0 pointer-events-none z-50';
