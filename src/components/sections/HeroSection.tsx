@@ -37,7 +37,6 @@ const HeroSection = () => {
   };
 
   const typewriterTexts = [
-    "Let's build something meaningful together",
     "Designing with empathy, coding with care",
     "Your next teammate in digital innovation",
     "Driven by curiosity, focused on people"
