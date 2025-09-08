@@ -122,26 +122,177 @@ const AnimatedHero = () => {
   }));
 
   return (
-    <div className={`relative w-full h-96 mx-auto mb-8 overflow-hidden transition-all duration-1000 ${
-      isDarkMode ? 'bg-slate-900' : 'bg-gray-50'
-    }`}>
+    <div 
+      className={`relative w-full h-96 mx-auto mb-8 overflow-hidden transition-all duration-1000 cursor-none ${
+        isDarkMode ? 'bg-slate-900' : 'bg-gray-50'
+      }`}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMousePosition({ 
+          x: e.clientX - rect.left, 
+          y: e.clientY - rect.top 
+        });
+      }}
+    >
       
-      {/* Simple Clean Background */}
+      {/* Interactive Sky Background */}
       <div className="absolute inset-0">
         <div className={`absolute inset-0 transition-all duration-1000 ${
           isDarkMode 
-            ? 'bg-gradient-to-br from-slate-800 to-slate-900' 
-            : 'bg-gradient-to-br from-blue-50 to-indigo-100'
+            ? 'bg-gradient-to-b from-slate-800 via-slate-700 to-slate-900' 
+            : 'bg-gradient-to-b from-blue-200 via-blue-100 to-blue-200'
         }`}></div>
+        
+        {/* Interactive Clouds that follow mouse */}
+        <motion.div
+          className={`absolute w-32 h-16 rounded-full opacity-60 ${
+            isDarkMode ? 'bg-gray-600' : 'bg-white'
+          }`}
+          style={{
+            left: mousePosition.x - 100,
+            top: mousePosition.y - 50,
+          }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.4, 0.8, 0.4]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div
+          className={`absolute w-24 h-12 rounded-full opacity-40 ${
+            isDarkMode ? 'bg-gray-500' : 'bg-white'
+          }`}
+          style={{
+            left: mousePosition.x + 50,
+            top: mousePosition.y - 30,
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5
+          }}
+        />
       </div>
 
-      {/* Center Content - Simple and Clean */}
-      <div className="relative z-10 flex items-center justify-center h-full">
+      {/* Interactive Airplane that follows mouse */}
+      <motion.div
+        className="absolute z-20"
+        style={{
+          left: mousePosition.x - 60,
+          top: mousePosition.y - 30,
+        }}
+        animate={{
+          rotate: [0, 5, -5, 0],
+          scale: [1, 1.05, 1]
+        }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        {/* Simple Airplane SVG */}
+        <svg width="120" height="60" viewBox="0 0 120 60" className="drop-shadow-lg">
+          {/* Main body */}
+          <ellipse cx="60" cy="30" rx="35" ry="8" fill="white" stroke="#333" strokeWidth="2" />
+          
+          {/* Nose */}
+          <ellipse cx="95" cy="30" rx="12" ry="6" fill="#0066cc" stroke="#333" strokeWidth="2" />
+          
+          {/* Windows */}
+          <circle cx="40" cy="30" r="3" fill="#87ceeb" />
+          <circle cx="55" cy="30" r="3" fill="#87ceeb" />
+          <circle cx="70" cy="30" r="3" fill="#87ceeb" />
+          <circle cx="85" cy="30" r="3" fill="#87ceeb" />
+          
+          {/* Wings */}
+          <ellipse cx="50" cy="25" rx="25" ry="6" fill="white" stroke="#333" strokeWidth="2" />
+          <ellipse cx="50" cy="35" rx="25" ry="6" fill="white" stroke="#333" strokeWidth="2" />
+          
+          {/* Wing tips */}
+          <ellipse cx="25" cy="25" rx="4" ry="2" fill="#dc3545" />
+          <ellipse cx="25" cy="35" rx="4" ry="2" fill="#dc3545" />
+          <ellipse cx="75" cy="25" rx="4" ry="2" fill="#dc3545" />
+          <ellipse cx="75" cy="35" rx="4" ry="2" fill="#dc3545" />
+          
+          {/* Engines */}
+          <ellipse cx="30" cy="40" rx="6" ry="3" fill="#666" stroke="#333" strokeWidth="1" />
+          <ellipse cx="20" cy="40" rx="6" ry="3" fill="#666" stroke="#333" strokeWidth="1" />
+          
+          {/* Tail */}
+          <ellipse cx="15" cy="20" rx="8" ry="4" fill="white" stroke="#333" strokeWidth="1" />
+          <ellipse cx="15" cy="20" rx="3" ry="2" fill="#dc3545" />
+        </svg>
         
-        {/* Simple Typing Animation */}
+        {/* Smoke trail that follows airplane */}
+        <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
+          {Array.from({ length: 5 }, (_, i) => (
+            <motion.div
+              key={i}
+              className={`absolute w-2 h-2 rounded-full opacity-60 ${
+                isDarkMode ? 'bg-gray-400' : 'bg-gray-300'
+              }`}
+              style={{
+                left: `${-20 - i * 8}px`,
+                top: `${-2 + (i % 2) * 4}px`
+              }}
+              animate={{
+                opacity: [0.6, 0.2, 0],
+                scale: [1, 1.5, 2],
+                x: [-20 - i * 8, -35 - i * 8, -50 - i * 8]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.2,
+                ease: "easeOut"
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Interactive Particles that follow mouse */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 8 }, (_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute w-2 h-2 rounded-full ${
+              isDarkMode ? 'bg-yellow-300' : 'bg-blue-400'
+            }`}
+            style={{
+              left: mousePosition.x + (Math.cos(i * 45 * Math.PI / 180) * 100),
+              top: mousePosition.y + (Math.sin(i * 45 * Math.PI / 180) * 100),
+            }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.2,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Center Text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center">
           <motion.h1 
-            className={`text-6xl font-bold mb-4 transition-colors duration-1000 ${
+            className={`text-4xl font-bold mb-2 transition-colors duration-1000 ${
               isDarkMode ? 'text-white' : 'text-gray-800'
             }`}
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +303,7 @@ const AnimatedHero = () => {
           </motion.h1>
           
           <motion.div 
-            className={`text-xl mb-8 transition-colors duration-1000 ${
+            className={`text-lg transition-colors duration-1000 ${
               isDarkMode ? 'text-gray-300' : 'text-gray-600'
             }`}
             initial={{ opacity: 0, y: 20 }}
@@ -161,68 +312,25 @@ const AnimatedHero = () => {
           >
             <TypewriterText />
           </motion.div>
-
-          {/* Simple Floating Elements */}
-          <div className="flex justify-center space-x-8">
-            {['React', 'TypeScript', 'Next.js', 'Node.js'].map((tech, index) => (
-              <motion.div
-                key={tech}
-                className={`px-4 py-2 rounded-full border transition-all duration-1000 ${
-                  isDarkMode 
-                    ? 'bg-slate-700 border-slate-600 text-white' 
-                    : 'bg-white border-gray-200 text-gray-700'
-                }`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ 
-                  opacity: 1, 
-                  scale: 1,
-                  y: [0, -10, 0]
-                }}
-                transition={{ 
-                  duration: 1, 
-                  delay: 0.5 + index * 0.2,
-                  y: {
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.5
-                  }
-                }}
-              >
-                {tech}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Simple Background Shapes */}
-        <div className="absolute inset-0 pointer-events-none">
-          {Array.from({ length: 3 }, (_, i) => (
-            <motion.div
-              key={i}
-              className={`absolute rounded-full opacity-20 ${
-                isDarkMode ? 'bg-white' : 'bg-gray-400'
-              }`}
-              style={{
-                width: `${100 + i * 50}px`,
-                height: `${100 + i * 50}px`,
-                left: `${20 + i * 30}%`,
-                top: `${10 + i * 20}%`
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1]
-              }}
-              transition={{
-                duration: 4 + i,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 1
-              }}
-            />
-          ))}
         </div>
       </div>
+
+      {/* Interactive Instructions */}
+      <motion.div
+        className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 text-sm transition-colors duration-1000 ${
+          isDarkMode ? 'text-gray-400' : 'text-gray-500'
+        }`}
+        animate={{
+          opacity: [0.5, 1, 0.5]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        Move your mouse to fly the airplane! ✈️
+      </motion.div>
     </div>
   );
 };
