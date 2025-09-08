@@ -18,7 +18,14 @@ const HeroSection = () => {
       explosion.style.background = 'radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, rgba(236, 72, 153, 0.1) 50%, transparent 100%)';
       
       // Create massive particle explosion
-      const particles = [];
+      const particles: Array<{
+        element: HTMLDivElement;
+        angle: number;
+        velocity: number;
+        x: number;
+        y: number;
+        size: number;
+      }> = [];
       const codeSnippets = ['React', 'TypeScript', 'Next.js', 'Node.js', 'Python', 'AWS', 'Docker', 'MongoDB', 'PostgreSQL', 'GraphQL', 'Tailwind', 'Framer Motion'];
       
       // Create 200+ particles for explosion
@@ -90,7 +97,7 @@ const HeroSection = () => {
           particle.element.style.left = `${newX}px`;
           particle.element.style.top = `${newY}px`;
           particle.element.style.transform = `scale(${scale})`;
-          particle.element.style.opacity = opacity;
+          particle.element.style.opacity = `${opacity}`;
         });
         
         if (progress < 1) {
