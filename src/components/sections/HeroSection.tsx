@@ -4,7 +4,6 @@ import React from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaRocket, FaHeart, FaMagic } from 'react-icons/fa';
 import Link from 'next/link';
 import AnimatedBackground from '../AnimatedBackground';
-import TypewriterText from '../TypewriterText';
 import AnimatedHero from '../AnimatedHero';
 
 const HeroSection = () => {
@@ -36,11 +35,6 @@ const HeroSection = () => {
     }, 500);
   };
 
-  const typewriterTexts = [
-    "Designing with empathy, coding with care",
-    "Your next teammate in digital innovation",
-    "Driven by curiosity, focused on people"
-  ];
 
   return (
     <>
@@ -58,13 +52,6 @@ const HeroSection = () => {
               <AnimatedHero />
             </div>
             
-            <div className="mt-4 text-xl text-gray-600 dark:text-gray-300 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <TypewriterText 
-                texts={typewriterTexts}
-                speed={80}
-                className="text-purple-600 dark:text-purple-400 font-semibold"
-              />
-            </div>
             
             <div 
               className="mt-8 flex justify-center space-x-4 animate-slide-up"
