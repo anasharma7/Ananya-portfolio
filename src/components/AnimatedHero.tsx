@@ -84,95 +84,19 @@ const AnimatedHero = () => {
       
       {/* Abstract Background with Morphing Shapes */}
       <div className="absolute inset-0">
-        {/* Paper-inspired Background with Dark Mode Support */}
+        {/* Clean Professional Background with Dark Mode Support */}
         <div className={`absolute inset-0 transition-all duration-1000 ${
           isDarkMode 
-            ? 'bg-gradient-to-b from-slate-800 via-slate-900 to-black' 
-            : 'bg-gradient-to-b from-amber-50 via-orange-50 to-yellow-50'
+            ? 'bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900' 
+            : 'bg-gradient-to-b from-gray-50 via-white to-gray-50'
         }`}>
-          {/* Enhanced Clouds with Dark Mode Support */}
-          <div className={`absolute top-8 left-16 w-20 h-10 rounded-full opacity-80 transition-all duration-1000 ${
-            isDarkMode ? 'bg-gray-600' : 'bg-white'
-          }`}></div>
-          <div className={`absolute top-12 left-50 w-16 h-8 rounded-full opacity-70 transition-all duration-1000 ${
-            isDarkMode ? 'bg-gray-500' : 'bg-white'
-          }`}></div>
-          <div className={`absolute top-6 right-28 w-18 h-9 rounded-full opacity-75 transition-all duration-1000 ${
-            isDarkMode ? 'bg-gray-600' : 'bg-white'
-          }`}></div>
-          <div className={`absolute top-15 right-12 w-14 h-7 rounded-full opacity-65 transition-all duration-1000 ${
-            isDarkMode ? 'bg-gray-500' : 'bg-white'
-          }`}></div>
-          <div className={`absolute top-20 left-40 w-12 h-6 rounded-full opacity-60 transition-all duration-1000 ${
-            isDarkMode ? 'bg-gray-400' : 'bg-white'
-          }`}></div>
-          <div className={`absolute top-4 left-70 w-15 h-8 rounded-full opacity-70 transition-all duration-1000 ${
-            isDarkMode ? 'bg-gray-500' : 'bg-white'
-          }`}></div>
-          
-
-          {/* Sparkles/Stars with Dark Mode Support */}
-          {Array.from({ length: 12 }, (_, i) => (
-            <div
-              key={`sparkle-${i}`}
-              className={`absolute text-xs font-bold transition-all duration-1000 ${
-                isDarkMode ? 'text-yellow-300' : 'text-white'
-              }`}
-              style={{
-                left: `${15 + (i % 4) * 20}%`,
-                top: `${10 + Math.floor(i / 4) * 15}%`,
-                transform: 'rotate(45deg)'
-              }}
-            >
-              ✕
-            </div>
-          ))}
-          
-          {/* World Landmarks */}
-          <div className="absolute bottom-8 left-0 right-0 flex justify-around items-end px-8">
-            {/* Mount Fuji */}
-            <div className="relative">
-              <div className="w-8 h-12 bg-gray-400 rounded-t-full"></div>
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-white rounded-t-full"></div>
-            </div>
-            
-            {/* Pagoda */}
-            <div className="relative">
-              <div className="w-6 h-16 bg-red-600 rounded-t-lg"></div>
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-5 h-3 bg-green-600 rounded-t-lg"></div>
-              <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-4 h-3 bg-green-600 rounded-t-lg"></div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-green-600 rounded-t-lg"></div>
-            </div>
-            
-            {/* Arc de Triomphe */}
-            <div className="relative">
-              <div className="w-8 h-12 bg-gray-500 rounded-t-lg"></div>
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-gray-400 rounded-t-lg"></div>
-            </div>
-            
-            {/* Stepped Pyramid */}
-            <div className="relative">
-              <div className="w-10 h-8 bg-yellow-700 rounded-t-lg"></div>
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-yellow-600 rounded-t-lg"></div>
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-6 h-4 bg-yellow-500 rounded-t-lg"></div>
-            </div>
-            
-            {/* Big Ben */}
-            <div className="relative">
-              <div className="w-6 h-16 bg-yellow-800 rounded-t-lg"></div>
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full"></div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-black rounded-full"></div>
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-3 bg-black rounded-t-lg"></div>
-            </div>
-            ``
-            {/* Eiffel Tower */}
-            <div className="relative">
-              <div className="w-6 h-20 bg-gray-600 rounded-t-lg"></div>
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-gray-500"></div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-6 h-2 bg-gray-500"></div>
-              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-gray-500"></div>
-            </div>
-          </div>
+          {/* Subtle pattern overlay */}
+          <div className={`absolute inset-0 opacity-5 ${
+            isDarkMode ? 'bg-white' : 'bg-gray-900'
+          }`} style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+            backgroundSize: '20px 20px'
+          }}></div>
         </div>
         
         {/* Original morphing shapes with reduced opacity */}
@@ -364,11 +288,11 @@ const AnimatedHero = () => {
       {/* Center Content - Floating Elements with Fade Transitions */}
       <div className="relative z-10 flex items-center justify-center h-full">
         
-        {/* Paper Unfolding Animation - Inspired by Dribbble Design */}
+        {/* Clean Paper Unfolding Animation */}
         <div className="absolute inset-0 flex items-center justify-center">
           {/* Paper Layer 1 - Base Layer */}
           <motion.div
-            className="absolute w-80 h-80 bg-gradient-to-br from-blue-50 to-blue-100 shadow-2xl"
+            className="absolute w-80 h-80 bg-white shadow-2xl border border-gray-200"
             style={{
               transformOrigin: 'center center',
               transformStyle: 'preserve-3d'
@@ -376,12 +300,145 @@ const AnimatedHero = () => {
             initial={{ 
               rotateX: 0,
               rotateY: 0,
-              scale: 1
+              scale: 1,
+              z: 0
             }}
             animate={{ 
-              rotateX: [0, 5, 0],
-              rotateY: [0, 3, 0],
-              scale: [1, 1.02, 1]
+              rotateX: [0, 15, 0],
+              rotateY: [0, 10, 0],
+              scale: [1, 1.05, 1],
+              z: [0, 20, 0]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {/* Paper content */}
+            <div className="absolute inset-4 p-6">
+              <div className="w-full h-full border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+                <span className="text-gray-400 text-sm">Portfolio Base</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Paper Layer 2 - Unfolding */}
+          <motion.div
+            className="absolute w-72 h-72 bg-blue-50 shadow-xl border border-blue-200"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 0.9,
+              z: 10
+            }}
+            animate={{ 
+              rotateX: [0, -20, 0],
+              rotateY: [0, -15, 0],
+              scale: [0.9, 0.95, 0.9],
+              z: [10, 30, 10]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          >
+            {/* Paper content */}
+            <div className="absolute inset-4 p-4">
+              <div className="w-full h-full border border-blue-300 rounded flex items-center justify-center">
+                <span className="text-blue-600 text-sm font-medium">Projects</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Paper Layer 3 - Main Content Layer */}
+          <motion.div
+            className="absolute w-64 h-64 bg-green-50 shadow-lg border border-green-200"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 0.8,
+              z: 20
+            }}
+            animate={{ 
+              rotateX: [0, 25, 0],
+              rotateY: [0, 20, 0],
+              scale: [0.8, 0.9, 0.8],
+              z: [20, 40, 20]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          >
+            {/* Paper content */}
+            <div className="absolute inset-4 p-4">
+              <div className="w-full h-full border border-green-300 rounded flex items-center justify-center">
+                <span className="text-green-600 text-sm font-medium">Skills</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Paper Layer 4 - Top Layer */}
+          <motion.div
+            className="absolute w-56 h-56 bg-yellow-50 shadow-md border border-yellow-200"
+            style={{
+              transformOrigin: 'center center',
+              transformStyle: 'preserve-3d'
+            }}
+            initial={{ 
+              rotateX: 0,
+              rotateY: 0,
+              scale: 0.7,
+              z: 30
+            }}
+            animate={{ 
+              rotateX: [0, -30, 0],
+              rotateY: [0, -25, 0],
+              scale: [0.7, 0.85, 0.7],
+              z: [30, 50, 30]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3
+            }}
+          >
+            {/* Paper content */}
+            <div className="absolute inset-4 p-4">
+              <div className="w-full h-full border border-yellow-300 rounded flex items-center justify-center">
+                <span className="text-yellow-600 text-sm font-medium">About</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Real Objects - Books and Stationery */}
+        <div className="absolute inset-0">
+          {/* Book 1 */}
+          <motion.div
+            className="absolute w-12 h-16 bg-red-500 shadow-lg"
+            style={{
+              left: '15%',
+              top: '20%',
+              transform: 'rotate(-15deg)'
+            }}
+            animate={{
+              y: [0, -5, 0],
+              rotate: [-15, -12, -15]
             }}
             transition={{
               duration: 4,
@@ -389,258 +446,107 @@ const AnimatedHero = () => {
               ease: "easeInOut"
             }}
           >
-            {/* Paper texture */}
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent opacity-50"></div>
+            <div className="w-full h-full bg-red-600 border-l-2 border-red-700"></div>
+            <div className="absolute top-1 left-1 right-1 h-1 bg-red-400"></div>
+            <div className="absolute top-3 left-1 right-1 h-1 bg-red-400"></div>
           </motion.div>
 
-          {/* Paper Layer 2 - Unfolding */}
+          {/* Book 2 */}
           <motion.div
-            className="absolute w-72 h-72 bg-gradient-to-br from-purple-50 to-pink-100 shadow-xl"
+            className="absolute w-10 h-14 bg-blue-500 shadow-lg"
             style={{
-              transformOrigin: 'center center',
-              transformStyle: 'preserve-3d'
+              right: '20%',
+              top: '25%',
+              transform: 'rotate(20deg)'
             }}
-            initial={{ 
-              rotateX: 0,
-              rotateY: 0,
-              scale: 0.9
-            }}
-            animate={{ 
-              rotateX: [0, -8, 0],
-              rotateY: [0, -5, 0],
-              scale: [0.9, 0.95, 0.9]
+            animate={{
+              y: [0, -8, 0],
+              rotate: [20, 23, 20]
             }}
             transition={{
               duration: 3.5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 0.5
-            }}
-          >
-            {/* Paper texture */}
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/30 to-transparent opacity-60"></div>
-          </motion.div>
-
-          {/* Paper Layer 3 - Main Content Layer */}
-          <motion.div
-            className="absolute w-64 h-64 bg-gradient-to-br from-green-50 to-teal-100 shadow-lg"
-            style={{
-              transformOrigin: 'center center',
-              transformStyle: 'preserve-3d'
-            }}
-            initial={{ 
-              rotateX: 0,
-              rotateY: 0,
-              scale: 0.8
-            }}
-            animate={{ 
-              rotateX: [0, 10, 0],
-              rotateY: [0, 7, 0],
-              scale: [0.8, 0.88, 0.8]
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
               delay: 1
             }}
           >
-            {/* Paper texture */}
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/40 to-transparent opacity-70"></div>
-            
-            {/* Content on the paper */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                className="text-6xl font-bold text-gray-700"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 2, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                ✨
-              </motion.div>
-            </div>
+            <div className="w-full h-full bg-blue-600 border-l-2 border-blue-700"></div>
+            <div className="absolute top-1 left-1 right-1 h-1 bg-blue-400"></div>
           </motion.div>
 
-          {/* Paper Layer 4 - Top Layer */}
+          {/* Pen */}
           <motion.div
-            className="absolute w-56 h-56 bg-gradient-to-br from-yellow-50 to-orange-100 shadow-md"
+            className="absolute w-1 h-8 bg-gray-800 shadow-md"
             style={{
-              transformOrigin: 'center center',
-              transformStyle: 'preserve-3d'
+              left: '25%',
+              top: '60%',
+              transform: 'rotate(45deg)'
             }}
-            initial={{ 
-              rotateX: 0,
-              rotateY: 0,
-              scale: 0.7
-            }}
-            animate={{ 
-              rotateX: [0, -12, 0],
-              rotateY: [0, -8, 0],
-              scale: [0.7, 0.78, 0.7]
+            animate={{
+              y: [0, -3, 0],
+              rotate: [45, 48, 45]
             }}
             transition={{
               duration: 2.5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 1.5
+              delay: 0.5
             }}
           >
-            {/* Paper texture */}
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/50 to-transparent opacity-80"></div>
-            
-            {/* Content on the top paper */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                className="text-4xl font-bold text-gray-600"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, -2, 0]
-                }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                🚀
-              </motion.div>
-            </div>
+            <div className="absolute top-0 w-2 h-2 bg-yellow-400 rounded-full"></div>
           </motion.div>
 
-          {/* Floating Paper Pieces */}
-          {Array.from({ length: 6 }, (_, i) => (
-            <motion.div
-              key={i}
-              className={`absolute w-8 h-8 shadow-lg ${
-                i % 3 === 0 ? 'bg-white' : 
-                i % 3 === 1 ? 'bg-blue-100' : 'bg-purple-100'
-              }`}
-              style={{
-                left: `${30 + (i % 3) * 20}%`,
-                top: `${20 + Math.floor(i / 3) * 30}%`,
-                transform: 'rotate(45deg)'
-              }}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [45, 50, 45],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.3
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Floating Tech Icons */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {[
-            { icon: "⚛️", x: -100, y: -80, delay: 0.8 },
-            { icon: "📱", x: 100, y: -80, delay: 1.2 },
-            { icon: "☁️", x: -100, y: 80, delay: 1.6 },
-            { icon: "🔧", x: 100, y: 80, delay: 2.0 }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="absolute text-4xl"
-              style={{ left: `${50 + item.x}%`, top: `${50 + item.y}%` }}
-              initial={{ opacity: 0, scale: 0, rotate: 0 }}
-              animate={{ 
-                opacity: [0, 1, 1, 0],
-                scale: [0, 1, 1, 0],
-                rotate: [0, 360]
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                delay: item.delay,
-                ease: "easeInOut"
-              }}
-            >
-              {item.icon}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Central Glowing Orb */}
-        <motion.div
-          className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-red-400"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ 
-            opacity: [0.3, 0.8, 0.3],
-            scale: [0.8, 1.2, 0.8]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          style={{
-            filter: 'blur(20px)',
-            boxShadow: '0 0 60px rgba(147, 51, 234, 0.6)'
-          }}
-        />
-
-        {/* Floating Code Snippets */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {[
-            { code: "npm start", x: -120, y: -40, delay: 1.0 },
-            { code: "git push", x: 120, y: -40, delay: 1.4 },
-            { code: "docker build", x: -120, y: 40, delay: 1.8 },
-            { code: "deploy", x: 120, y: 40, delay: 2.2 }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="absolute text-sm font-mono text-gray-300 bg-black/20 px-3 py-1 rounded-lg backdrop-blur-sm"
-              style={{ left: `${50 + item.x}%`, top: `${50 + item.y}%` }}
-              initial={{ opacity: 0, x: item.x > 0 ? 20 : -20 }}
-              animate={{ 
-                opacity: [0, 1, 1, 0],
-                x: [item.x > 0 ? 20 : -20, 0, 0, item.x > 0 ? 20 : -20]
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                delay: item.delay,
-                ease: "easeInOut"
-              }}
-            >
-              {item.code}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Pulsing Rings */}
-        {[1, 2, 3].map((ring) => (
+          {/* Notebook */}
           <motion.div
-            key={ring}
-            className="absolute border-2 border-white/20 rounded-full"
+            className="absolute w-16 h-12 bg-white shadow-lg border border-gray-300"
             style={{
-              width: `${200 + ring * 60}px`,
-              height: `${200 + ring * 60}px`
+              right: '15%',
+              bottom: '30%',
+              transform: 'rotate(-10deg)'
             }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: [0, 0.3, 0],
-              scale: [0.8, 1, 1.2]
+            animate={{
+              y: [0, -4, 0],
+              rotate: [-10, -7, -10]
             }}
             transition={{
               duration: 3,
               repeat: Infinity,
-              delay: ring * 0.5,
-              ease: "easeOut"
+              ease: "easeInOut",
+              delay: 1.5
             }}
-          />
-        ))}
+          >
+            <div className="absolute top-1 left-1 right-1 h-0.5 bg-gray-400"></div>
+            <div className="absolute top-3 left-1 right-1 h-0.5 bg-gray-400"></div>
+            <div className="absolute top-5 left-1 right-1 h-0.5 bg-gray-400"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-400"></div>
+          </motion.div>
+
+          {/* Coffee Cup */}
+          <motion.div
+            className="absolute w-8 h-10 bg-white shadow-lg border border-gray-300"
+            style={{
+              left: '70%',
+              bottom: '20%',
+              transform: 'rotate(15deg)'
+            }}
+            animate={{
+              y: [0, -2, 0],
+              rotate: [15, 18, 15]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          >
+            <div className="absolute top-0 left-1 right-1 h-2 bg-amber-200 rounded-t"></div>
+            <div className="absolute top-2 left-0 right-0 h-6 bg-white border border-gray-300"></div>
+            <div className="absolute top-1 right-0 w-2 h-1 bg-gray-300"></div>
+          </motion.div>
+        </div>
+
+
       </div>
 
       {/* Morphing Border */}
